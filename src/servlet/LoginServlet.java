@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.UserDao;
+import dao.UserDAO;
 import model.User;
 
 /**
@@ -39,13 +39,13 @@ public class LoginServlet extends HttpServlet {
 		String pw = request.getParameter("password");
 
 		// ログイン処理を行う
-		UserDao iDao = new UserDao();
+		UserDAO iDao = new UserDAO();
 		if (iDao.isLoginOK(new User(id, pw))) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", new LoginUser(id));
+			session.setAttribute("id", id);//修正しました
 
-			// メニューサーブレットにリダイレクトする
+			// ホームサーブレットにリダイレクトする
 			response.sendRedirect("/D1/HomeServlet");
 		}
 		else {									// ログイン失敗
