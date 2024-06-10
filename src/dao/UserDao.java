@@ -63,11 +63,7 @@ public class UserDAO {
 	}
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-<<<<<<< HEAD
-	public boolean insert(Idpw card) {
-=======
 	public boolean insert(User card) {
->>>>>>> 20170b85eb8c41ca8a4a352dc937bdb8150f0d8b
 		Connection conn = null;
 		boolean result = false;
 
@@ -118,10 +114,6 @@ public class UserDAO {
 				}
 			}
 		}
-<<<<<<< HEAD
-
-=======
->>>>>>> 20170b85eb8c41ca8a4a352dc937bdb8150f0d8b
 		// 結果を返す
 		return result;
 	}
