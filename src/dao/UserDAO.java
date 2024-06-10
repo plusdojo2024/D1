@@ -24,8 +24,8 @@ public class UserDAO {
 			// SELECT文を準備する
 			String sql = "SELECT COUNT(*) FROM Idpw WHERE id = ? AND pw = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, idpw.getId());
-			pStmt.setString(2,idpw.getPw());
+			pStmt.setString(1, user.getId());
+			pStmt.setString(2,user.getPw());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -62,7 +62,11 @@ public class UserDAO {
 	}
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
+<<<<<<< HEAD
 	public boolean insert(Idpw card) {
+=======
+	public boolean insert(User card) {
+>>>>>>> 20170b85eb8c41ca8a4a352dc937bdb8150f0d8b
 		Connection conn = null;
 		boolean result = false;
 
@@ -113,7 +117,10 @@ public class UserDAO {
 				}
 			}
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 20170b85eb8c41ca8a4a352dc937bdb8150f0d8b
 		// 結果を返す
 		return result;
 	}
