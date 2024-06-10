@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import model.User;
 
-public class UserDAO {
+public class UserDao {
 	// ログインできるならtrueを返す
 	public boolean isLoginOK(User user) {
 		Connection conn = null;
@@ -25,7 +25,7 @@ public class UserDAO {
 			String sql = "SELECT COUNT(*) FROM Idpw WHERE id = ? AND pw = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, user.getId());
-			pStmt.setString(2,user.getPw());
+			pStmt.setString(2,user.getPassword());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -84,8 +84,8 @@ public class UserDAO {
 			else {
 				pStmt.setString(1, "（未設定）");
 			}
-			if (card.getPw() != null && !card.getPw().equals("")) {
-				pStmt.setString(2, card.getPw());
+			if (card.getPassword() != null && !card.getPassword().equals("")) {
+				pStmt.setString(2, card.getPassword());
 			}
 			else {
 				pStmt.setString(2, "（未設定）");
