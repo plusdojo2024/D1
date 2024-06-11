@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class ScoreConvertServlet
  */
 @WebServlet("/ScoreConvertServlet")
-public class ScoreConvertServlet extends HttpServlet {
+public class ScoreConvertRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ScoreConvertServlet() {
+    public ScoreConvertRegistServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
