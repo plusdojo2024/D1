@@ -1,0 +1,12 @@
+2024-06-11 13:38:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM QUESTION USER GRADE[*]"
+Syntax error in SQL statement "SELECT * FROM QUESTION USER GRADE[*]"; SQL statement:
+SELECT * FROM QUESTION USER GRADE [42000-200]
+2024-06-11 13:38:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM QUESTION USER GRADE[*]"
+Syntax error in SQL statement "SELECT * FROM QUESTION USER GRADE[*]"; SQL statement:
+SELECT * FROM QUESTION USER GRADE [42000-200]
+2024-06-11 13:38:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM QUESTION USER GRADE[*]"
+Syntax error in SQL statement "SELECT * FROM QUESTION USER GRADE[*]"; SQL statement:
+SELECT * FROM QUESTION USER GRADE [42000-200]
