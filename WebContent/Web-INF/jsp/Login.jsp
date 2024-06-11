@@ -21,14 +21,14 @@
     <img class="lock_icon" src="img/lock.png" alt="">
 
     <!-- <form action="result.html"> -->
-    <form id="login_form" method="get" action="/D1/LoginServlet">
+    <form id="login_form" method="post" action="/D1/LoginServlet">
 
         <div class="login_input">
             <div class="login_text">
                 <input id="email" type="email" name="id" placeholder="email">
             </div>
             <div class="login_text">
-                <input id="password" type="password" name="pass" placeholder="password">
+                <input id="password" type="password" name="password" placeholder="password">
             </div>
 
             <div class="submit">
