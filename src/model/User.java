@@ -87,21 +87,21 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @param s_content セットする s_content
+	 * @param s_content セットする content
 	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
 	/**
-	 * @return s_answer
+	 * @return answer
 	 */
 	public int getAnswer() {
 		return answer;
 	}
 
 	/**
-	 * @param s_answer セットする s_answer
+	 * @param s_answer セットする answer
 	 */
 	public void setAnswer(int answer) {
 		this.answer = answer;
@@ -136,14 +136,14 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @return score
+	 * @return date
 	 */
 	public LocalDateTime getDate() {
 		return date;
 	}
 
 	/**
-	 * @param score セットする score
+	 * @param date セットする date
 	 */
 	public void setScore(LocalDateTime date) {
 		this.date = date;
