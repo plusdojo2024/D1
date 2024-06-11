@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// ログインページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Web-INF/jsp/Login.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 		if (iDao.isLoginOK(new User(id, pw))) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", id);//修正しました
+			session.setAttribute("login_id", id);//修正しました
 
 			// ホームサーブレットにリダイレクトする
 			response.sendRedirect("/D1/HomeServlet");
