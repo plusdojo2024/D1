@@ -22,7 +22,7 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 			// SELECT文を準備する
-			String sql = "SELECT COUNT(*) FROM Idpw WHERE id = ? AND pw = ?";
+			String sql = "SELECT COUNT(*) FROM USER WHERE login_id = ? AND password = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, user.getId());
 			pStmt.setString(2,user.getPassword());
@@ -74,7 +74,7 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Idpw VALUES (?, ?)";
+			String sql = "INSERT INTO USER VALUES (?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
