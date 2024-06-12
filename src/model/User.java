@@ -23,32 +23,17 @@ public class User implements Serializable {
 		this.login_id = "";
 		this.password = "";
 	}
-
 	/**
-	 * @return id
+	 * @return login_id
 	 */
-	public String getId() {
+	public String getLogin_id() {
 		return login_id;
 	}
 
 	/**
-	 * @param id セットする id
+	 * @param login_id セットする login_id
 	 */
-	public void setId(String id) {
-		this.login_id = id;
-	}
-
-	/**
-	 * @return user_id
-	 */
-	public String getUser_id() {
-		return login_id;
-	}
-
-	/**
-	 * @param user_id セットする user_id
-	 */
-	public void setUser_id(String login_id) {
+	public void setLogin_id(String login_id) {
 		this.login_id = login_id;
 	}
 
