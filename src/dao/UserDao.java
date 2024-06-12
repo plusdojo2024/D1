@@ -22,7 +22,7 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 			// SELECT文を準備する
-			String sql = "SELECT COUNT(*) FROM USER WHERE login_id = ? AND name = ? AND password = ?";
+			String sql = "SELECT COUNT(*) FROM USER WHERE login_id = ? AND user_name = ? AND password = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, user.getLogin_id());
 			pStmt.setString(2, user.getUser_name());
