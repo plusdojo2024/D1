@@ -47,8 +47,16 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		//100点満点換算をするうえで本来の満点得点を記録する必要は？
+
+		// JSP から送られた正答数と問題数を取得
+        int correct = Integer.parseInt(request.getParameter("correctAnswers"));
+        int total = Integer.parseInt(request.getParameter("totalQuestions"));
+
+        // 正答率を計算して100点満点に換算
+        double percentage = ((double) correct / total) * 100;
+
 		String subject = request.getParameter("subject");
-		int score = Integer.parseInt(request.getParameter("score"));
+		int score = (int) percentage;
 
 		//登録処理を行う
 		// 未解決：insertのエラー、Resultの中身最後、フォワード先
