@@ -47,7 +47,7 @@ public class grade {
 		return date;
 	}
 
-	public void setScore(LocalDateTime date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
