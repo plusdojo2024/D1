@@ -24,7 +24,7 @@ public class UserDao {
 			// SELECT文を準備する
 			String sql = "SELECT COUNT(*) FROM USER WHERE login_id = ? AND password = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, user.getId());
+			pStmt.setString(1, user.getLogin_id());
 			pStmt.setString(2,user.getPassword());
 
 			// SELECT文を実行し、結果表を取得する
@@ -78,8 +78,8 @@ public class UserDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getId() != null && !card.getId().equals("")) {
-				pStmt.setString(1, card.getId());
+			if (card.getLogin_id() != null && !card.getLogin_id().equals("")) {
+				pStmt.setString(1, card.getLogin_id());
 			}
 			else {
 				pStmt.setString(1, "（未設定）");
