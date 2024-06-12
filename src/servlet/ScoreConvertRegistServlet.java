@@ -46,13 +46,12 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 
-		//100点満点換算をするうえで本来の満点得点を記録する必要は？
 
 		// JSP から送られた正答数と問題数を取得
-        int correct = Integer.parseInt(request.getParameter("correctAnswers"));
-        int total = Integer.parseInt(request.getParameter("totalQuestions"));
+        int correct = Integer.parseInt(request.getParameter("correct"));
+        int total = Integer.parseInt(request.getParameter("total"));
 
-        // 正答率を計算して100点満点に換算
+        // 100点満点に換算
         double percentage = ((double) correct / total) * 100;
 
 		String subject = request.getParameter("subject");
@@ -62,14 +61,14 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		// 未解決：insertのエラー、Resultの中身最後、フォワード先
 		gradeDao gDao = new gradeDao();
 
-		if (gDao.insert(new grade(subject, score))) {	// 登録成功
+		if (gDao.insert(new grade(null, null, null, subject, score))) {	// 登録成功
 
 			request.setAttribute("result",
-			new Result("登録成功！", "点数を登録しました。", "/D1/MenuServlet"));
+			new Result("登録成功！", "点数を登録しました。", "/D1/ScoreConvertRegistServlet"));
 		}
 		else {												// 登録失敗
 			request.setAttribute("result",
-			new Result("登録失敗！", "点数を登録できませんでした。", "/D1/MenuServlet"));
+			new Result("登録失敗！", "点数を登録できませんでした。", "/D1/ScoreConvertRegistServlet"));
 		}
 
 		// 結果ページにフォワードする
