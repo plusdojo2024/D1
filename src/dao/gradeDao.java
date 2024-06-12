@@ -6,11 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.User;
+import model.grade;
 
 public class gradeDao {
 	// ログインできるならtrueを返す
-		public boolean isLoginOK(User user) {
+		public boolean isLoginOK(grade user) {
 			Connection conn = null;
 			boolean loginResult = false;
 
@@ -22,12 +22,13 @@ public class gradeDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 				// SELECT文を準備する
-				String sql = "SELECT COUNT(*) FROM USER WHERE login_id = ? AND Date = ? AND subject = ? AND score = ?";
+				String sql = "SELECT COUNT(*) FROM USER WHERE login_id = ? AND date = ? AND time = ? AND subject = ? AND score = ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				pStmt.setString(1, user.getLogin_id());
-				pStmt.setString(2, user.getDate());
-				pStmt.setString(3, user.getSubject());
-				pStmt.setString(4, user.getScore());
+				pStmt.setDate(2, new java.sql.Date(user.getDate().getTime()));
+				pStmt.setTime(3, user.getTime());
+				pStmt.setString(4, user.getSubject());
+				pStmt.setInt(5, user.getScore());
 
 				// SELECT文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
@@ -64,7 +65,7 @@ public class gradeDao {
 		}
 
 		// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-		public boolean insert(User card) {
+		public boolean insert(grade card) {
 			Connection conn = null;
 			boolean result = false;
 
@@ -76,7 +77,7 @@ public class gradeDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-				String sql = "INSERT INTO USER VALUES (?, ?, ?)";
+				String sql = "INSERT INTO USER VALUES (?, ?, ?, ?, ?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -86,17 +87,29 @@ public class gradeDao {
 				else {
 					pStmt.setString(1, "（未設定）");
 				}
-				if (card.getUser_name() != null && !card.getUser_name().equals("")) {
-					pStmt.setString(2, card.getUser_name());
+				if (card.getDate() != null && !card.getDate().equals("")) {
+					pStmt.setDate(2, new java.sql.Date(card.getDate().getTime()));
 				}
 				else {
 					pStmt.setString(2, "（未設定）");
 				}
-				if (card.getPassword() != null && !card.getPassword().equals("")) {
-					pStmt.setString(3, card.getPassword());
+				if (card.getTime() != null && !card.getTime().equals("")) {
+					pStmt.setTime(3, card.getTime());
 				}
 				else {
 					pStmt.setString(3, "（未設定）");
+				}
+				if (card.getSubject() != null && !card.getSubject().equals("")) {
+					pStmt.setString(4, card.getSubject());
+				}
+				else {
+					pStmt.setString(4, "（未設定）");
+				}
+				if (card.getScore() != 0) { //int型はnullにならないから0で判定
+					pStmt.setInt(5, card.getScore());
+				}
+				else {
+					pStmt.setInt(5, 0);
 				}
 
 				// SQL文を実行する
