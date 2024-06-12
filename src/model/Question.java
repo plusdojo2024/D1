@@ -1,11 +1,11 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Question implements Serializable {
 	private String login_id;  //ログイン時のID
-	private Date date;  //ログイン日時
+	private LocalDateTime date;  //ログイン日時
 	private String content;  //質問内容
 	private String answer;  //質問回答
 	private String subject;  //科目
@@ -16,7 +16,7 @@ public class Question implements Serializable {
 	}
 
 	//引数があるコンストラクタ
-	public Question(String login_id, Date date, String content, String answer, String subject) {
+	public Question(String login_id, LocalDateTime date, String content, String answer, String subject) {
 		super();
 		this.login_id = login_id;
 		this.date = date;
@@ -42,14 +42,14 @@ public class Question implements Serializable {
 	/**
 	 * @return date
 	 */
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
 	/**
 	 * @param date セットする date
 	 */
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
