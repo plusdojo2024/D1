@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+.login_logo img{
+    margin: auto;
+    margin-bottom: 25px;
+    padding-top: 60px;
+    padding-bottom: 5px;
+    padding-left: 100px;
+    padding-right: 100px;
+    display: block;
+    width: 250px;
+    border-bottom: 2px solid #375577;
+}
+
+.login_input{
+    display: block;
+text-align: center;
+margin-top: 80px;
+}
+
+.login_text input{
+    width: 350px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+
+.submit{
+    display: block;
+    padding-top: 25px;
+}
+
+.submit input{
+    border-radius: 80px;
+    width: 140px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.login_text input::placeholder {
+	text-align: center;
+}
+
+html{
+    background-color: rgb(255, 255, 255);
+}
+body{
+    display: block;
+    margin: auto;
+    margin-top: 80px;
+    width: 500px;
+    height: 650px;
+    border-radius: 80px;
+    background-color: rgb(117, 146, 186);
+}
+
+
+.people_icon{
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    background-color: rgb(195, 195, 195);
+    border-radius: 10px;
+    top: 349px;
+    left: 566px;
+   border: 2px solid #000000;
+}
+
+.lock_icon{
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    background-color: rgb(195, 195, 195);
+    border-radius: 10px;
+    top: 405px;
+    left: 566px;
+   border: 2px solid #000000;
+}

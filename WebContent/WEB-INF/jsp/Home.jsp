@@ -1,37 +1,95 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/Home.css">
 </head>
 <body>
-    <header>
-      <div class="logo">アプリロゴ</div>
-      <input type="checkbox" id="checkbox" class="checkbox">
-      <label for="checkbox" class="hamburger">
-        <span class="bar bar-top"></span>
-        <span class="bar bar-middle"></span>
-        <span class="bar bar-bottom"></span>
-      </label>
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="/D1/HomeServlet">HOME</a></li>
-          <li><a href="/D1/ScoreRegistServlet">成績登録</a></li>
-          <li><a href="/D1/StudentQueServlet">質問</a></li>
+	<header>
+		<div class="logo">
+			<img src="img/logo.png" alt="">
+		</div>
+		<input type="checkbox" id="checkbox" class="checkbox"> <label
+			for="checkbox" class="hamburger"> <span class="bar bar-top"></span>
+			<span class="bar bar-middle"></span> <span class="bar bar-bottom"></span>
+		</label>
+		<nav class="nav-menu">
+			<ul>
+				<li><a href="/D1/HomeServlet">HOME</a></li>
+				<li><a href="/D1/ScoreRegistServlet">成績登録</a></li>
+				<li><a href="/D1/StudentQueServlet">質問</a></li>
 
-          <!-- ログアウト一旦保留(ここから) -->
-          <li><a href="#">ログアウト</a></li>
-          <!-- ここまで -->
+				<!-- ログアウト一旦保留(ここから) -->
+				<li><a href="#">ログアウト</a></li>
+				<!-- ここまで -->
 
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <nav class="your_grade">
-        <h1>あなたの現在の成績</h1>
-      </nav>
-    </main>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<div class="head_bar"></div>
+
+		<nav class="your_grade">
+			<h1>あなたの現在の成績</h1>
+		</nav>
+
+		<div class="graph_img">
+			<img src="img/graph.png" alt="">
+		</div>
+
+		<div class="bottom_content">
+
+			<div class="daily_task">
+
+				<h1>デイリータスク</h1>
+
+				<ul>
+					<li>質問をする</li>
+					<li>質問を２回する</li>
+					<li>質問に回答する</li>
+					<li>全てのタスクをクリアする</li>
+				</ul>
+
+				<div class="task_bar">
+					<img src="img/task_bar.png" alt="">
+				</div>
+
+			</div>
+
+		<div class="bottom_right">
+			<div class="bottom_right1">
+
+				<div class="score">
+					<span>平均点</span><span class="font_L">〇点</span>
+				</div>
+
+				<div class="score">
+					<span>得意科目</span><span class="font_L">教科名</span>
+				</div>
+			</div>
+
+			<div class="bottom_right2">
+				<div class="score">
+					<span>質問数</span><span class="font_L">〇回</span>
+				</div>
+
+				<div class="score">
+					<span>回答数</span><span class="font_L">〇回</span>
+				</div>
+			</div>
+		</div>
+
+
+
+		</div>
+
+
+
+	</main>
+
 </body>
 </html>
