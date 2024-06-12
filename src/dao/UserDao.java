@@ -22,10 +22,11 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 			// SELECT文を準備する
-			String sql = "SELECT COUNT(*) FROM USER WHERE login_id = ? AND password = ?";
+			String sql = "SELECT COUNT(*) FROM USER WHERE login_id = ? AND name = ? AND password = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, user.getId());
-			pStmt.setString(2,user.getPassword());
+			pStmt.setString(1, user.getLogin_id());
+			pStmt.setString(2, user.getUser_name());
+			pStmt.setString(3, user.getPassword());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -74,21 +75,27 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO USER VALUES (?, ?)";
+			String sql = "INSERT INTO USER VALUES (?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getId() != null && !card.getId().equals("")) {
-				pStmt.setString(1, card.getId());
+			if (card.getLogin_id() != null && !card.getLogin_id().equals("")) {
+				pStmt.setString(1, card.getLogin_id());
 			}
 			else {
 				pStmt.setString(1, "（未設定）");
 			}
-			if (card.getPassword() != null && !card.getPassword().equals("")) {
-				pStmt.setString(2, card.getPassword());
+			if (card.getUser_name() != null && !card.getUser_name().equals("")) {
+				pStmt.setString(2, card.getUser_name());
 			}
 			else {
 				pStmt.setString(2, "（未設定）");
+			}
+			if (card.getPassword() != null && !card.getPassword().equals("")) {
+				pStmt.setString(3, card.getPassword());
+			}
+			else {
+				pStmt.setString(3, "（未設定）");
 			}
 
 			// SQL文を実行する

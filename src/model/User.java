@@ -134,4 +134,5 @@ public class User implements Serializable {
 		this.date = date;
 	}
 
+
 }
