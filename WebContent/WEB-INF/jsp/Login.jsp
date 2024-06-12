@@ -14,7 +14,7 @@
 
 <body>
     <div class="login_logo">
-        <img src="img/title.png" alt="">
+        <img src="img/logo.png" alt="">
     </div>
 
     <img class="people_icon" src="img/people.png" alt="">
@@ -25,10 +25,10 @@
 
         <div class="login_input">
             <div class="login_text">
-                <input id="email" type="email" name="id" placeholder="email">
+                <input id="email" type="text" name="id" placeholder="email">
             </div>
             <div class="login_text">
-                <input id="password" type="password" name="password" placeholder="password">
+                <input id="password" type="password" name="pass" placeholder="password">
             </div>
 
             <div class="submit">
