@@ -1,11 +1,17 @@
 package servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.UserDao;
+import model.Result;
+import model.User;
 
 /**
  * Servlet implementation class NewLoginServlet
@@ -13,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/NewLoginServlet")
 public class NewLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -36,6 +42,30 @@ public class NewLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+
+		String login_id = request.getParameter("login_id");
+		String user_name = request.getParameter("user_name");
+		String password = request.getParameter("password");
+
+		// 登録処理を行う
+		UserDao uDao = new UserDao();
+
+		if (uDao.insert(new User(login_id, user_name, password))) {	// 登録成功
+			request.setAttribute("result",
+			new Result("登録成功！", "会員登録に成功しました。", "/D1/LoginServlet"));
+		}
+		else {												// 登録失敗
+			request.setAttribute("result",
+			new Result("登録失敗！", "会員登録に失敗しました。", "/D1/NewLoginServlet"));
+		}
+
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 }
