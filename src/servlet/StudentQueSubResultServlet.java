@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class StudentQueSubServlet
  */
-@WebServlet("/StudentQueSubServlet")
-public class StudentQueSubServlet extends HttpServlet {
+@WebServlet("/StudentQueSubResultServlet")
+public class StudentQueSubResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StudentQueSubServlet() {
+    public StudentQueSubResultServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,8 +31,6 @@ public class StudentQueSubServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSub.jsp");
-		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -40,7 +38,11 @@ public class StudentQueSubServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSubResult.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
