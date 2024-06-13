@@ -10,44 +10,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class StudentQueServlet
+ * Servlet implementation class StudentQueSubServlet
  */
-@WebServlet("/StudentQueServlet")
-public class StudentQueServlet extends HttpServlet {
+@WebServlet("/StudentQueSubResultServlet")
+public class StudentQueSubResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public StudentQueSubResultServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
-}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 
-		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("login_id");
-		String content = request.getParameter("content");
-		String answer = request.getParameter("answer");
-		String subject = request.getParameter("subject");
-
-		int contentCount = content.trim().split("\\s+").length;
-		int answerCount = answer.trim().split("\\s+").length;
-
-		request.setAttribute("login_id", id);
-		request.setAttribute("subject", subject);
-
-		request.setAttribute("contentCount", contentCount);
-		request.setAttribute("answerCount", answerCount);
-
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueServlet.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSubResult.jsp");
 		dispatcher.forward(request, response);
 	}
 

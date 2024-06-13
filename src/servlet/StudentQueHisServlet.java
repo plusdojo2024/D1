@@ -8,10 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import dao.QuestionDao;
-import model.Question;
 import model.Result;
 
 /**
@@ -26,14 +23,24 @@ public class StudentQueHisServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D1/LoginServlet");
-			return;
-	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
+
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		HttpSession session = request.getSession();
+//		if (session.getAttribute("id") == null) {
+//			response.sendRedirect("/D1/LoginServlet");
+//			return;
+//	}
+		request.setCharacterEncoding("UTF-8");
+		String id = request.getParameter("login_id");
+		String content = request.getParameter("content");
+		String answer = request.getParameter("answer");
+
+		request.setAttribute("login_id", id);
+		request.setAttribute("content", content);
+		request.setAttribute("password", answer);
+
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueHis.jsp");
 		dispatcher.forward(request, response);
 }
 
@@ -41,27 +48,27 @@ public class StudentQueHisServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D1/LoginServlet");
-			return;
-		}
+//		doGet(request, response);
+//		HttpSession session = request.getSession();
+//		if (session.getAttribute("id") == null) {
+//			response.sendRedirect("/D1/LoginServlet");
+//			return;
+//		}
 
 			request.setCharacterEncoding("UTF-8");
 			String id = request.getParameter("login_id");
 			String content = request.getParameter("content");
 			String answer = request.getParameter("answer");
 
+			//回答数と質問数をカウントしている
+			int contentCount = content.trim().split("\\s+").length;
+			int answerCount = answer.trim().split("\\s+").length;
 
-			QuestionDao qDao = new QuestionDao();
+			request.setAttribute("contentCount", contentCount);
+			request.setAttribute("answerCount", answerCount);
 
 
-			if (qDao.insert(new Question(id,null,null,content,answer,null))) {
-
-			}
-			else {
+			if (id!=null || content!=null || answer!=null) {
 				request.setAttribute("result",new Result("取得失敗！", "データを取得できませんでした。", "/D1/HomeServlet"));
 			}
 
