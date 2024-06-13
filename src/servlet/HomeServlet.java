@@ -53,7 +53,7 @@ public class HomeServlet extends HttpServlet {
 
 
         // ホームページにフォワードする
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
         dispatcher.forward(request, response);
     }
 
