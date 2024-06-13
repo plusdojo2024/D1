@@ -33,8 +33,12 @@ public class StudentQueServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 
-		QuestionDao questionDAO = new QuestionDao();
-		String subject = questionDAO.getSubject();
+		QuestionDao questionDao = new QuestionDao();
+
+        String content = questionDao.getContent();
+        String answer = questionDao.getAnswer();
+        String subject = questionDao.getSubject();
+
 
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("login_id");
