@@ -16,6 +16,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.QuestionDao;
+import dao.UserDao;
+import dao.gradeDao;
+import model.User;
+//import model.grade;
+//import model.Question;
 
 
 /**
@@ -90,7 +96,7 @@ public class HomeServlet extends HttpServlet {
 
 				// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String login_id = request.getParameter("login_id");
+//		String login_id = request.getParameter("login_id");
 		String user_name = request.getParameter("user_name");
 		String password = request.getParameter("password");
 		String date = request.getParameter("date");
@@ -98,6 +104,16 @@ public class HomeServlet extends HttpServlet {
 		String answer = request.getParameter("answer");
 		String subject = request.getParameter("subject");
 		String score = request.getParameter("score");
+
+
+		//データベースからデータを取得する
+		UserDao userDao = new UserDao();
+		String login_id = User.getLogin_id();
+
+		gradeDao gradeDao = new gradeDao();
+
+		QuestionDao questionDao = new QuestionDao();
+
 
 		//パラメータをリクエスト属性として設定する
 		request.setAttribute("login_id", login_id);
@@ -109,7 +125,11 @@ public class HomeServlet extends HttpServlet {
 		request.setAttribute("subject", subject);
 		request.setAttribute("score", score);
 
-
+		//質問内容や質問回答の合計数をカウントする
+//		int contentCount = content != null ? content.split(",").length : 0;
+//		int answerCount = answer != null ? answer.split(",").length : 0;
+//		request.setAttribute("contentCount", contentCount);		//質問数
+//		request.setAttribute("answerCount", answerCount);		//質問回答数
 
 
         // ホームページにフォワードする
@@ -127,19 +147,6 @@ public class HomeServlet extends HttpServlet {
 //			response.sendRedirect("/D1/LoginServlet");
 //			return;
 //		}
-
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String login_id = request.getParameter("login_id");
-		String user_name = request.getParameter("user_name");
-		String password = request.getParameter("password");
-		String date = request.getParameter("date");
-		String content = request.getParameter("content");
-		String answer = request.getParameter("answer");
-		String subject = request.getParameter("subject");
-		String time = request.getParameter("time");
-		String score = request.getParameter("score");
-
 
 
 		// ホームページにフォワードする

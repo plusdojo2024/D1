@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.User;
 
@@ -61,6 +63,79 @@ public class UserDao {
 		// 結果を返す
 		return loginResult;
 	}
+
+	//ユーザーをIDで検索するメソッド
+	public List<User> select(User card){
+		Connection conn = null;
+		List<User> UserList = new ArrayList<User>();
+		try {
+			//JDBCドライバの読み込み
+			Class.forName("org.h2.Driver");
+
+			//SQL文を準備する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
+
+			//SQL文の準備
+			String sql = "SELECT * FROM USER WHERE login_id LIKE ? AND user_name LIKE ? AND password LIKE ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//SQL文を完成させる
+			if (card.getLogin_id() != null ) {
+                pStmt.setString(1, "%" + card.getLogin_id() + "%");
+            }
+            else {
+                pStmt.setString(1, "%");
+            }
+			if (card.getUser_name() != null ) {
+                pStmt.setString(2, "%" + card.getUser_name() + "%");
+            }
+            else {
+                pStmt.setString(2, "%");
+            }
+			if (card.getPassword() != null ) {
+                pStmt.setString(3, "%" + card.getPassword() + "%");
+            }
+            else {
+                pStmt.setString(3, "%");
+            }
+
+			//SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			//結果表をコレクションにコピーする
+			while (rs.next()) {
+				User record = new User(
+				rs.getString("login_id"),
+				rs.getString("user_name"),
+				rs.getString("password")
+				);
+				UserList.add(record);
+			}
+		}
+
+		catch (SQLException e) {
+            e.printStackTrace();
+            UserList = null;
+        }
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            UserList = null;
+        }
+        finally {
+            // データベースを切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                    UserList = null;
+                }
+            }
+        }
+        // 結果を返す
+        return UserList;
+    }
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(User card) {
