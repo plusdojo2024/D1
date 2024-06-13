@@ -37,8 +37,13 @@
 			<h1>あなたの現在の成績</h1>
 		</nav>
 
-		<div class="graph_img">
-			<img src="img/graph.png" alt="">
+		<!-- 変更開始 -->
+		<canvas id="myLineChart"></canvas>
+		<div class="graph_js">
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+			<script src="script/Line_Chart.js" alt=""></script>
+		<!-- ここまで -->
+
 		</div>
 
 		<div class="bottom_content">
@@ -82,14 +87,8 @@
 				</div>
 			</div>
 		</div>
-
-
-
-		</div>
-
-
-
-	</main>
+    </div>
+  </main>
 
 </body>
 </html>
