@@ -58,7 +58,6 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		int score = (int) percentage;
 
 		//登録処理を行う
-		// 未解決：insertのエラー、Resultの中身最後、フォワード先
 		gradeDao gDao = new gradeDao();
 
 		if (gDao.insert(new grade(null, null, null, subject, score))) {	// 登録成功
