@@ -67,7 +67,7 @@ public class HomeServlet extends HttpServlet {
 				    String content = res.getString("content");
 				    contentCount++;
 				}
-				request.setAttribute("contentCount", contentCount);
+				request.setAttribute("contentCount", contentCount);//質問数
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
 				//　answerとcontentが同じ行数とは限らないのでループを分けました。
@@ -77,7 +77,7 @@ public class HomeServlet extends HttpServlet {
 				    String answer = res.getString("answer");
 				    answerCount++;
 				}
-				request.setAttribute("answerCount", answerCount);
+				request.setAttribute("answerCount", answerCount);//質問回答数
 
 				//このクエリで最高の平均スコアを持つ科目が取得される
 				String sql2 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
@@ -92,8 +92,9 @@ public class HomeServlet extends HttpServlet {
 				    subject = res2.getString("subject");
 				    maxAvgScore = res.getDouble("avg_score");
 				}
-				request.setAttribute("subject", subject);
-				request.setAttribute("maxAvgScore", maxAvgScore);
+
+				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
+				request.setAttribute("maxAvgScore", maxAvgScore);//最高の平均スコアを持つ科目の平均点数
 
 
 
@@ -118,23 +119,23 @@ public class HomeServlet extends HttpServlet {
 //			response.sendRedirect("/D1/LoginServlet");
 //			return;
 //		}
-
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String login_id = request.getParameter("login_id");
-		String user_name = request.getParameter("user_name");
-		String password = request.getParameter("password");
-		String date = request.getParameter("date");
-		String content = request.getParameter("content");
-		String answer = request.getParameter("answer");
-		String subject = request.getParameter("subject");
-		String time = request.getParameter("time");
-		String score = request.getParameter("score");
-
-
-
-		// ホームページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
-		dispatcher.forward(request, response);
+//
+//		// リクエストパラメータを取得する
+//		request.setCharacterEncoding("UTF-8");
+//		String login_id = request.getParameter("login_id");
+//		String user_name = request.getParameter("user_name");
+//		String password = request.getParameter("password");
+//		String date = request.getParameter("date");
+//		String content = request.getParameter("content");
+//		String answer = request.getParameter("answer");
+//		String subject = request.getParameter("subject");
+//		String time = request.getParameter("time");
+//		String score = request.getParameter("score");
+//
+//
+//
+//		// ホームページにフォワードする
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
+//		dispatcher.forward(request, response);
 	}
 }
