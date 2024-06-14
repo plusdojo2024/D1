@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
+import model.LoginUser;
 import model.Result;
 import model.User;
 
@@ -51,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 		if (iDao.isLoginOK(new User(id,pw))) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("login_id", id);//修正しました
+			session.setAttribute("login_id", new LoginUser(id));//修正しました
 
 			// ホームサーブレットにリダイレクトする
 			response.sendRedirect("/D1/HomeServlet");
@@ -62,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/D1/LoginServlet"));
 
 			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
