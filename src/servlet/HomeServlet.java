@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 
@@ -36,7 +37,10 @@ public class HomeServlet extends HttpServlet {
 		Connection conn = null;
         List<String> cardList = new ArrayList<>();//リストで取得したい時に使う（HomeServletでは未使用）
         request.setCharacterEncoding("UTF-8");
-        String loginId = request.getParameter("login_id");//login_idをjspから何とか取得したい！方法は模索中…
+        //login_idをjspから何とか取得したい！方法は模索中…
+        HttpSession session = request.getSession();
+        String login_id = (String) session.getAttribute("login_id");
+
 			try {
 				// JDBCドライバを読み込む
 				Class.forName("org.h2.Driver");
