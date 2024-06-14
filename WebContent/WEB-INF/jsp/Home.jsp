@@ -65,25 +65,27 @@
 
 			</div>
 
+
+
 		<div class="bottom_right">
 			<div class="bottom_right1">
 
 				<div class="score">
-					<span>平均点</span><span class="font_L">〇点</span>
+					<span>平均点</span><span class="font_L">${e.avgScore}点</span>
 				</div>
 
 				<div class="score">
-					<span>得意科目</span><span class="font_L">教科名</span>
+					<span>得意科目</span><span class="font_L">${e.subject}</span>
 				</div>
 			</div>
 
 			<div class="bottom_right2">
 				<div class="score">
-					<span>質問数</span><span class="font_L">〇回</span>
+					<span>質問数</span><span class="font_L">${e.contentCount}回</span>
 				</div>
 
 				<div class="score">
-					<span>回答数</span><span class="font_L">〇回</span>
+					<span>回答数</span><span class="font_L">${e.answerCount}回</span>
 				</div>
 			</div>
 		</div>
