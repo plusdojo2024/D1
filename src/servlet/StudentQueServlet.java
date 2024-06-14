@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 /**
  * Servlet implementation class StudentQueServlet
  */
@@ -24,26 +25,16 @@ import javax.servlet.http.HttpSession;
 public class StudentQueServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		Connection conn = null;
-		List<String> cardList = new ArrayList<>();
-		request.setCharacterEncoding("UTF-8");
-		//login_idをjspから何とか取得したい！方法は模索中…
+        List<String> cardList = new ArrayList<>();//リストで取得したい時に使う（HomeServletでは未使用）
+        request.setCharacterEncoding("UTF-8");
+
+        //login_idをjspから何とか取得したい！方法は模索中…
         HttpSession session = request.getSession();
         String login_id = (String) session.getAttribute("login_id");
+        if (login_id != null) {
 
 			try {
 				// JDBCドライバを読み込む
@@ -51,7 +42,7 @@ public class StudentQueServlet extends HttpServlet {
 
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
-				//SQLのクエリ（StudentQueServletサーブレットはすべてのテーブルからデータを取得するのですべて結合してから取得）
+				//SQLのクエリ（Homeサーブレットはすべてのテーブルからデータを取得するのですべて結合してから取得）
 				String sql = "SELECT User.login_id, User.user_name, User.password, "
 						+ "Grade.score, Question.date, Question.content, Question.answer, Question.subject "
 						+ "FROM User INNER JOIN Grade ON login_id = Grade.login_id "
@@ -78,7 +69,7 @@ public class StudentQueServlet extends HttpServlet {
 				request.setAttribute("contentCount", contentCount);//質問数
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
-				// answerとcontentが同じ行数とは限らないのでループを分けました。
+				//　answerとcontentが同じ行数とは限らないのでループを分けました。
 				res.beforeFirst();// ResultSetを最初の行の前に移動する（ゼロクリアみたいなもの）
 				int answerCount=0;
 				while (res.next()) {
@@ -87,36 +78,41 @@ public class StudentQueServlet extends HttpServlet {
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}catch(ClassNotFoundException e) {
-				e.printStackTrace();
-			}
+				//このクエリで最高の平均スコアを持つ科目が取得される
+				String sql2 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
+						+ "GROUP BY subject ORDER BY avg_score DESC LIMIT 1";
+				PreparedStatement st2 = conn.prepareStatement(sql2);
+				ResultSet res2 = st2.executeQuery();
+				res.beforeFirst();
+				String subject = null;
+				double maxAvgScore = Double.MIN_VALUE;
 
-//		doGet(request, response);
-//
-//		QuestionDao questionDao = new QuestionDao();
-//
-//        String content = questionDao.getContent();
-//        String answer = questionDao.getAnswer();
-//        String subject = questionDao.getSubject();
-//
-//
-//		request.setCharacterEncoding("UTF-8");
-//		String id = request.getParameter("login_id");
-//		String content = request.getParameter("content");
-//		String answer = request.getParameter("answer");
-//		String subject = request.getParameter("subject");
-//
-//		int contentCount = content.trim().split("\\s+").length;
-//		int answerCount = answer.trim().split("\\s+").length;
-//
-//		request.setAttribute("login_id", id);
-//		request.setAttribute("subject", subject);
-//
-//		request.setAttribute("contentCount", contentCount);
-//		request.setAttribute("answerCount", answerCount);
+				if (res2.next()) { // 結果セットが空でない場合にのみ処理を実行
+				    subject = res2.getString("subject");
+				    maxAvgScore = res.getDouble("avg_score");
+				}
 
+				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
+				request.setAttribute("maxAvgScore", maxAvgScore);//最高の平均スコアを持つ科目の平均点数
+
+
+
+			 } catch(SQLException e) {
+		            e.printStackTrace();
+		    }catch (ClassNotFoundException e) {
+		        e.printStackTrace();
+		    }
+
+        // ホームページにフォワードする
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQue.jsp");
+        dispatcher.forward(request, response);
+	}
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueServlet.jsp");
 		dispatcher.forward(request, response);

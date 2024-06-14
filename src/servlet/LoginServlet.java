@@ -26,8 +26,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
 		String login_id = request.getParameter("login_id");
+		HttpSession session = request.getSession();
 		session.setAttribute("login_id", login_id);
 
 		// ログインページにフォワードする
