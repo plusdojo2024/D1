@@ -44,6 +44,8 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("login_id");
 		String pw = request.getParameter("password");
 
+
+
 		// ログイン処理を行う
 		UserDao iDao = new UserDao();
 		if (iDao.isLoginOK(new User(id,null,pw))) {	// ログイン成功
