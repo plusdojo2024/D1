@@ -22,7 +22,7 @@
     <div class="login_input">
         <div class="login_text">
             <label>新規アカウント登録</label><br>
-            <input id="email" type="email" name="login_id" placeholder="email">
+            <input id="email" type="text" name="login_id" placeholder="ID">
         </div>
         <div class="login_text">
             <input id="password" type="password" name="password" placeholder="password">
