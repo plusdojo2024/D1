@@ -19,7 +19,7 @@ public class QuestionDao{
             // データベースに接続する
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
             // SQL文を準備する
-            String sql = "SELECT * FROM Question WHERE login_id LIKE ? AND date LIKE ? AND time LIKE ? AND content LIKE ? AND answer LIKE ? AND subject LIKE ?";
+            String sql = "SELECT * FROM Question WHERE login_id LIKE ? AND date LIKE ? AND content LIKE ? AND answer LIKE ? AND subject LIKE ?";
             PreparedStatement pStmt = conn.prepareStatement(sql);
             // SQL文を完成させる
             if (card.getLogin_id() != null ) {
@@ -34,29 +34,23 @@ public class QuestionDao{
             else {
                 pStmt.setString(2, "%");
             }
-            if (card.getTime() != null ) {
-            	pStmt.setString(3, "%" + card.getTime() + "%");
+            if (card.getContent() != null ) {
+                pStmt.setString(3, "%" + card.getContent() + "%");
             }
             else {
-            	pStmt.setString(3, "%");
+                pStmt.setString(3, "%");
             }
-            if (card.getContent() != null ) {
-                pStmt.setString(4, "%" + card.getContent() + "%");
+            if (card.getAnswer() != null ) {
+                pStmt.setString(4, "%" + card.getAnswer() + "%");
             }
             else {
                 pStmt.setString(4, "%");
             }
-            if (card.getAnswer() != null ) {
-                pStmt.setString(5, "%" + card.getAnswer() + "%");
+            if (card.getSubject() != null ) {
+                pStmt.setString(5, "%" + card.getSubject() + "%");
             }
             else {
                 pStmt.setString(5, "%");
-            }
-            if (card.getSubject() != null ) {
-                pStmt.setString(6, "%" + card.getSubject() + "%");
-            }
-            else {
-                pStmt.setString(6, "%");
             }
 
             // SQL文を実行し、結果表を取得する
@@ -65,8 +59,7 @@ public class QuestionDao{
             while (rs.next()) {
                 Question record = new Question(
                 rs.getString("login_id"),
-                rs.getDate("date"),
-                rs.getTime("time"),
+                rs.getString("date"),
                 rs.getString("content"),
                 rs.getString("answer"),
                 rs.getString("subject")
@@ -117,34 +110,28 @@ public class QuestionDao{
                 pStmt.setString(1, "（未設定）");
             }
             if (card.getDate() != null && !card.getDate().equals("")) {
-                pStmt.setDate(2, card.getDate());
+                pStmt.setString(2, card.getDate());
             }
             else {
                 pStmt.setString(2, "（未設定）");
             }
-            if (card.getTime() != null && !card.getTime().equals("")) {
-                pStmt.setTime(3, card.getTime());
+            if (card.getContent() != null && !card.getContent().equals("")) {
+                pStmt.setString(3, card.getContent());
             }
             else {
                 pStmt.setString(3, "（未設定）");
             }
-            if (card.getContent() != null && !card.getContent().equals("")) {
-                pStmt.setString(4, card.getContent());
+            if (card.getAnswer() != null && !card.getAnswer().equals("")) {
+                pStmt.setString(4, card.getAnswer());
             }
             else {
                 pStmt.setString(4, "（未設定）");
             }
-            if (card.getAnswer() != null && !card.getAnswer().equals("")) {
-                pStmt.setString(5, card.getAnswer());
+            if (card.getSubject() != null && !card.getSubject().equals("")) {
+                pStmt.setString(5, card.getSubject());
             }
             else {
                 pStmt.setString(5, "（未設定）");
-            }
-            if (card.getSubject() != null && !card.getSubject().equals("")) {
-                pStmt.setString(6, card.getSubject());
-            }
-            else {
-                pStmt.setString(6, "（未設定）");
             }
 
             // SQL文を実行する
@@ -192,34 +179,28 @@ public class QuestionDao{
                 pStmt.setString(1, null);
             }
             if (card.getDate() != null && !card.getDate().equals("")) {
-                pStmt.setDate(2, card.getDate());
+                pStmt.setString(2, card.getDate());
             }
             else {
                 pStmt.setString(2, null);
             }
-            if (card.getTime() != null && !card.getTime().equals("")) {
-                pStmt.setTime(3, card.getTime());
+            if (card.getContent() != null && !card.getContent().equals("")) {
+                pStmt.setString(3, card.getContent());
             }
             else {
                 pStmt.setString(3, null);
             }
-            if (card.getContent() != null && !card.getContent().equals("")) {
-                pStmt.setString(4, card.getContent());
+            if (card.getAnswer() != null && !card.getAnswer().equals("")) {
+                pStmt.setString(4, card.getAnswer());
             }
             else {
                 pStmt.setString(4, null);
             }
-            if (card.getAnswer() != null && !card.getAnswer().equals("")) {
-                pStmt.setString(5, card.getAnswer());
+            if (card.getSubject() != null && !card.getSubject().equals("")) {
+                pStmt.setString(5, card.getSubject());
             }
             else {
                 pStmt.setString(5, null);
-            }
-            if (card.getSubject() != null && !card.getSubject().equals("")) {
-                pStmt.setString(6, card.getSubject());
-            }
-            else {
-                pStmt.setString(6, null);
             }
 
             // SQL文を実行する

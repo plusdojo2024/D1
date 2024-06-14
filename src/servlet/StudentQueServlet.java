@@ -76,7 +76,6 @@ public class StudentQueServlet extends HttpServlet {
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
 
-
 			 } catch(SQLException e) {
 		            e.printStackTrace();
 		    }catch (ClassNotFoundException e) {
