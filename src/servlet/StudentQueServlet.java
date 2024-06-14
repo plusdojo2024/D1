@@ -43,11 +43,8 @@ public class StudentQueServlet extends HttpServlet {
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 				//SQLのクエリ（Homeサーブレットはすべてのテーブルからデータを取得するのですべて結合してから取得）
-				String sql = "SELECT User.login_id, User.user_name, User.password, "
-						+ "Grade.score, Question.date, Question.content, Question.answer, Question.subject "
-						+ "FROM User INNER JOIN Grade ON login_id = Grade.login_id "
-						+ "INNER JOIN Question ON User.login_id = Question.login_id"
-						+ "WHERE User.login_id = ?";
+				String sql = "SELECT Question.content, Question.answer, Question.subject "
+						+ "FROM Qustion WHERE User.login_id = ?";
 				PreparedStatement st = conn.prepareStatement(sql);
 				st.setString(1, "login_id");
 				ResultSet res = st.executeQuery();
@@ -77,23 +74,6 @@ public class StudentQueServlet extends HttpServlet {
 				    answerCount++;
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
-
-				//このクエリで最高の平均スコアを持つ科目が取得される
-				String sql2 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
-						+ "GROUP BY subject ORDER BY avg_score DESC LIMIT 1";
-				PreparedStatement st2 = conn.prepareStatement(sql2);
-				ResultSet res2 = st2.executeQuery();
-				res.beforeFirst();
-				String subject = null;
-				double maxAvgScore = Double.MIN_VALUE;
-
-				if (res2.next()) { // 結果セットが空でない場合にのみ処理を実行
-				    subject = res2.getString("subject");
-				    maxAvgScore = res.getDouble("avg_score");
-				}
-
-				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
-				request.setAttribute("maxAvgScore", maxAvgScore);//最高の平均スコアを持つ科目の平均点数
 
 
 
