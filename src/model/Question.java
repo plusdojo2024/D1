@@ -1,13 +1,10 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
 
 public class Question implements Serializable {
 	private String login_id;  //ログイン時のID
-	private Date date;  //更新日
-	private Time time;  //更新時間
+	private String date;  //更新日時
 	private String content;  //質問内容
 	private String answer;  //質問回答
 	private String subject;  //科目
@@ -18,11 +15,10 @@ public class Question implements Serializable {
 	}
 
 	//引数があるコンストラクタ
-	public Question(String login_id, Date date, Time time, String content, String answer, String subject) {
+	public Question(String login_id, String date, String content, String answer, String subject) {
 		super();
 		this.login_id = login_id;
 		this.date = date;
-		this.time = time;
 		this.content = content;
 		this.answer = answer;
 		this.subject = subject;
@@ -45,30 +41,21 @@ public class Question implements Serializable {
 	/**
 	 * @return date
 	 */
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
 	/**
 	 * @param date セットする date
 	 */
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
 	/**
 	 * @return time
 	 */
-	public Time getTime() {
-		return time;
-	}
 
-	/**
-	 * @param time セットする time
-	 */
-	public void setTime(Time time) {
-		this.time = time;
-	}
 
 	/**
 	 * @return content
