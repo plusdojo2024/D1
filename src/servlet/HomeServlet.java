@@ -96,12 +96,25 @@ public class HomeServlet extends HttpServlet {
 
 				if (res2.next()) { // 結果セットが空でない場合にのみ処理を実行
 				    subject = res2.getString("subject");
-				    maxAvgScore = res.getDouble("avg_score");
+				    maxAvgScore = res2.getDouble("avg_score");
 				}
 
 				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
 				request.setAttribute("maxAvgScore", maxAvgScore);//最高の平均スコアを持つ科目の平均点数
 
+
+				String sql3 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
+						+ "GROUP BY subject ORDER BY avg_score DESC LIMIT 1";
+				PreparedStatement st3 = conn.prepareStatement(sql3);
+				ResultSet res3 = st3.executeQuery();
+				res.beforeFirst();
+				String subject = null;
+				double maxAvgScore = Double.MIN_VALUE;
+
+				if (res3.next()) { // 結果セットが空でない場合にのみ処理を実行
+				    subject = res3.getString("subject");
+				    maxAvgScore = res3.getDouble("avg_score");
+				}
 
 
 			 } catch(SQLException e) {
