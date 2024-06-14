@@ -83,7 +83,7 @@ public class StudentQueServlet extends HttpServlet {
 		        e.printStackTrace();
 		    }
 
-        // ホームページにフォワードする
+        // 質問選択ページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQue.jsp");
         dispatcher.forward(request, response);
 	}
