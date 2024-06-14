@@ -34,7 +34,7 @@ public class HomeServlet extends HttpServlet {
 //        }
 
 		Connection conn = null;
-        List<String> cardList = new ArrayList<>();
+        List<String> cardList = new ArrayList<>();//リストで取得したい時に使う（HomeServletでは未使用）
         request.setCharacterEncoding("UTF-8");
         String loginId = request.getParameter("login_id");//login_idをjspから何とか取得したい！方法は模索中…
 			try {
@@ -61,23 +61,6 @@ public class HomeServlet extends HttpServlet {
 //				    String password = res.getString("password");
 //				}
 
-
-				res.beforeFirst(); // ResultSetを最初の行の前に移動する
-				// scoreカラム（Gradeテーブル）のデータを取得するループ
-				while (res.next()) {
-				    int score = res.getInt("score");
-
-				}
-
-
-				res.beforeFirst();
-				// date,content,subjectカラム（Questionテーブル）のデータを取得するループ
-				while (res.next()) {
-				    String date = res.getString("date");
-				    String subject = res.getString("subject");
-				}
-
-				res.beforeFirst();
 				int contentCount=0;
 				// contentカラム（Questionテーブル）のデータを取得するループ
 				while (res.next()) {
@@ -88,7 +71,7 @@ public class HomeServlet extends HttpServlet {
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
 				//　answerとcontentが同じ行数とは限らないのでループを分けました。
-				res.beforeFirst();
+				res.beforeFirst();// ResultSetを最初の行の前に移動する（ゼロクリアみたいなもの）
 				int answerCount=0;
 				while (res.next()) {
 				    String answer = res.getString("answer");
@@ -96,25 +79,29 @@ public class HomeServlet extends HttpServlet {
 				}
 				request.setAttribute("answerCount", answerCount);
 
+				//このクエリで最高の平均スコアを持つ科目が取得される
+				String sql2 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
+						+ "GROUP BY subject ORDER BY avg_score DESC LIMIT 1";
+				PreparedStatement st2 = conn.prepareStatement(sql2);
+				ResultSet res2 = st2.executeQuery();
+				res.beforeFirst();
+				String subject = null;
+				double maxAvgScore = Double.MIN_VALUE;
+
+				if (res2.next()) { // 結果セットが空でない場合にのみ処理を実行
+				    subject = res2.getString("subject");
+				    maxAvgScore = res.getDouble("avg_score");
+				}
+				request.setAttribute("subject", subject);
+				request.setAttribute("maxAvgScore", maxAvgScore);
+
+
+
 			 } catch(SQLException e) {
 		            e.printStackTrace();
 		    }catch (ClassNotFoundException e) {
 		        e.printStackTrace();
 		    }
-
-
-		//パラメータをリクエスト属性として設定する
-		request.setAttribute("login_id", login_id);
-		request.setAttribute("user_name", user_name);
-		request.setAttribute("password", password);
-		request.setAttribute("date", date);
-		request.setAttribute("content", content);
-		request.setAttribute("answer", answer);
-		request.setAttribute("subject", subject);
-		request.setAttribute("score", score);
-
-
-
 
         // ホームページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
