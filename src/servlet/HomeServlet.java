@@ -35,7 +35,8 @@ public class HomeServlet extends HttpServlet {
 
 		Connection conn = null;
         List<String> cardList = new ArrayList<>();
-
+        request.setCharacterEncoding("UTF-8");
+        String loginId = request.getParameter("login_id");//login_idをjspから何とか取得したい！方法は模索中…
 			try {
 				// JDBCドライバを読み込む
 				Class.forName("org.h2.Driver");
@@ -49,38 +50,51 @@ public class HomeServlet extends HttpServlet {
 						+ "INNER JOIN Question ON User.login_id = Question.login_id"
 						+ "WHERE User.login_id = ?";
 				PreparedStatement st = conn.prepareStatement(sql);
-				st.setString(1, "特定の値");
+				st.setString(1, "login_id");
 				ResultSet res = st.executeQuery();
 
 				// login_id,user_name,passwordカラム（Userテーブル）のデータを取得するループ
 				//以下のwhile処理はResultSetが次の行に移動し、その行が存在する限り実行するので行が統一されているカラム同士を分けてる
-				while (res.next()) {
-				    String loginId = res.getString("login_id");
-				    String userName = res.getString("user_name");
-				    String password = res.getString("password");
-				}
+				//user_nameとpasswordは使わないのでコメントアウト
+//				while (res.next()) {
+//				    String userName = res.getString("user_name");
+//				    String password = res.getString("password");
+//				}
 
-				// scoreカラム（Gradeテーブル）のデータを取得するループ
+
 				res.beforeFirst(); // ResultSetを最初の行の前に移動する
+				// scoreカラム（Gradeテーブル）のデータを取得するループ
 				while (res.next()) {
 				    int score = res.getInt("score");
 
 				}
 
-				// date,content,subjectカラム（Questionテーブル）のデータを取得するループ
+
 				res.beforeFirst();
+				// date,content,subjectカラム（Questionテーブル）のデータを取得するループ
 				while (res.next()) {
 				    String date = res.getString("date");
-				    String content = res.getString("content");
 				    String subject = res.getString("subject");
 				}
+
+				res.beforeFirst();
+				int contentCount=0;
+				// contentカラム（Questionテーブル）のデータを取得するループ
+				while (res.next()) {
+				    String content = res.getString("content");
+				    contentCount++;
+				}
+				request.setAttribute("contentCount", contentCount);
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
 				//　answerとcontentが同じ行数とは限らないのでループを分けました。
 				res.beforeFirst();
+				int answerCount=0;
 				while (res.next()) {
 				    String answer = res.getString("answer");
+				    answerCount++;
 				}
+				request.setAttribute("answerCount", answerCount);
 
 			 } catch(SQLException e) {
 		            e.printStackTrace();
@@ -88,18 +102,6 @@ public class HomeServlet extends HttpServlet {
 		        e.printStackTrace();
 		    }
 
-
-
-				// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String login_id = request.getParameter("login_id");
-		String user_name = request.getParameter("user_name");
-		String password = request.getParameter("password");
-		String date = request.getParameter("date");
-		String content = request.getParameter("content");
-		String answer = request.getParameter("answer");
-		String subject = request.getParameter("subject");
-		String score = request.getParameter("score");
 
 		//パラメータをリクエスト属性として設定する
 		request.setAttribute("login_id", login_id);
