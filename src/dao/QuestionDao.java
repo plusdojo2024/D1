@@ -100,7 +100,7 @@ public class QuestionDao{
             // データベースに接続する
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
             // SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-            String sql = "INSERT INTO Question VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Question VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pStmt = conn.prepareStatement(sql);
             // SQL文を完成させる
             if (card.getLogin_id() != null && !card.getLogin_id().equals("")) {
@@ -169,7 +169,7 @@ public class QuestionDao{
             // データベースに接続する
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
             // SQL文を準備する
-            String sql = "UPDATE Question SET login_id=?, date=?, time=?, content=?, answer=?, subject=?";
+            String sql = "UPDATE Question SET login_id=?, date=?, content=?, answer=?, subject=?";
             PreparedStatement pStmt = conn.prepareStatement(sql);
             // SQL文を完成させる
             if (card.getLogin_id() != null && !card.getLogin_id().equals("")) {
