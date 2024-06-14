@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,10 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-/**
- * import java.time.LocalDateTime;
- * import java.time.format.DateTimeFormatter;
- * */
 
 import dao.QuestionDao;
 import model.Question;
@@ -32,14 +30,18 @@ public class StudentQueSubServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    //↓これどこに書けばいいのかわからない↓
-    /**
-     *public String getNow(){
-    LocalDateTime date = LocalDateTime.now();
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-    return dtf.format(date);
-    } */
-    //どこで呼び出すべきか
+
+    private String getNowDate() {
+        LocalDateTime date = LocalDateTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        return dateFormatter.format(date);
+    }
+
+    private String getNowTime() {
+        LocalDateTime date = LocalDateTime.now();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return timeFormatter.format(date);
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -59,20 +61,19 @@ public class StudentQueSubServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 
-		/**これの正しい書き方がわからない
-		 * String login_id = request.getParameter("login_id");
-		 * Date date = request.getParameter("date");
-		 * Time time = request.getParameter("time");
-		*/
+		//ログインIDの取得方法？？？
+
 		String content = request.getParameter("content");
 		String subject = request.getParameter("subject");
+
+	    String date = getNowDate() + getNowTime();
 
 
 		// 登録処理を行う
 		QuestionDao qDao = new QuestionDao();
 
 		//insertエラー
-		if (qDao.insert(new Question(content, subject))) {	// 登録成功
+		if (qDao.insert(new Question(content, subject, date))) {	// 登録成功
 			request.setAttribute("result",
 			new Result("登録成功！", "質問を登録しました。", "/D1/StudentQueHisServlet"));
 		}
