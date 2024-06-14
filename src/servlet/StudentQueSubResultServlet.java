@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.QuestionDao;
+import model.Question;
+import model.Result;
 /**
  * Servlet implementation class StudentQueSubServlet
  */
@@ -31,6 +34,8 @@ public class StudentQueSubResultServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSubResult.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -41,6 +46,23 @@ public class StudentQueSubResultServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 
+		String login_id=request.getParameter("login_id");
+		String date=request.getParameter("date");
+		String content=request.getParameter("content");
+		String answer=request.getParameter("answer");
+		String subject=request.getParameter("subject");
+
+		QuestionDao qDao=new QuestionDao();
+
+
+		if(qDao.insert(new Question(login_id, date, content, answer, subject))) {
+			request.setAttribute("result",
+					new Result("登録完了","質問又は回答を受け付けました！","/D1/StudentQueSubResultServlet"));
+		}
+		else {
+			request.setAttribute("result",
+					new Result("登録失敗", "質問又は回答を受け付けられませんでした。","/D1/StudentQueSubResultServlet"));
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSubResult.jsp");
 		dispatcher.forward(request, response);
 	}

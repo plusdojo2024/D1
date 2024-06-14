@@ -25,7 +25,7 @@
 
         <div class="login_input">
             <div class="login_text">
-                <input id="email" type="text" name="login_id" placeholder="ID">
+                <input id="email" type="text" name="login_id" placeholder="email">
             </div>
             <div class="login_text">
                 <input id="password" type="password" name="password" placeholder="password">

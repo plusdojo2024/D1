@@ -34,8 +34,9 @@ public class HomeServlet extends HttpServlet {
 //        }
 
 		Connection conn = null;
-        List<String> cardList = new ArrayList<>();
-
+        List<String> cardList = new ArrayList<>();//リストで取得したい時に使う（HomeServletでは未使用）
+        request.setCharacterEncoding("UTF-8");
+        String loginId = request.getParameter("login_id");//login_idをjspから何とか取得したい！方法は模索中…
 			try {
 				// JDBCドライバを読み込む
 				Class.forName("org.h2.Driver");
@@ -49,70 +50,59 @@ public class HomeServlet extends HttpServlet {
 						+ "INNER JOIN Question ON User.login_id = Question.login_id"
 						+ "WHERE User.login_id = ?";
 				PreparedStatement st = conn.prepareStatement(sql);
-				st.setString(1, "特定の値");
+				st.setString(1, "login_id");
 				ResultSet res = st.executeQuery();
 
 				// login_id,user_name,passwordカラム（Userテーブル）のデータを取得するループ
 				//以下のwhile処理はResultSetが次の行に移動し、その行が存在する限り実行するので行が統一されているカラム同士を分けてる
-				while (res.next()) {
-				    String loginId = res.getString("login_id");
-				    String userName = res.getString("user_name");
-				    String password = res.getString("password");
-				}
+				//user_nameとpasswordは使わないのでコメントアウト
+//				while (res.next()) {
+//				    String userName = res.getString("user_name");
+//				    String password = res.getString("password");
+//				}
 
-				// scoreカラム（Gradeテーブル）のデータを取得するループ
-				res.beforeFirst(); // ResultSetを最初の行の前に移動する
+				int contentCount=0;
+				// contentカラム（Questionテーブル）のデータを取得するループ
 				while (res.next()) {
-				    int score = res.getInt("score");
-
-				}
-
-				// date,content,subjectカラム（Questionテーブル）のデータを取得するループ
-				res.beforeFirst();
-				while (res.next()) {
-				    String date = res.getString("date");
 				    String content = res.getString("content");
-				    String subject = res.getString("subject");
+				    contentCount++;
 				}
+				request.setAttribute("contentCount", contentCount);//質問数
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
 				//　answerとcontentが同じ行数とは限らないのでループを分けました。
-				res.beforeFirst();
+				res.beforeFirst();// ResultSetを最初の行の前に移動する（ゼロクリアみたいなもの）
+				int answerCount=0;
 				while (res.next()) {
 				    String answer = res.getString("answer");
+				    answerCount++;
 				}
+				request.setAttribute("answerCount", answerCount);//質問回答数
+
+				//このクエリで最高の平均スコアを持つ科目が取得される
+				String sql2 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
+						+ "GROUP BY subject ORDER BY avg_score DESC LIMIT 1";
+				PreparedStatement st2 = conn.prepareStatement(sql2);
+				ResultSet res2 = st2.executeQuery();
+				res.beforeFirst();
+				String subject = null;
+				double maxAvgScore = Double.MIN_VALUE;
+
+				if (res2.next()) { // 結果セットが空でない場合にのみ処理を実行
+				    subject = res2.getString("subject");
+				    maxAvgScore = res.getDouble("avg_score");
+				}
+
+				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
+				request.setAttribute("maxAvgScore", maxAvgScore);//最高の平均スコアを持つ科目の平均点数
+
+
 
 			 } catch(SQLException e) {
 		            e.printStackTrace();
 		    }catch (ClassNotFoundException e) {
 		        e.printStackTrace();
 		    }
-
-
-
-				// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String login_id = request.getParameter("login_id");
-		String user_name = request.getParameter("user_name");
-		String password = request.getParameter("password");
-		String date = request.getParameter("date");
-		String content = request.getParameter("content");
-		String answer = request.getParameter("answer");
-		String subject = request.getParameter("subject");
-		String score = request.getParameter("score");
-
-		//パラメータをリクエスト属性として設定する
-		request.setAttribute("login_id", login_id);
-		request.setAttribute("user_name", user_name);
-		request.setAttribute("password", password);
-		request.setAttribute("date", date);
-		request.setAttribute("content", content);
-		request.setAttribute("answer", answer);
-		request.setAttribute("subject", subject);
-		request.setAttribute("score", score);
-
-
-
 
         // ホームページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
@@ -129,23 +119,23 @@ public class HomeServlet extends HttpServlet {
 //			response.sendRedirect("/D1/LoginServlet");
 //			return;
 //		}
-
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String login_id = request.getParameter("login_id");
-		String user_name = request.getParameter("user_name");
-		String password = request.getParameter("password");
-		String date = request.getParameter("date");
-		String content = request.getParameter("content");
-		String answer = request.getParameter("answer");
-		String subject = request.getParameter("subject");
-		String time = request.getParameter("time");
-		String score = request.getParameter("score");
-
-
-
-		// ホームページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
-		dispatcher.forward(request, response);
+//
+//		// リクエストパラメータを取得する
+//		request.setCharacterEncoding("UTF-8");
+//		String login_id = request.getParameter("login_id");
+//		String user_name = request.getParameter("user_name");
+//		String password = request.getParameter("password");
+//		String date = request.getParameter("date");
+//		String content = request.getParameter("content");
+//		String answer = request.getParameter("answer");
+//		String subject = request.getParameter("subject");
+//		String time = request.getParameter("time");
+//		String score = request.getParameter("score");
+//
+//
+//
+//		// ホームページにフォワードする
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
+//		dispatcher.forward(request, response);
 	}
 }
