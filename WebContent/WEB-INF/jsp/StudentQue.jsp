@@ -49,12 +49,12 @@
     </div>
 
     <div class="situmon_kaisu">
-      <p>質問数〇回</p>
+      <p>質問数 ${contentCount}回</p>
       <span>質問履歴を見る</span>
     </div>
 
     <div class="kaitou_kaisu">
-      <p>回答数〇回</p>
+      <p>回答数 ${answerCount}回</p>
       <span>回答履歴を見る</span>
     </div>
 

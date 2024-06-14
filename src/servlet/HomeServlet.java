@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 
@@ -36,7 +37,12 @@ public class HomeServlet extends HttpServlet {
 		Connection conn = null;
         List<String> cardList = new ArrayList<>();//リストで取得したい時に使う（HomeServletでは未使用）
         request.setCharacterEncoding("UTF-8");
-        String loginId = request.getParameter("login_id");//login_idをjspから何とか取得したい！方法は模索中…
+
+        //login_idをjspから何とか取得したい！方法は模索中…
+        HttpSession session = request.getSession();
+        String login_id = (String) session.getAttribute("login_id");
+        if (login_id != null) {
+
 			try {
 				// JDBCドライバを読み込む
 				Class.forName("org.h2.Driver");
@@ -79,23 +85,37 @@ public class HomeServlet extends HttpServlet {
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
-				//このクエリで最高の平均スコアを持つ科目が取得される
-				String sql2 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
-						+ "GROUP BY subject ORDER BY avg_score DESC LIMIT 1";
+				//このクエリですべての教科の平均スコアが取得される
+				String sql2 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ?";
 				PreparedStatement st2 = conn.prepareStatement(sql2);
+				st2.setString(1, "login_id");
 				ResultSet res2 = st2.executeQuery();
-				res.beforeFirst();
-				String subject = null;
-				double maxAvgScore = Double.MIN_VALUE;
+				res2.beforeFirst();
+
+				double avgScore = 0;
 
 				if (res2.next()) { // 結果セットが空でない場合にのみ処理を実行
-				    subject = res2.getString("subject");
-				    maxAvgScore = res.getDouble("avg_score");
+				    avgScore = res2.getDouble("avg_score");
+				}
+
+				request.setAttribute("avgScore", avgScore);//最高の平均スコアを持つ科目の平均点数
+
+
+
+				//このクエリで最高の平均スコアを持つ科目が取得される
+				String sql3 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
+						+ "WHERE login_id = ? "
+						+ "GROUP BY subject ORDER BY avg_score DESC LIMIT 1";
+				PreparedStatement st3 = conn.prepareStatement(sql3);
+				ResultSet res3 = st3.executeQuery();
+				res3.beforeFirst();
+				String subject = null;
+
+				if (res3.next()) { // 結果セットが空でない場合にのみ処理を実行
+				    subject = res3.getString("subject");
 				}
 
 				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
-				request.setAttribute("maxAvgScore", maxAvgScore);//最高の平均スコアを持つ科目の平均点数
-
 
 
 			 } catch(SQLException e) {
@@ -107,7 +127,8 @@ public class HomeServlet extends HttpServlet {
         // ホームページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
         dispatcher.forward(request, response);
-			}
+	}
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
