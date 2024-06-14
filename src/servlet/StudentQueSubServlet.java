@@ -73,7 +73,7 @@ public class StudentQueSubServlet extends HttpServlet {
 		QuestionDao qDao = new QuestionDao();
 
 		//insertエラー
-		if (qDao.insert(new Question(content, subject, date, time))) {	// 登録成功
+		if (qDao.insert(new Question(content, subject, date))) {	// 登録成功
 			request.setAttribute("result",
 			new Result("登録成功！", "質問を登録しました。", "/D1/StudentQueHisServlet"));
 		}
