@@ -37,9 +37,11 @@ public class HomeServlet extends HttpServlet {
 		Connection conn = null;
         List<String> cardList = new ArrayList<>();//リストで取得したい時に使う（HomeServletでは未使用）
         request.setCharacterEncoding("UTF-8");
+
         //login_idをjspから何とか取得したい！方法は模索中…
         HttpSession session = request.getSession();
         String login_id = (String) session.getAttribute("login_id");
+        if (login_id != null) {
 
 			try {
 				// JDBCドライバを読み込む
@@ -111,7 +113,8 @@ public class HomeServlet extends HttpServlet {
         // ホームページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
         dispatcher.forward(request, response);
-			}
+	}
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
