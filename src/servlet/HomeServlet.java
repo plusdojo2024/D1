@@ -85,36 +85,37 @@ public class HomeServlet extends HttpServlet {
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
-				//このクエリで最高の平均スコアを持つ科目が取得される
-				String sql2 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
-						+ "GROUP BY subject ORDER BY avg_score DESC LIMIT 1";
+				//このクエリですべての教科の平均スコアが取得される
+				String sql2 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ?";
 				PreparedStatement st2 = conn.prepareStatement(sql2);
+				st2.setString(1, "login_id");
 				ResultSet res2 = st2.executeQuery();
-				res.beforeFirst();
-				String subject = null;
-				double maxAvgScore = Double.MIN_VALUE;
+				res2.beforeFirst();
+
+				double avgScore = 0;
 
 				if (res2.next()) { // 結果セットが空でない場合にのみ処理を実行
-				    subject = res2.getString("subject");
-				    maxAvgScore = res2.getDouble("avg_score");
+				    avgScore = res2.getDouble("avg_score");
 				}
 
-				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
-				request.setAttribute("maxAvgScore", maxAvgScore);//最高の平均スコアを持つ科目の平均点数
+				request.setAttribute("avgScore", avgScore);//最高の平均スコアを持つ科目の平均点数
 
 
+
+				//このクエリで最高の平均スコアを持つ科目が取得される
 				String sql3 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
+						+ "WHERE login_id = ? "
 						+ "GROUP BY subject ORDER BY avg_score DESC LIMIT 1";
 				PreparedStatement st3 = conn.prepareStatement(sql3);
 				ResultSet res3 = st3.executeQuery();
-				res.beforeFirst();
+				res3.beforeFirst();
 				String subject = null;
-				double maxAvgScore = Double.MIN_VALUE;
 
 				if (res3.next()) { // 結果セットが空でない場合にのみ処理を実行
 				    subject = res3.getString("subject");
-				    maxAvgScore = res3.getDouble("avg_score");
 				}
+
+				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
 
 
 			 } catch(SQLException e) {
