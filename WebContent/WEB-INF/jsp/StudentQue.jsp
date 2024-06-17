@@ -6,11 +6,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>質問-教科選択画面</title>
-  <link rel="stylesheet" type="text/css" href="css/situmon.css">
+  <link rel="stylesheet" type="text/css" href="css/StudentQue.css">
 </head>
 <body>
   <header>
-    <div class="logo">アプリロゴ</div>
+     <div class="logo">
+			<img src="img/logo.png" alt="">
+		</div>
 
     <input type="checkbox" id="checkbox" class="checkbox">
     <label for="checkbox" class="hamburger">
@@ -27,6 +29,7 @@
       </ul>
     </nav>
   </header>
+    <div class="head_bar"></div>
 
   <h2>質問</h2>
 
@@ -41,11 +44,6 @@
       <p>・英語</p>
       <p>・理科</p>
       <p>・社会</p>
-    </div>
-
-    <div class="tokumei">
-      <p>教師に匿名質問する</p>
-      <img src="img/right.png" alt="">
     </div>
 
     <div class="situmon_kaisu">
