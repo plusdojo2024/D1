@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.LoginUser;
+import model.SubjectAverageScore;
 
 
 
@@ -90,7 +91,37 @@ public class HomeServlet extends HttpServlet {
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
 				//このクエリですべての教科の平均スコアが取得される
+				String sql3 = "SELECT subject, YEAR(date_column) AS year, MONTH(date_column) AS month, AVG(score) AS avg_score " +
+			             "FROM Grade " +
+			             "WHERE login_id = ? " +
+			             "GROUP BY subject, YEAR(date_column), MONTH(date_column) " +
+			             "ORDER BY subject, year, month";
 
+			try {
+			    PreparedStatement statement = conn.prepareStatement(sql3);
+			    statement.setString(1, login_id);
+			    ResultSet resultSet = statement.executeQuery();
+
+			    List<SubjectAverageScore> subjectScores = new ArrayList<>();
+
+			    while (resultSet.next()) {
+			        String subject = resultSet.getString("subject");
+			        int year = resultSet.getInt("year");
+			        int month = resultSet.getInt("month");
+			        double avgScore = resultSet.getDouble("avg_score");
+
+			        // サブジェクトと月ごとの平均スコアをオブジェクトに格納
+			        SubjectAverageScore subjectScore = new SubjectAverageScore(subject, year, month, avgScore);
+			        subjectScores.add(subjectScore);
+			    }
+
+			    // requestに結果をセットする例（具体的な処理に応じて適宜変更してください）
+			    request.setAttribute("subjectScores", subjectScores);
+
+			} catch (SQLException e) {
+			    e.printStackTrace();
+			    // エラーハンドリングを行う（例外処理を適宜追加してください）
+			}
 
 
 				//このクエリで最高の平均スコアを持つ科目が取得される
