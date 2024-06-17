@@ -1,4 +1,8 @@
-function onclick_que() {
+window.onload = function(){
+  setInterval("showNowDate()", 1000);
+}
+
+function showNowDate(){
 	fetch('http://localhost:8080/D1/StudentQueSubResultServlet', {
 		method: 'post'
 	})

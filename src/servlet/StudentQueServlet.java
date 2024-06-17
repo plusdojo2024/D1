@@ -1,6 +1,13 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +15,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
 
 
 /**
@@ -19,7 +29,7 @@ public class StudentQueServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		/*Connection conn = null;
+		Connection conn = null;
 		List<String> cardList = new ArrayList<>();//リストで取得したい時に使う（HomeServletでは未使用）
 		request.setCharacterEncoding("UTF-8");
 
@@ -76,7 +86,7 @@ public class StudentQueServlet extends HttpServlet {
 
 
 
-	}*/
+	}
 		// 質問選択ページにフォワードする
 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQue.jsp");
         dispatcher.forward(request, response);
@@ -90,5 +100,7 @@ public class StudentQueServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueServlet.jsp");
 		dispatcher.forward(request, response);
 	}
+
+
 
 }
