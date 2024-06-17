@@ -6,7 +6,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -35,7 +38,7 @@ public class HomeServlet extends HttpServlet {
 //        }
 
 		Connection conn = null;
-        List<String> cardList = new ArrayList<>();//リストで取得したい時に使う（HomeServletでは未使用）
+		List<Double> avgScores = new ArrayList<>();//リストで取得したい時に使う
         request.setCharacterEncoding("UTF-8");
 
         //login_idをjspから何とか取得したい！方法は模索中…
@@ -88,18 +91,37 @@ public class HomeServlet extends HttpServlet {
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
 				//このクエリですべての教科の平均スコアが取得される
-				String sql3 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ?";
+				String dateString = request.getParameter("date");
+			    Date date = null;
+		        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+
+		        try {
+		            date = dateFormat.parse(dateString);
+
+		        } catch (ParseException e) {
+		            e.printStackTrace();
+		        }
+
+		        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+				String sql3 = "SELECT MONTH(date) AS month, AVG(score) AS avg_score "
+			             +"FROM Grade "
+			             +"WHERE login_id = ? AND YEAR(date) = YEAR(?) "
+			             +"GROUP BY MONTH(date)";
+
 				PreparedStatement st3 = conn.prepareStatement(sql3);
 				st3.setString(1, "login_id");
+				st3.setDate(2, sqlDate);
+
 				ResultSet res3 = st3.executeQuery();
 
-				double avgScore = 0;
+			    while (res3.next()) {
+			        double avgScore = res3.getDouble("avg_score");
+			        avgScores.add(avgScore);
+			    }
 
-				if (res3.next()) { // 結果セットが空でない場合にのみ処理を実行
-				    avgScore = res3.getDouble("avg_score");
-				}
-
-				request.setAttribute("avgScore", avgScore);//最高の平均スコアを持つ科目の平均点数
+				request.setAttribute("avgScores", avgScores);//最高の平均スコアを持つ科目の平均点数
 
 
 
