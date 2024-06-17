@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.LoginUser;
+
 
 
 /**
@@ -42,8 +44,10 @@ public class HomeServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         //login_idをjspから何とか取得したい！方法は模索中…
+//        String login_id = (String) session.getAttribute("login_id");
         HttpSession session = request.getSession();
-        String login_id = (String) session.getAttribute("login_id");
+        LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
+        String login_id = loginUser.getId();
         if (login_id != null) {
 
 			try {
@@ -55,7 +59,7 @@ public class HomeServlet extends HttpServlet {
 				//SQLのクエリ（Homeサーブレットはすべてのテーブルからデータを取得するのですべて結合してから取得）
 				String sql = "SELECT content FROM Question WHERE login_id = ?";
 				PreparedStatement st = conn.prepareStatement(sql);
-				st.setString(1, "login_id");
+				st.setString(1, login_id);
 				ResultSet res = st.executeQuery();
 
 				// login_id,user_name,passwordカラム（Userテーブル）のデータを取得するループ
@@ -80,7 +84,7 @@ public class HomeServlet extends HttpServlet {
 				//　answerとcontentが同じ行数とは限らないのでループを分けました。
 				String sql2 = "SELECT answer FROM Question WHERE login_id = ?";
 				PreparedStatement st2 = conn.prepareStatement(sql2);
-				st2.setString(1, "login_id");
+				st2.setString(1, login_id);
 				ResultSet res2 = st2.executeQuery();
 
 				int answerCount=0;
@@ -111,10 +115,11 @@ public class HomeServlet extends HttpServlet {
 			             +"GROUP BY MONTH(date)";
 
 				PreparedStatement st3 = conn.prepareStatement(sql3);
-				st3.setString(1, "login_id");
+				st3.setString(1, login_id);
 				st3.setDate(2, sqlDate);
 
 				ResultSet res3 = st3.executeQuery();
+
 
 			    while (res3.next()) {
 			        double avgScore = res3.getDouble("avg_score");
@@ -130,6 +135,7 @@ public class HomeServlet extends HttpServlet {
 						+ "WHERE login_id = ? "
 						+ "GROUP BY subject ORDER BY avg_score DESC LIMIT 1";
 				PreparedStatement st4 = conn.prepareStatement(sql4);
+				st4.setString(1, login_id);
 				ResultSet res4 = st4.executeQuery();
 				String subject = null;
 
