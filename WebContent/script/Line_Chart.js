@@ -17,25 +17,25 @@ var myLineChart = new Chart(ctx, {
 	 },
 	 {
 	   label: '数学',
-	   data: [],
+	   data: array2,
 	   borderColor: "rgba(0,0,255,1)",
 	   backgroundColor: "rgba(0,0,0,0)"
 	  },
 	 {
 	   label: '英語',
-	   data: [],
+	   data: array3,
 	   borderColor: "rgba(0,128,0,1)",
 	   backgroundColor: "rgba(0,0,0,0)"
 	 },
 	 {
 	   label: '理科',
-	   data: [],
+	   data: array4,
 	   borderColor: "rgba(255,255,0,1)",
 	   backgroundColor: "rgba(0,0,0,0)"
 	 },
 	 {
 	   label: '社会',
-	   data: [],
+	   data: array5,
 	   borderColor: "rgba(255,192,203,1)",
 	   backgroundColor: "rgba(0,0,0,0)"
 	 },

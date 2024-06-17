@@ -1,20 +1,21 @@
 package model;
 
 import java.time.Month;
+import java.time.Year;
 import java.util.Date;
 
 public class ScoreDate {
     private String subject;
     private int score;
     private Date date;
-    private int year;
+    private Year year;
     private Month month;
 
-    public ScoreDate(String subject, int score, Date date, int year, Month month2) {
+    public ScoreDate(String subject, int score, Date date, Year year2, Month month2) {
         this.subject = subject;
         this.score = score;
         this.date = date;
-        this.year = year;
+        this.year = year2;
         this.month = month2;
     }
 
@@ -42,11 +43,11 @@ public class ScoreDate {
         this.date = date;
     }
 
-    public int getYear() {
+    public Year getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Year year) {
         this.year = year;
     }
 
