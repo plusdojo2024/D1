@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <div class="login_logo">
-        <img src="img/title.png" alt="">
+    <div class="logo">
+        <img src="img/logo_blue.png" alt="">
     </div>
 
     <img class="people_icon" src="img/people.png" alt="">
