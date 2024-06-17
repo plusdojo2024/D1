@@ -90,40 +90,20 @@ public class HomeServlet extends HttpServlet {
 				    answerCount++;
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
-//
 //				//このクエリですべての教科の平均スコアが取得される
-//				String dateString = request.getParameter("date");
-//			    Date date = null;
-//		        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//
-//
-//		        try {
-//		            date = dateFormat.parse(dateString);
-//
-//		        } catch (ParseException e) {
-//		            e.printStackTrace();
-//		        }
-//
-//		        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-//
-//				String sql3 = "SELECT MONTH(date) AS month, AVG(score) AS avg_score "
-//			             +"FROM Grade "
-//			             +"WHERE login_id = ? AND YEAR(date) = YEAR(?) "
-//			             +"GROUP BY MONTH(date)";
-//
-//				PreparedStatement st3 = conn.prepareStatement(sql3);
-//				st3.setString(1, login_id);
-//				st3.setDate(2, sqlDate);
-//
-//				ResultSet res3 = st3.executeQuery();
-//
-//
-//			    while (res3.next()) {
-//			        double avgScore = res3.getDouble("avg_score");
-//			        avgScores.add(avgScore);
-//			    }
-//
-//				request.setAttribute("avgScores", avgScores);//最高の平均スコアを持つ科目の平均点数
+				String sql3 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ?";
+				PreparedStatement st3 = conn.prepareStatement(sql2);
+				st2.setString(1, "login_id");
+				ResultSet res3 = st3.executeQuery();
+				res2.beforeFirst();
+
+				double avgScore = 0;
+
+				if (res3.next()) { // 結果セットが空でない場合にのみ処理を実行
+				    avgScore = res3.getDouble("avg_score");
+				}
+
+				request.setAttribute("avgScore", avgScore);//最高の平均スコアを持つ科目の平均点数
 
 
 
