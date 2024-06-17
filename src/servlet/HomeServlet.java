@@ -79,17 +79,17 @@ public class HomeServlet extends HttpServlet {
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
 				//　answerとcontentが同じ行数とは限らないのでループを分けました。
-//				String sql2 = "SELECT answer FROM Question WHERE login_id = ?";
-//				PreparedStatement st2 = conn.prepareStatement(sql2);
-//				st2.setString(1, login_id);
-//				ResultSet res2 = st2.executeQuery();
-//
-//				int answerCount=0;
-//				while (res2.next()) {
-//				    String answer = res2.getString("answer");
-//				    answerCount++;
-//				}
-//				request.setAttribute("answerCount", answerCount);//質問回答数
+				String sql2 = "SELECT answer FROM Question WHERE login_id = ?";
+				PreparedStatement st2 = conn.prepareStatement(sql2);
+				st2.setString(1, login_id);
+				ResultSet res2 = st2.executeQuery();
+
+				int answerCount=0;
+				while (res2.next()) {
+				    String answer = res2.getString("answer");
+				    answerCount++;
+				}
+				request.setAttribute("answerCount", answerCount);//質問回答数
 //
 //				//このクエリですべての教科の平均スコアが取得される
 //				String dateString = request.getParameter("date");
