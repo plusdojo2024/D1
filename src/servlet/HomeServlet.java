@@ -70,7 +70,6 @@ public class HomeServlet extends HttpServlet {
 				int contentCount=0;
 				// contentカラム（Questionテーブル）のデータを取得するループ
 				while (res.next()) {
-				    String content = res.getString("content");
 				    contentCount++;
 				}
 
@@ -86,24 +85,11 @@ public class HomeServlet extends HttpServlet {
 
 				int answerCount=0;
 				while (res2.next()) {
-				    String answer = res2.getString("answer");
 				    answerCount++;
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
-//				//このクエリですべての教科の平均スコアが取得される
-				String sql3 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ?";
-				PreparedStatement st3 = conn.prepareStatement(sql2);
-				st2.setString(1, "login_id");
-				ResultSet res3 = st3.executeQuery();
-				res2.beforeFirst();
 
-				double avgScore = 0;
-
-				if (res3.next()) { // 結果セットが空でない場合にのみ処理を実行
-				    avgScore = res3.getDouble("avg_score");
-				}
-
-				request.setAttribute("avgScore", avgScore);//最高の平均スコアを持つ科目の平均点数
+				//このクエリですべての教科の平均スコアが取得される
 
 
 
@@ -121,6 +107,7 @@ public class HomeServlet extends HttpServlet {
 				}
 
 				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
+
 
 
 			 } catch(SQLException e) {
