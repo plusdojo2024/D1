@@ -28,7 +28,7 @@
 			</ul>
 		</nav>
 	</header>
-	<main>
+
 		<div class="head_bar"></div>
 		<h2>成績登録</h2>
 
@@ -42,7 +42,9 @@
 			<p>・理科</p>
 			<p>・社会</p>
 		</div>
-	</main>
 </body>
+
+<footer>
+</footer>
 
 </html>

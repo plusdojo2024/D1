@@ -33,7 +33,7 @@ public class NewLoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 新規登録ページにフォワードする
+		// TODO Auto-generated method stub
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NewLogin.jsp");
 		dispatcher.forward(request, response);
 
