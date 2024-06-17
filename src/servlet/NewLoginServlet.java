@@ -34,6 +34,10 @@ public class NewLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// 新規登録ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NewLogin.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -55,11 +59,11 @@ public class NewLoginServlet extends HttpServlet {
 
 		if (uDao.insert(new User(login_id, user_name, password))) {	// 登録成功
 			request.setAttribute("result",
-			new Result("登録成功！", "会員登録に成功しました。", "/D1/LoginServlet"));
+			new Result("登録成功！", "ユーザー登録に成功しました。", "/D1/LoginServlet"));
 		}
 		else {												// 登録失敗
 			request.setAttribute("result",
-			new Result("登録失敗！", "会員登録に失敗しました。", "/D1/NewLoginServlet"));
+			new Result("登録失敗！", "ユーザー登録に失敗しました。", "/D1/NewLoginServlet"));
 		}
 
 		// 結果ページにフォワードする
