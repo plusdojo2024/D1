@@ -76,7 +76,7 @@ public class HomeServlet extends HttpServlet {
 				request.setAttribute("contentCount", contentCount);//質問数
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
-				//　answerとcontentが同じ行数とは限らないのでループを分けました。
+				//answerとcontentが同じ行数とは限らないのでループを分けました。
 				res.beforeFirst();// ResultSetを最初の行の前に移動する（ゼロクリアみたいなもの）
 				int answerCount=0;
 				while (res.next()) {
@@ -123,6 +123,8 @@ public class HomeServlet extends HttpServlet {
 		    }catch (ClassNotFoundException e) {
 		        e.printStackTrace();
 		    }
+			int[] test1 = {10,20,30,40,50,60,70,80,90,100,80,10};
+			request.setAttribute("test1", test1);//質問回答数
 
         // ホームページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +37,14 @@
 		<nav class="your_grade">
 			<h1>あなたの現在の成績</h1>
 		</nav>
+
+		<script>
+		const array1 = [
+		  <c:forEach var="item" items="${test1}">
+		     ${item},;
+		  </c:forEach>];
+		</script>
+
 
 		<!-- 変更開始 -->
 		<canvas id="myLineChart"></canvas>
