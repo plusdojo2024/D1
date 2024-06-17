@@ -50,11 +50,7 @@ public class HomeServlet extends HttpServlet {
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 				//SQLのクエリ（Homeサーブレットはすべてのテーブルからデータを取得するのですべて結合してから取得）
-				String sql = "SELECT User.login_id, User.user_name, User.password, "
-						+ "Grade.score, Question.date, Question.content, Question.answer, Question.subject "
-						+ "FROM User INNER JOIN Grade ON login_id = Grade.login_id "
-						+ "INNER JOIN Question ON User.login_id = Question.login_id"
-						+ "WHERE User.login_id = ?";
+				String sql = "SELECT content FROM Question WHERE login_id = ?";
 				PreparedStatement st = conn.prepareStatement(sql);
 				st.setString(1, "login_id");
 				ResultSet res = st.executeQuery();
@@ -73,29 +69,34 @@ public class HomeServlet extends HttpServlet {
 				    String content = res.getString("content");
 				    contentCount++;
 				}
+
 				request.setAttribute("contentCount", contentCount);//質問数
+
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
 				//　answerとcontentが同じ行数とは限らないのでループを分けました。
-				res.beforeFirst();// ResultSetを最初の行の前に移動する（ゼロクリアみたいなもの）
+				String sql2 = "SELECT answer FROM Question WHERE login_id = ?";
+				PreparedStatement st2 = conn.prepareStatement(sql2);
+				st2.setString(1, "login_id");
+				ResultSet res2 = st2.executeQuery();
+
 				int answerCount=0;
-				while (res.next()) {
-				    String answer = res.getString("answer");
+				while (res2.next()) {
+				    String answer = res2.getString("answer");
 				    answerCount++;
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
 				//このクエリですべての教科の平均スコアが取得される
-				String sql2 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ?";
-				PreparedStatement st2 = conn.prepareStatement(sql2);
-				st2.setString(1, "login_id");
-				ResultSet res2 = st2.executeQuery();
-				res2.beforeFirst();
+				String sql3 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ?";
+				PreparedStatement st3 = conn.prepareStatement(sql3);
+				st3.setString(1, "login_id");
+				ResultSet res3 = st3.executeQuery();
 
 				double avgScore = 0;
 
-				if (res2.next()) { // 結果セットが空でない場合にのみ処理を実行
-				    avgScore = res2.getDouble("avg_score");
+				if (res3.next()) { // 結果セットが空でない場合にのみ処理を実行
+				    avgScore = res3.getDouble("avg_score");
 				}
 
 				request.setAttribute("avgScore", avgScore);//最高の平均スコアを持つ科目の平均点数
@@ -103,16 +104,15 @@ public class HomeServlet extends HttpServlet {
 
 
 				//このクエリで最高の平均スコアを持つ科目が取得される
-				String sql3 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
+				String sql4 = "SELECT subject, AVG(score) AS avg_score FROM Grade "
 						+ "WHERE login_id = ? "
 						+ "GROUP BY subject ORDER BY avg_score DESC LIMIT 1";
-				PreparedStatement st3 = conn.prepareStatement(sql3);
-				ResultSet res3 = st3.executeQuery();
-				res3.beforeFirst();
+				PreparedStatement st4 = conn.prepareStatement(sql4);
+				ResultSet res4 = st4.executeQuery();
 				String subject = null;
 
-				if (res3.next()) { // 結果セットが空でない場合にのみ処理を実行
-				    subject = res3.getString("subject");
+				if (res4.next()) { // 結果セットが空でない場合にのみ処理を実行
+				    subject = res4.getString("subject");
 				}
 
 				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
