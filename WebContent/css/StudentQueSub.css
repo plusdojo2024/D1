@@ -1,0 +1,163 @@
+/* リセットCSS */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: bottom;
+  background: transparent;
+  list-style: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  font: inherit;
+}
+
+/* ここまでリセットCSS */
+
+body {
+  font-family: "Arial", sans-serif;
+  color: #555;
+  font-feature-settings: "palt";
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  height: 80px;
+  width: 100%; 
+  padding: 0 20px;
+  background: #ffc8aa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 32px;
+}
+
+
+/* /////////////////////////////////// */
+
+h2{
+  font-size: 3em;
+  margin-left: 149px;
+}
+h3{
+  margin-left: 149px;
+}
+
+.tokumei_area{  
+  display: inline-block;
+  margin: auto;
+}
+.tokumei_area span{
+  display: block;
+  background-color: #cccccc;
+  margin: auto;
+}
+
+.questionssss {
+  display: block;
+  width: 80%;
+  height: 70vh;
+  overflow: auto;
+  box-shadow: inset 0px 3px 3px 0px rgb(201, 201, 201);
+  margin: auto;
+  margin-top: 20px;
+}
+
+
+
+/* チャットレイアウト */
+.chat-box {
+  display: flex;
+  width: 100%;
+  height: auto;
+  overflow: hidden; /*floatの解除*/
+  margin-bottom: 20px;
+}
+.chat-face {
+  float: left;
+  margin-right: -120px;
+}
+.chat-face img{
+  border-radius: 80px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 4px #ddd;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.chat-area {
+  width: 100%;
+  float: right;
+}
+.chat-ret{
+  position: relative;
+  left: 60px;
+  top: -25px;
+}  
+.chat-hukidashi {
+  position: relative;
+  display: inline-block; /*コメントの文字数に合わせて可変*/
+  padding: 15px 20px;
+  margin-left: 75px;
+  margin-top: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  font-size: 1.2em;
+  left: 60px;
+}
+.chat-hukidashi_kaitou {
+  position: relative;
+  display: inline-block; /*コメントの文字数に合わせて可変*/
+  padding: 15px 20px;
+  margin-left: 75px;
+  margin-top: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  font-size: 1.2em;
+  background-color: #f0d2d2;
+  left: 60px;
+}
+.qbutton{
+  position: fixed;
+  top: 665px;
+  right: 12%;
+  border-radius: 80px;
+  padding: 20px 50px 20px 20px;
+  font-size: 1.2em;
+}
+.qbutton_img{
+  position: fixed;
+  top: 87%;
+  right: 200px;
+}
