@@ -18,14 +18,13 @@
 		</div>
   </header>
 
-  <h2>成績登録　各教科</h2>
+  <h2>成績登録 各教科</h2>
 
-
-  <h3>戻る</h3>
 <div class="seiseki_touroku">
   <p>点数登録</p><br>
   <input type="text">
   <img src="img/score.png" width="70" height="70"><br>
+  <br>
   <p>日付登録</p>
   <form action="/HomeServlet" method="post">
   <input type="date" id="date" name="date"><br>
@@ -38,6 +37,7 @@
 </div>
 
 <div class="not_100">
+<img src="img/Q.svg" width="15" height="15"><br>
 <p>100点満点ではない場合</p>
 </div>
 

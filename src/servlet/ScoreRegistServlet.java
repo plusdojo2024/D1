@@ -26,6 +26,7 @@ public class ScoreRegistServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 //		HttpSession session = request.getSession();
 //		if (session.getAttribute("id") == null) {
@@ -40,6 +41,8 @@ public class ScoreRegistServlet extends HttpServlet {
 					response.sendRedirect("/D1/LoginServlet");
 					return;
 			}*/
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp")
 		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
 
 		dispatcher.forward(request, response);

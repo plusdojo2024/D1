@@ -20,6 +20,9 @@
 
   <h2>成績登録　各教科</h2>
 
+    <div class="back">
+			<img src="img/sirusi.png" alt="">
+		</div>
 
 
   <div class="reigai_mes">
@@ -30,9 +33,11 @@
     <p>点数登録</p>
     <p>点数登録</p><br>
     <input type="text">
-    <label>点</label>
     <input type="text">
-    <label>点</label>
+    <br>
+    <br>
+    <p id="seiseki_date">日付</p><br>
+    <input type="date">
   </div>
 
   <div class="seiseki_okuru">

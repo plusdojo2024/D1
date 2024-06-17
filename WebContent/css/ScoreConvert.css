@@ -71,12 +71,19 @@ header {
 
 h2{
   font-size: 3em;
-  margin-left: 210px;
+  margin-left: 10px;
   border-bottom: 1px solid #020062;
   padding-right:100px;
   padding-left: 200px;
-  margin-left: 10px;
   margin-bottom:50px;
+}
+
+.back img{
+  position: fixed;
+  width:50px;
+  height:50px;
+  top: 91px;
+  left: 15px;
 }
 
 .seiseki_touroku{
@@ -84,16 +91,20 @@ h2{
   text-align: center;
 }
 .seiseki_touroku input{
-  width: 300px;
+  width: 323px;
   height: 70px;
   text-align: center;
-
 }
+
 .seiseki_touroku p{
   display: inline-block;
   border: 1px solid #555;
   padding: 0px 129px;
   background-color: #dceaf7;
+}
+
+#seiseki_date{
+	padding: 0px 145px;
 }
 
 .seiseki_okuru{

@@ -69,15 +69,22 @@ header {
 /* /////////////////////////////////// */
 
 h2{
-  font-size: 3em;
+  	display: inline-block;
+	font-size: 3em;
+	padding-right: 965px;
+	padding-left: 200px;
+	margin-left: 10px;
+	margin-top: 10px;
+	border-bottom: 1px solid #020062;
+	margin-bottom: 50px;
 }
 
 .seiseki_touroku{
-  margin-top: 100px;
+  margin-top: 70px;
   text-align: center;
 }
 .seiseki_touroku input{
-  width: 300px;
+  width: 368px;
   height: 70px;
   text-align: center;
   font-size:2em;
@@ -98,10 +105,15 @@ h2{
 .seiseki_okuru input{
   text-align: center;
   border-radius: 80px;
+  width: 100px;
+  height:40px;
+  font-size:1.2em;
 }
 
 .not_100{
+	display:flex;
   text-align: center;
+  justify-content: center;
   margin-top: 20px;
 }
 .not_100 p{
@@ -109,6 +121,12 @@ h2{
   border-bottom: 1px solid #555;
 }
 
+.not_100 img{
+	transform: translateY(4px);
+}
+
 .seiseki_touroku img{
 	position:fixed;
+	top:308px;
+	left:881px;
 }
