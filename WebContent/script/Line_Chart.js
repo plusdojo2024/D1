@@ -7,11 +7,11 @@ var ctx = document.getElementById("myLineChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
    data: {
-	 labels: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+	 labels: ['4月','5月','6月','7月','9月','10月','11月','12月','1月','2月','3月'],
 	 datasets: [
      {
 	   label: '国語',
-	   data: [],
+	   data: array1,
 	   borderColor: "rgba(255,0,0,1)",
 	   backgroundColor: "rgba(0,0,0,0)"
 	 },

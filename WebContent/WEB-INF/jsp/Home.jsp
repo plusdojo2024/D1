@@ -41,7 +41,7 @@
 		<script>
 		const array1 = [
 		  <c:forEach var="item" items="${test1}">
-		     ${item},;
+		     ${item},
 		  </c:forEach>];
 		</script>
 
