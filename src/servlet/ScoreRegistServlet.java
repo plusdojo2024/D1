@@ -41,7 +41,10 @@ public class ScoreRegistServlet extends HttpServlet {
 					response.sendRedirect("/D1/LoginServlet");
 					return;
 			}*/
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp")
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
+
 		dispatcher.forward(request, response);
 }
 

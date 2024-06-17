@@ -38,7 +38,7 @@ public class StudentQueServlet extends HttpServlet {
 				String sql = "SELECT Question.content, Question.answer, Question.subject "
 						+ "FROM Qustion WHERE User.login_id = ?";
 				PreparedStatement st = conn.prepareStatement(sql);
-				st.setString(1, "login_id");
+				st.setString(1, login_id);
 				ResultSet res = st.executeQuery();
 
 				// login_id,user_name,passwordカラム（Userテーブル）のデータを取得するループ
