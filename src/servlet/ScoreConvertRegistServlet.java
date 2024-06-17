@@ -32,6 +32,10 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		// TODO Auto-generated method stub
+
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ScoreConvert.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -71,7 +75,7 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		}
 
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");
 		dispatcher.forward(request, response);
 
 	}

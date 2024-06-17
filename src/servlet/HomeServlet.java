@@ -84,11 +84,12 @@ public class HomeServlet extends HttpServlet {
 
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
-				//　answerとcontentが同じ行数とは限らないのでループを分けました。
+				//answerとcontentが同じ行数とは限らないのでループを分けました。
 				String sql2 = "SELECT answer FROM Question WHERE login_id = ?";
 				PreparedStatement st2 = conn.prepareStatement(sql2);
 				st2.setString(1, login_id);
 				ResultSet res2 = st2.executeQuery();
+
 
 				int answerCount=0;
 				while (res2.next()) {
@@ -184,6 +185,8 @@ public class HomeServlet extends HttpServlet {
 		    }catch (ClassNotFoundException e) {
 		        e.printStackTrace();
 		    }
+			int[] test1 = {10,20,30,40,50,60,70,80,90,100,80,10};
+			request.setAttribute("test1", test1);//質問回答数
 
         // ホームページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
