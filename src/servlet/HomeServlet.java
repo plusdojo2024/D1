@@ -6,13 +6,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.LoginUser;
-import model.ScoreDate;
 
 
 
@@ -43,7 +37,7 @@ public class HomeServlet extends HttpServlet {
 //        }
 
 		Connection conn = null;
-		List<ScoreDate> scoreDateList = new ArrayList<>();//リストで取得したい時に使う
+		List<Double> avgScores = new ArrayList<>();//リストで取得したい時に使う
         request.setCharacterEncoding("UTF-8");
 
         //login_idをjspから何とか取得したい！方法は模索中…
@@ -84,12 +78,11 @@ public class HomeServlet extends HttpServlet {
 
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
-				//answerとcontentが同じ行数とは限らないのでループを分けました。
+				//　answerとcontentが同じ行数とは限らないのでループを分けました。
 				String sql2 = "SELECT answer FROM Question WHERE login_id = ?";
 				PreparedStatement st2 = conn.prepareStatement(sql2);
 				st2.setString(1, login_id);
 				ResultSet res2 = st2.executeQuery();
-
 
 				int answerCount=0;
 				while (res2.next()) {
@@ -97,70 +90,20 @@ public class HomeServlet extends HttpServlet {
 				    answerCount++;
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
+//				//このクエリですべての教科の平均スコアが取得される
+				String sql3 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ?";
+				PreparedStatement st3 = conn.prepareStatement(sql2);
+				st2.setString(1, "login_id");
+				ResultSet res3 = st3.executeQuery();
+				res2.beforeFirst();
 
-				//このクエリですべての教科の平均スコアが取得される
+				double avgScore = 0;
 
-				String sql5 = "SELECT subject, score, date FROM Grade WHERE login_id = ?";
+				if (res3.next()) { // 結果セットが空でない場合にのみ処理を実行
+				    avgScore = res3.getDouble("avg_score");
+				}
 
-				PreparedStatement st5 = conn.prepareStatement(sql5);
-				st5.setString(1, login_id);
-				ResultSet rs5 = st5.executeQuery();
-	            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-	            while (rs5.next()) {
-                    String subject = rs5.getString("subject");
-                    int score = rs5.getInt("score");
-                    java.sql.Date date = rs5.getDate("date");
-
-                    // LocalDateに変換して年と月を取得
-                    LocalDate localDate = date.toLocalDate();
-                    int year = localDate.getYear();
-                    Month month = localDate.getMonth();
-
-                    // ScoreDataオブジェクトを作成し、リストに追加
-                    ScoreDate scoreData = new ScoreDate(subject, score, date, year, month);
-                    scoreDateList.add(scoreData);
-	            }
-                    List<Double> avgScores = new ArrayList<>();
-                for (Month month : Month.values()) {
-                    double sum = 0;
-                    int count = 0;
-                    for (ScoreDate scoreDate : scoreDateList) {
-                        if (scoreDate.getYear() == 2010 && scoreDate.getMonth() == month) {
-                            sum += scoreDate.getScore();
-                            count++;
-                        }
-                    }
-                    if (count > 0) {
-                        double avg = sum / count;
-                        avgScores.add(avg);
-                    } else {
-                        avgScores.add(0.0); // データがない場合は平均点0とする
-                    }
-                }
-
-	            String avgScoreSql = "SELECT YEAR(date) AS year, MONTH(date) AS month, AVG(score) AS avg_score "
-	                    + "FROM Grade WHERE login_id = ? "
-	                    + "GROUP BY YEAR(date), MONTH(date)";
-	            PreparedStatement avgStmt = conn.prepareStatement(avgScoreSql);
-	            avgStmt.setString(1, login_id); // ログインIDを設定する
-
-	            ResultSet avgRs = avgStmt.executeQuery();
-	            Map<String, Double> avgScoresMap = new HashMap<>();
-
-	            // 年と月ごとの平均スコアをマップに格納する
-	            while (avgRs.next()) {
-	                int avgYear = avgRs.getInt("year");
-	                int avgMonth = avgRs.getInt("month");
-	                double avgScore = avgRs.getDouble("avg_score");
-
-	                String key = avgYear + "-" + String.format("%02d", avgMonth); // 年-月の形式でキーを作成
-	                avgScoresMap.put(key, avgScore);
-	            }
-
-	            // リクエストスコープにデータをセットしてJSPにフォワードする
-	            request.setAttribute("scoreDataList", scoreDateList);
-	            request.setAttribute("avgScoresMap", avgScoresMap);
+				request.setAttribute("avgScore", avgScore);//最高の平均スコアを持つ科目の平均点数
 
 
 
@@ -185,8 +128,6 @@ public class HomeServlet extends HttpServlet {
 		    }catch (ClassNotFoundException e) {
 		        e.printStackTrace();
 		    }
-			int[] test1 = {10,20,30,40,50,60,70,80,90,100,80,10};
-			request.setAttribute("test1", test1);//質問回答数
 
         // ホームページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
