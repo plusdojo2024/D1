@@ -27,7 +27,9 @@
   <input type="text">
   <img src="img/score.png" width="70" height="70"><br>
   <p>日付登録</p>
-  <input type="date"><br>
+  <form action="/HomeServlet" method="post">
+  <input type="date" id="date" name="date"><br>
+  </form>
 </div>
 
 
