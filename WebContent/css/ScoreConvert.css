@@ -1,0 +1,125 @@
+/* リセットCSS */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: bottom;
+  background: transparent;
+  list-style: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  font: inherit;
+}
+
+/* ここまでリセットCSS */
+
+body {
+  font-family: "Arial", sans-serif;
+  color: #555;
+  font-feature-settings: "palt";
+  background-color:#F8FBFE;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  height: 80px;
+  width: 100%;
+  padding: 0 20px;
+  background: #215F9A;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img{
+	width: 150px;
+}
+
+
+
+/* /////////////////////////////////// */
+
+h2{
+  font-size: 3em;
+  margin-left: 210px;
+  border-bottom: 1px solid #020062;
+  padding-right:100px;
+  padding-left: 200px;
+  margin-left: 10px;
+  margin-bottom:50px;
+}
+
+.seiseki_touroku{
+  margin-top: 15px;
+  text-align: center;
+}
+.seiseki_touroku input{
+  width: 300px;
+  height: 70px;
+  text-align: center;
+
+}
+.seiseki_touroku p{
+  display: inline-block;
+  border: 1px solid #555;
+  padding: 0px 129px;
+  background-color: #dceaf7;
+}
+
+.seiseki_okuru{
+  text-align: center;
+  border-radius: 80px;
+  margin-top: 15px;
+}
+
+.seiseki_okuru input{
+  text-align: center;
+  border-radius: 80px;
+}
+
+.reigai_mes{
+  text-align: center;
+  margin-top: 110px;
+}
+.reigai_mes p{
+  display: inline-block;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+footer{
+	position:fixed;
+	bottom:0;
+	width: 100%;
+	height:20px;
+	background: #215F9A;
+}

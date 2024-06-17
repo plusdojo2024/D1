@@ -33,6 +33,15 @@ public class ScoreRegistServlet extends HttpServlet {
 //			return;
 //	}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ScoreRegist.jsp");
+
+		/*		response.getWriter().append("Served at: ").append(request.getContextPath());
+				HttpSession session = request.getSession();
+				if (session.getAttribute("id") == null) {
+					response.sendRedirect("/D1/LoginServlet");
+					return;
+			}*/
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
+
 		dispatcher.forward(request, response);
 }
 
