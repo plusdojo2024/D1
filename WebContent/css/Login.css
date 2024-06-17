@@ -1,15 +1,22 @@
 @charset "UTF-8";
-
+.logo_line{
+    position: fixed;
+    top: 250px;
+    text-align: center;
+    left: 508px;
+}
 .login_logo img{
     margin: auto;
     margin-bottom: 25px;
     padding-top: 60px;
-    padding-bottom: 5px;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-bottom: 20px;
+    padding-left: 125px;
+    padding-right: 125px;
     display: block;
     width: 250px;
-    border-bottom: 2px solid #375577;
+    background-color: #215F9A;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
 }
 
 .login_input{
@@ -54,7 +61,7 @@ body{
     width: 500px;
     height: 650px;
     border-radius: 80px;
-    background-color: rgb(117, 146, 186);
+    background-color: #DCEAF7;
 }
 
 
@@ -64,7 +71,7 @@ body{
     height: 41px;
     background-color: rgb(195, 195, 195);
     border-radius: 10px;
-    top: 349px;
+    top: 362px;
     left: 566px;
    border: 2px solid #000000;
 }
@@ -75,7 +82,7 @@ body{
     height: 41px;
     background-color: rgb(195, 195, 195);
     border-radius: 10px;
-    top: 405px;
+    top: 418px;
     left: 566px;
    border: 2px solid #000000;
 }
