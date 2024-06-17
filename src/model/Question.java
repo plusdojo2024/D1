@@ -24,6 +24,13 @@ public class Question implements Serializable {
 		this.subject = subject;
 	}
 
+	public Question(String content, String subject, String date) {
+		super();
+		this.content = content;
+		this.subject = subject;
+		this.date = date;
+	}
+
 	/**
 	 * @return login_id
 	 */
