@@ -39,6 +39,7 @@
 	        </div>
 	        <span id="error_message"></span>
 	    </div>
+	</form>
 
     <section id="modalArea" class="modalArea">
         <div id="modalBg" class="modalBg"></div>
@@ -55,7 +56,6 @@
                 ×
             </div>
         </div>
-	</form>
     </section>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"

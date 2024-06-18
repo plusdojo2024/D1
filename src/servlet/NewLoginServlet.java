@@ -23,10 +23,10 @@ public class NewLoginServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewLoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+//    public NewLoginServlet() {
+//        super();
+//        // TODO Auto-generated constructor stub
+//    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -58,7 +58,7 @@ public class NewLoginServlet extends HttpServlet {
 
 		if (uDao.insert(new User(login_id, user_name, password))) {	// 登録成功
 			request.setAttribute("result",
-			new Result("登録成功！", "ユーザー登録に成功しました。", "/D1/LoginServlet"));
+			new Result("登録成功！", "ユーザー登録に成功しました。", "/D1/HomeServlet"));
 		}
 		else {												// 登録失敗
 			request.setAttribute("result",
