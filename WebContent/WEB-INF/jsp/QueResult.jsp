@@ -22,6 +22,7 @@
 	<h2>あなたの質問履歴</h2>
 
 	<form method="post" action="/D1/QueResultServlet">
+			<input type="text" name="login_id">
 			<input type="submit" value="検索">
 	</form>
 
