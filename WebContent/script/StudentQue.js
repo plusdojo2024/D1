@@ -12,3 +12,7 @@ function showNowDate(){
 		$('#que_result').html(text);
 		});
 }
+
+function onclick_que() {
+	fetch('http://localhost:8080/D1/QueResultServlet', {method: 'post'});
+}
