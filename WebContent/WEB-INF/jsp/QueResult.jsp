@@ -27,9 +27,9 @@
 	</form>
 
 	<ul class="Que-area">
-		<c:forEach var="e" items="${QueList}">
+		<c:forEach var="e" items="${contentCount}">
 
-			<li>${e.login_id}/${e.date}/${e.content}/${e.answer}/${e.subject}</li>
+			<li>${e.content}</li>
 
 		</c:forEach>
 	</ul>
