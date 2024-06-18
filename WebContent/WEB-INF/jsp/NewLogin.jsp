@@ -12,32 +12,33 @@
 </head>
 
 <body>
-    <div class="logo">
-        <img src="img/logo_blue.png" alt="">
-    </div>
+	<form id = "registform" method = "post" action = "/D1/NewLoginServlet">
+	    <div class="logo">
+	        <img src="img/logo_blue.png" alt="">
+	    </div>
 
-    <img class="people_icon" src="img/people.png" alt="">
-    <img class="lock_icon" src="img/lock.png" alt="">
+	    <img class="people_icon" src="img/people.png" alt="">
+	    <img class="lock_icon" src="img/lock.png" alt="">
 
-    <div class="login_input">
-        <div class="login_text">
-            <label>新規アカウント登録</label><br>
-            <input id="email" type="text" name="login_id" placeholder="ID">
-        </div>
-        <div class="login_text">
-            <input id="password" type="password" name="password" placeholder="password">
-        </div>
+	    <div class="login_input">
+	        <div class="login_text">
+	            <label>新規アカウント登録</label><br>
+	            <input id="email" type="text" name="login_id" placeholder="ID">
+	        </div>
+	        <div class="login_text">
+	            <input id="password" type="password" name="password" placeholder="password">
+	        </div>
 
-        <div class="user_name">
-            <label>あなたの氏名を入力して下さい</label><br>
-                    <input type="text" placeholder="">
-        </div>
+	        <div class="user_name">
+	            <label>あなたの氏名を入力して下さい</label><br>
+	            <input type="text" name = "user_name" placeholder="氏名">
+	        </div>
 
-        <div class="submit">
-            <input id="openModal" type="submit" value="登録"><br>
-        </div>
-        <span id="error_message"></span>
-    </div>
+	        <div class="submit">
+	            <input id="openModal" type="submit" value="登録"><br>
+	        </div>
+	        <span id="error_message"></span>
+	    </div>
 
     <section id="modalArea" class="modalArea">
         <div id="modalBg" class="modalBg"></div>
@@ -54,6 +55,7 @@
                 ×
             </div>
         </div>
+	</form>
     </section>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
