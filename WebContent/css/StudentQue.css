@@ -152,20 +152,6 @@ main {
 }
 
 /* /////////////////////////////////// */
-.grad_subject{
-	display:inline-block;
-    margin-left: 210px;
-    background-color:#ffffff;
-}
-.grad_subject p{
-  display: block;
-  width: 500px;
-  border: 2px solid #000;
-  font-size: 2em;
-  padding: 10px;
-  cursor: pointer;
-}
-
 h2{
   font-size: 3em;
   margin-left: 210px;
@@ -176,60 +162,22 @@ h2{
   margin-left: 10px;
   margin-bottom:50px;
 }
-h3{
-  margin-left: 210px;
-  border: 2px solid #000;
-  width: 500px;
-  text-align: center;
-  background-color: #dceaf7;
+.grid_area{
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+	width: 50%;
+	margin:100px auto 0 auto;
+	place-items: center;
 }
-
-.situmon_kaisu{
-  position: fixed;
-  top: 30%;
-  right: 20%;
-}
-.situmon_kaisu p{
-  display: block;
-  font-size: 2em;
-  border: 1px solid #000;
-  background-color: #dceaf7;
-  text-align: center;
-  align-content: center;
-  width: 325px;
-  height: 125px;
-}
-.situmon_kaisu span{
-  display: block;
-  border: 1px solid #000;
-  background-color: #ffffff;
-  text-align: center;
-  align-content: center;
-  height: 40px;
-  cursor: pointer;
-}
-
-.kaitou_kaisu{
-  position: fixed;
-  top: 58%;
-  right: 20%;
-}
-.kaitou_kaisu p{
-  display: block;
-  font-size: 2em;
-  border: 1px solid #000;
-  background-color: #dceaf7;
-  text-align: center;
-  align-content: center;
-  width: 325px;
-  height: 125px;
-}
-.kaitou_kaisu span{
-  display: block;
-  border: 1px solid #000;
-  background-color: #ffffff;
-  text-align: center;
-  align-content: center;
-  height: 40px;
-  cursor: pointer;
+.grid_area p{
+	width: 300px;
+	height:130px;
+	background: #DCEAF7;
+	place-items: center;
+	text-align:center;
+	align-content: center;
+	margin-bottom:60px;
+	border: 1px solid #215F9A;
+	font-size:1.5em;
+	font-weight: bold;
 }
