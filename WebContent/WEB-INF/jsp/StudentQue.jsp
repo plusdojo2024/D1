@@ -33,30 +33,12 @@
 
   <h2>質問</h2>
 
-
-  <h3>教科を選択してください</h3>
-
-  <div class="float_left">
-
-    <div class="grad_subject">
-      <p>・国語</p>
-      <p>・数学</p>
-      <p>・英語</p>
-      <p>・理科</p>
-      <p>・社会</p>
-    </div>
-
-    <div class="situmon_kaisu">
-      <p>質問数 ${contentCount}回</p>
-      <span>質問履歴を見る</span>
-    </div>
-
-    <div class="kaitou_kaisu">
-      <p>回答数 ${answerCount}回</p>
-      <span>回答履歴を見る</span>
-    </div>
-
-
+  <div class="grid_area">
+  <p>質問する</p>
+  <p>質問一覧を見る</p>
+  <p>質問履歴を見る</p>
+  <p>回答履歴を見る</p>
   </div>
+
 </body>
 </html>
