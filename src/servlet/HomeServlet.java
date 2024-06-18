@@ -117,14 +117,15 @@ public class HomeServlet extends HttpServlet {
 		        e.printStackTrace();
 		    }
 
+
+
+
 	        PreparedStatement stmt = null;
 	        ResultSet rs = null;
 
 	        try {
-	            // データベースへの接続
-	        	Class.forName("org.h2.Driver");
 
-				// データベースに接続する
+	        	Class.forName("org.h2.Driver");
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 
@@ -135,7 +136,6 @@ public class HomeServlet extends HttpServlet {
 	                         +"ORDER BY year ASC, month ASC";
 	            stmt = conn.prepareStatement(sql);
 	            stmt.setString(1, login_id);
-	            // クエリの実行と結果の取得
 	            rs = stmt.executeQuery();
 
 	            // 年と月ごとの平均スコアを格納するリスト
@@ -153,13 +153,11 @@ public class HomeServlet extends HttpServlet {
 	                averageScoresList.add(entry);
 	            }
 
-	            // JSPにデータを渡す
 	            request.setAttribute("averageScores",  averageScoresList);
 
 	        } catch (ClassNotFoundException | SQLException e) {
 	            e.printStackTrace();
 	        } finally {
-	            // リソースの解放
 	            try {
 	                if (rs != null) rs.close();
 	                if (stmt != null) stmt.close();
