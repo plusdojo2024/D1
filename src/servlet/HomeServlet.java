@@ -91,7 +91,6 @@ public class HomeServlet extends HttpServlet {
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
-				//このクエリですべての教科の平均スコアが取得される
 
 
 				//このクエリで最高の平均スコアを持つ科目が取得される
@@ -117,45 +116,47 @@ public class HomeServlet extends HttpServlet {
 		        e.printStackTrace();
 		    }
 
+
+
+
 	        PreparedStatement stmt = null;
 	        ResultSet rs = null;
 
 	        try {
-	            // データベースへの接続
-	        	Class.forName("org.h2.Driver");
 
-				// データベースに接続する
+	        	Class.forName("org.h2.Driver");
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
+
 	            // 年と月ごとに全科目の平均スコアを取得するSQLクエリ
-	            String sql = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS averageScore " +
-	                         "FROM Grade " +
-	                         "GROUP BY YEAR(Date), MONTH(Date)";
+	            String sql = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS averageScore "
+	                         +"FROM Grade WHERE login_id = ?"
+	                         +"GROUP BY YEAR(Date), MONTH(Date)"
+	                         +"ORDER BY year ASC, month ASC";
 	            stmt = conn.prepareStatement(sql);
-;
-	            // クエリの実行と結果の取得
+	            stmt.setString(1, login_id);
 	            rs = stmt.executeQuery();
 
-	            // 年と月ごとの平均スコアを格納するマップ
-	            Map<String, Double> averageScores = new HashMap<>();
+	            // 年と月ごとの平均スコアを格納するリスト
+	            List<Map<String, Object>> averageScoresList = new ArrayList<>();
 
 	            while (rs.next()) {
 	                int year = rs.getInt("year");
 	                int month = rs.getInt("month");
 	                double averageScore = rs.getDouble("averageScore");
 
-	                // 年と月をキーとして平均スコアをマップに追加
-	                String key = year + "-" + String.format("%02d", month);
-	                averageScores.put(key, averageScore);
+	                Map<String, Object> entry = new HashMap<>();
+	                entry.put("year", year);
+	                entry.put("month", month);
+	                entry.put("averageScore", averageScore);
+	                averageScoresList.add(entry);
 	            }
 
-	            // JSPにデータを渡す
-	            request.setAttribute("averageScores", averageScores);
+	            request.setAttribute("averageScores",  averageScoresList);
 
 	        } catch (ClassNotFoundException | SQLException e) {
 	            e.printStackTrace();
 	        } finally {
-	            // リソースの解放
 	            try {
 	                if (rs != null) rs.close();
 	                if (stmt != null) stmt.close();

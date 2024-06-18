@@ -20,6 +20,7 @@ public class QuestionDao{
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
             // SQL文を準備する
             String sql = "SELECT * FROM Question WHERE login_id LIKE ? AND date LIKE ? AND content LIKE ? AND answer LIKE ? AND subject LIKE ?";
+            //String sql = "SELECT * FROM Question WHERE login_id LIKE ? AND date LIKE ? AND content LIKE ? AND answer IS NULL AND subject LIKE ?";
             PreparedStatement pStmt = conn.prepareStatement(sql);
             // SQL文を完成させる
             if (card.getLogin_id() != null ) {
