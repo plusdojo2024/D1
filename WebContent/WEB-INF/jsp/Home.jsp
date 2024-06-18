@@ -101,5 +101,25 @@
     </div>
   </main>
 
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Year-Month</th>
+            <th>Average Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- averageScores のデータを表示 -->
+        <c:forEach var="entry" items="${averageScores}">
+            <tr>
+                <td>${entry.key}</td>
+                <td>${entry.value}</td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
+
+
 </body>
 </html>
