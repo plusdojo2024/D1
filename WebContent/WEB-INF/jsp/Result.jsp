@@ -4,12 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>-Result-</title>
 <!-- 仮：スタイルシート-->
-<link rel="stylesheet" href="/D1/css/style.css">
+<link rel="stylesheet" href="/D1/css/Result.css">
 </head>
 <body>
-<h1>${result.title}</h1>
+  <header>
+    <div class="logo">
+			<img src="img/logo.png" alt="">
+	</div>
+  </header>
+<h2>${result.title}</h2>
 <hr>
 <p>${result.message}</p>
 <a class="btn" href="${result.backTo}">戻る</a>
