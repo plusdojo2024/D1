@@ -24,7 +24,7 @@
 				<li><a href="/D1/StudentQueServlet">質問</a></li>
 
 				<!-- ログアウト一旦保留(ここから) -->
-				<li><a href="#">ログアウト</a></li>
+				<li><a href="/D1/LogoutServlet">ログアウト</a></li>
 				<!-- ここまで -->
 
 			</ul>
@@ -40,24 +40,8 @@
 
 		<script>
 		const array1 = [
-			  <c:forEach var="item" items="${test1}">
-			     ${item},
-			  </c:forEach>];
-		 const array2 = [
-			  <c:forEach var="item1" items="${test2}">
-				   ${item1},
-			  </c:forEach>];
-		const array3 = [
-			  <c:forEach var="item2" items="${test3}">
-				   ${item2},
-			  </c:forEach>];
-		const array4 = [
-			  <c:forEach var="item3" items="${test4}">
-				   ${item3},
-			  </c:forEach>];
-		const array5 = [
-			  <c:forEach var="item4" items="${test5}">
-				  ${item4},
+			  <c:forEach var="entry" items="${averageScores}">
+			  	${entry.averageScore},
 			  </c:forEach>];
 		</script>
 
@@ -96,7 +80,7 @@
 			<div class="bottom_right1">
 
 				<div class="score">
-					<span>平均点</span><span class="font_L">${requestScope.subjectScores}点</span>
+					<span>平均点</span><span class="font_L">${requestScope.avgScore}点</span>
 				</div>
 
 				<div class="score">
@@ -117,7 +101,7 @@
     </div>
   </main>
 
-<--!ここから年月分けて取得-->
+<!--ここから年月分けて取得-->
 <table border="1">
     <thead>
         <tr>

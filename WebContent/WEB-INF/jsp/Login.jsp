@@ -21,7 +21,7 @@
     <img class="lock_icon" src="img/lock.png" alt="">
 
     <!-- <form action="result.html"> -->
-    <form id="login_form" method="post" action="/D1/LoginServlet">
+    <form id="login_form" method="post" action="?">
 
         <div class="login_input">
             <div class="login_text">
@@ -32,9 +32,11 @@
             </div>
 
             <div class="submit">
-                <input type="submit" value="login"><br>
+                <input type="submit" value="ログイン" formaction="/D1/LoginServlet"><br>
                 <label>初めての方はこちら</label><br>
-                <input type="submit" value="新規登録">
+                <input type = "button" value = "新規登録" onclick = "goToNewRegistration()">
+
+                <!--<input type="submit" value="新規登録" formaction="/D1/NewLoginServlet">-->
             </div>
             <span id="error_message"></span>
         </div>
@@ -43,5 +45,11 @@
 </body>
 
 <script src="js/login_js.js"></script>
+
+<script>
+	function goToNewRegistration() {
+		window.location.href = '/D1/NewLoginServlet';
+}
+</script>
 
 </html>
