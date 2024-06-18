@@ -191,29 +191,16 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-//		HttpSession session = request.getSession();
-//		if (session.getAttribute("login_id") == null) {
-//			response.sendRedirect("/D1/LoginServlet");
-//			return;
-//		}
-//
-//		// リクエストパラメータを取得する
-//		request.setCharacterEncoding("UTF-8");
-//		String login_id = request.getParameter("login_id");
-//		String user_name = request.getParameter("user_name");
-//		String password = request.getParameter("password");
-//		String date = request.getParameter("date");
-//		String content = request.getParameter("content");
-//		String answer = request.getParameter("answer");
-//		String subject = request.getParameter("subject");
-//		String time = request.getParameter("time");
-//		String score = request.getParameter("score");
-//
-//
-//
-//		// ホームページにフォワードする
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
-//		dispatcher.forward(request, response);
+
+
+		request.setCharacterEncoding("UTF-8");
+		String login_id = request.getParameter("login_id");
+		String user_name = request.getParameter("user_name");
+		String password = request.getParameter("password");
+
+
+		// ホームページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
+		dispatcher.forward(request, response);
 	}
 }
