@@ -7,7 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.LoginUser;
-import model.SubjectAverageScore;
 
 
 
@@ -91,37 +92,6 @@ public class HomeServlet extends HttpServlet {
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
 				//このクエリですべての教科の平均スコアが取得される
-				String sql3 = "SELECT subject, YEAR(date_column) AS year, MONTH(date_column) AS month, AVG(score) AS avg_score " +
-			             "FROM Grade " +
-			             "WHERE login_id = ? " +
-			             "GROUP BY subject, YEAR(date_column), MONTH(date_column) " +
-			             "ORDER BY subject, year, month";
-
-			try {
-			    PreparedStatement statement = conn.prepareStatement(sql3);
-			    statement.setString(1, login_id);
-			    ResultSet resultSet = statement.executeQuery();
-
-			    List<SubjectAverageScore> subjectScores = new ArrayList<>();
-
-			    while (resultSet.next()) {
-			        String subject = resultSet.getString("subject");
-			        int year = resultSet.getInt("year");
-			        int month = resultSet.getInt("month");
-			        double avgScore = resultSet.getDouble("avg_score");
-
-			        // サブジェクトと月ごとの平均スコアをオブジェクトに格納
-			        SubjectAverageScore subjectScore = new SubjectAverageScore(subject, year, month, avgScore);
-			        subjectScores.add(subjectScore);
-			    }
-
-			    // requestに結果をセットする例（具体的な処理に応じて適宜変更してください）
-			    request.setAttribute("subjectScores", subjectScores);
-
-			} catch (SQLException e) {
-			    e.printStackTrace();
-			    // エラーハンドリングを行う（例外処理を適宜追加してください）
-			}
 
 
 				//このクエリで最高の平均スコアを持つ科目が取得される
@@ -147,11 +117,75 @@ public class HomeServlet extends HttpServlet {
 		        e.printStackTrace();
 		    }
 
+	        PreparedStatement stmt = null;
+	        ResultSet rs = null;
+
+	        try {
+	            // データベースへの接続
+	        	Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
+
+
+	            // 年と月ごとに全科目の平均スコアを取得するSQLクエリ
+	            String sql = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS averageScore "
+	                         +"FROM Grade WHERE login_id = ?"
+	                         +"GROUP BY YEAR(Date), MONTH(Date)"
+	                         +"ORDER BY year ASC, month ASC";
+	            stmt = conn.prepareStatement(sql);
+	            stmt.setString(1, login_id);
+	            // クエリの実行と結果の取得
+	            rs = stmt.executeQuery();
+
+	            // 年と月ごとの平均スコアを格納するリスト
+	            List<Map<String, Object>> averageScoresList = new ArrayList<>();
+
+	            while (rs.next()) {
+	                int year = rs.getInt("year");
+	                int month = rs.getInt("month");
+	                double averageScore = rs.getDouble("averageScore");
+
+	                Map<String, Object> entry = new HashMap<>();
+	                entry.put("year", year);
+	                entry.put("month", month);
+	                entry.put("averageScore", averageScore);
+	                averageScoresList.add(entry);
+	            }
+
+	            // JSPにデータを渡す
+	            request.setAttribute("averageScores",  averageScoresList);
+
+	        } catch (ClassNotFoundException | SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            // リソースの解放
+	            try {
+	                if (rs != null) rs.close();
+	                if (stmt != null) stmt.close();
+	                if (conn != null) conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+
+        int[] test1 = {10,20,30,40,50,60,70,80,90,100,80,10};
+		int[] test2 = {50,70,80,45,30,20,10,100,0,30,90};
+		int[] test3 = {40,50,90,54,21,10,43,18,29,80,20};
+		int[] test4 = {3,40,72,90,70,40,20,68,50,50,50};
+		int[] test5 = {10,100,90,80,70,60,50,40,30,20,10};
+		request.setAttribute("test1", test1);//グラフに反映する成績
+		request.setAttribute("test2", test2);//グラフに反映する成績
+		request.setAttribute("test3", test3);//グラフに反映する成績
+		request.setAttribute("test4", test4);//グラフに反映する成績
+		request.setAttribute("test5", test5);//グラフに反映する成績
+
         // ホームページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
         dispatcher.forward(request, response);
 	}
-	}
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

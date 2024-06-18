@@ -40,9 +40,25 @@
 
 		<script>
 		const array1 = [
-		  <c:forEach var="item" items="${test1}">
-		     ${item},
-		  </c:forEach>];
+			  <c:forEach var="item" items="${test1}">
+			     ${item},
+			  </c:forEach>];
+		 const array2 = [
+			  <c:forEach var="item1" items="${test2}">
+				   ${item1},
+			  </c:forEach>];
+		const array3 = [
+			  <c:forEach var="item2" items="${test3}">
+				   ${item2},
+			  </c:forEach>];
+		const array4 = [
+			  <c:forEach var="item3" items="${test4}">
+				   ${item3},
+			  </c:forEach>];
+		const array5 = [
+			  <c:forEach var="item4" items="${test5}">
+				  ${item4},
+			  </c:forEach>];
 		</script>
 
 
@@ -100,6 +116,26 @@
 		</div>
     </div>
   </main>
+
+<--!ここから年月分けて取得-->
+<table border="1">
+    <thead>
+        <tr>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Average Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="entry" items="${averageScores}">
+            <tr>
+                <td>${entry.year}</td>
+                <td>${entry.month}</td>
+                <td>${entry.averageScore}</td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
 
 </body>
 </html>
