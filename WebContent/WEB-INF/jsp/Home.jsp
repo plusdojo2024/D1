@@ -24,7 +24,7 @@
 				<li><a href="/D1/StudentQueServlet">質問</a></li>
 
 				<!-- ログアウト一旦保留(ここから) -->
-				<li><a href="#">ログアウト</a></li>
+				<li><a href="/D1/LogoutServlet">ログアウト</a></li>
 				<!-- ここまで -->
 
 			</ul>
@@ -101,7 +101,7 @@
     </div>
   </main>
 
-<--!ここから年月分けて取得-->
+<!--ここから年月分けて取得-->
 <table border="1">
     <thead>
         <tr>
