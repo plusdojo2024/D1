@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>質問履歴</title>
-<link rel="stylesheet" type="text/css" href="css/QueResult.css">
+<title>回答履歴</title>
+<link rel="stylesheet" type="text/css" href="css/AnsResult.css">
 <link rel="stylesheet" type="text/css" href="css/modal.css">
 </head>
 
@@ -19,17 +19,17 @@
 		</div>
 	</header>
 
-	<h2>あなたの質問履歴</h2>
+	<h2>あなたの回答履歴</h2>
 
-	<form method="post" action="/D1/QueResultServlet">
+	<form method="post" action="/D1/AnsResultServlet">
 			<input type="text" name="login_id">
 			<input type="submit" value="検索">
 	</form>
 
 	<ul class="Que-area">
-		<c:forEach var="e" items="${contentCount}">
+		<c:forEach var="e" items="${QueList}">
 
-			<li>${e.content}</li>
+			<li>${e.login_id}/${e.date}/${e.content}/${e.answer}/${e.subject}</li>
 
 		</c:forEach>
 	</ul>

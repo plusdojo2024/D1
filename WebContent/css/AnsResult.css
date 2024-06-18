@@ -18,6 +18,7 @@ time, mark, audio, video {
   font-size: 100%;
   vertical-align: bottom;
   background: transparent;
+  list-style: none;
 }
 
 body {
@@ -43,18 +44,14 @@ body {
   font-family: "Arial", sans-serif;
   color: #555;
   font-feature-settings: "palt";
+  background: #F8FBFE;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-.logo img{
-	width: 150px;
-}
-
 header {
-  position: fixed;
   height: 80px;
   width: 100%;
   padding: 0 20px;
@@ -64,35 +61,20 @@ header {
   align-items: center;
 }
 
+.logo img{
+	width: 150px;
+}
+
+
+/* /////////////////////////////////// */
 
 h2{
-	display: inline-block;
-	font-size: 2em;
-	padding-right: 500px;
-	padding-left: 50px;
+  	display: inline-block;
+	font-size: 3em;
+	padding-right: 880px;
+	padding-left: 200px;
 	margin-left: 10px;
-	margin-top: 100px;
-	margin-bottom: 10px;
+	margin-top: 10px;
+	border-bottom: 1px solid #020062;
+	margin-bottom: 50px;
 }
-
-p{
-	padding-left:45px;
-}
-
-.btn{
-	padding-left:45px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-

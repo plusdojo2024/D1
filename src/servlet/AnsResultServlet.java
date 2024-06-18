@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.QuestionDao;
+import model.Question;
+
 /**
  * Servlet implementation class StudentQueSubServlet
  */
@@ -16,18 +20,19 @@ import javax.servlet.http.HttpServletResponse;
 public class AnsResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AnsResultServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AnsResultServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		// ログインページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AnsResult.jsp");
@@ -39,12 +44,21 @@ public class AnsResultServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AnsResult.jsp");
+request.setCharacterEncoding("UTF-8");
+String login_id = request.getParameter("login_id");
+String date = request.getParameter("date");
+String content = request.getParameter("content");
+String answer = request.getParameter("answer");
+String subject = request.getParameter("subject");
+
+QuestionDao QDao = new QuestionDao();
+List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject));
+
+request.setAttribute("QueList", QueList);
+
+RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AnsResult.jsp");
 		dispatcher.forward(request, response);
 	}
-
-
 
 }
