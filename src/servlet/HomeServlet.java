@@ -91,6 +91,18 @@ public class HomeServlet extends HttpServlet {
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
+				//このクエリですべての教科の平均スコアが取得される
+				String sql3 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ?";
+				PreparedStatement st3 = conn.prepareStatement(sql3);
+				st3.setString(1, login_id);
+				ResultSet res3 = st3.executeQuery();
+				double avgScore = 0;
+
+				if (res3.next()) { // 結果セットが空でない場合にのみ処理を実行
+				    avgScore = res3.getDouble("avg_score");
+				}
+
+				request.setAttribute("avgScore", avgScore);//最高の平均スコアを持つ科目の平均点数
 
 
 				//このクエリで最高の平均スコアを持つ科目が取得される
@@ -167,16 +179,7 @@ public class HomeServlet extends HttpServlet {
 	        }
 	    }
 
-        int[] test1 = {10,20,30,40,50,60,70,80,90,100,80,10};
-		int[] test2 = {50,70,80,45,30,20,10,100,0,30,90};
-		int[] test3 = {40,50,90,54,21,10,43,18,29,80,20};
-		int[] test4 = {3,40,72,90,70,40,20,68,50,50,50};
-		int[] test5 = {10,100,90,80,70,60,50,40,30,20,10};
-		request.setAttribute("test1", test1);//グラフに反映する成績
-		request.setAttribute("test2", test2);//グラフに反映する成績
-		request.setAttribute("test3", test3);//グラフに反映する成績
-		request.setAttribute("test4", test4);//グラフに反映する成績
-		request.setAttribute("test5", test5);//グラフに反映する成績
+
 
         // ホームページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");

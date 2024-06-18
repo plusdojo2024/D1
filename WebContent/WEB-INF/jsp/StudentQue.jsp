@@ -34,10 +34,10 @@
   <h2>質問</h2>
 
   <div class="grid_area">
-  <p>質問する</p>
-  <p>質問一覧を見る</p>
-  <p>質問履歴を見る</p>
-  <p>回答履歴を見る</p>
+  <p><a href="/D1/StudentQueSub.jsp">質問する</a></p>
+  <p><a href="/D1/StudentQueSub.jsp">質問一覧を見る</a></p>
+  <p><a href="/D1/StudentQueSubResult.jsp">質問履歴を見る</a></p>
+  <p><a href="/D1/StudentQueSub.jsp">回答履歴を見る</a></p>
   </div>
 
 </body>
