@@ -132,7 +132,7 @@ public class HomeServlet extends HttpServlet {
 	                         "FROM Grade " +
 	                         "GROUP BY YEAR(Date), MONTH(Date)";
 	            stmt = conn.prepareStatement(sql);
-
+;
 	            // クエリの実行と結果の取得
 	            rs = stmt.executeQuery();
 
@@ -151,7 +151,6 @@ public class HomeServlet extends HttpServlet {
 
 	            // JSPにデータを渡す
 	            request.setAttribute("averageScores", averageScores);
-	            request.getRequestDispatcher("average_scores.jsp").forward(request, response);
 
 	        } catch (ClassNotFoundException | SQLException e) {
 	            e.printStackTrace();
