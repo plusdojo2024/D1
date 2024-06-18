@@ -91,7 +91,6 @@ public class HomeServlet extends HttpServlet {
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
-				//このクエリですべての教科の平均スコアが取得される
 
 
 				//このクエリで最高の平均スコアを持つ科目が取得される
