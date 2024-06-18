@@ -59,23 +59,23 @@ public class StudentQueServlet extends HttpServlet {
 		//				    String password = res.getString("password");
 		//				}
 
-				int contentCount=0;
-				// contentカラム（Questionテーブル）のデータを取得するループ
-				while (res.next()) {
-				    String content = res.getString("content");
-				    contentCount++;
-				}
-				request.setAttribute("contentCount", contentCount);//質問数
+//				int contentCount=0;
+//				// contentカラム（Questionテーブル）のデータを取得するループ
+//				while (res.next()) {
+//				    String content = res.getString("content");
+//				    contentCount++;
+//				}
+//				request.setAttribute("contentCount", contentCount);//質問数
 
-				// answerカラム（Questionテーブル）のデータを取得するループ
-				//　answerとcontentが同じ行数とは限らないのでループを分けました。
-				res.beforeFirst();// ResultSetを最初の行の前に移動する（ゼロクリアみたいなもの）
-				int answerCount=0;
-				while (res.next()) {
-				    String answer = res.getString("answer");
-				    answerCount++;
-				}
-				request.setAttribute("answerCount", answerCount);//質問回答数
+//				// answerカラム（Questionテーブル）のデータを取得するループ
+//				//　answerとcontentが同じ行数とは限らないのでループを分けました。
+//				res.beforeFirst();// ResultSetを最初の行の前に移動する（ゼロクリアみたいなもの）
+//				int answerCount=0;
+//				while (res.next()) {
+//				    String answer = res.getString("answer");
+//				    answerCount++;
+//				}
+//				request.setAttribute("answerCount", answerCount);//質問回答数
 
 
 			 } catch(SQLException e) {
@@ -95,6 +95,19 @@ public class StudentQueServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String buttonClicked = request.getParameter("button");
+        // ボタンごとに異なる処理を行う
+        if ("button1".equals(buttonClicked)) {
+            response.sendRedirect("/D1/StudentQueSubServlet");
+        } else if ("button2".equals(buttonClicked)) {
+            response.sendRedirect("/D1/StudentQueSubResultServlet");
+        } else if ("button3".equals(buttonClicked)) {
+            response.sendRedirect("/D1/StudentQueHisServlet");
+        } else if ("button4".equals(buttonClicked)) {
+            response.sendRedirect("/D1/QueResultServlet");
+        } else {
+            // 何も該当しない場合の処理いる？
+        }
 		doGet(request, response);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueServlet.jsp");
