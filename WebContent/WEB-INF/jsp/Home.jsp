@@ -121,21 +121,21 @@
 <table border="1">
     <thead>
         <tr>
-            <th>Year-Month</th>
+            <th>Year</th>
+            <th>Month</th>
             <th>Average Score</th>
         </tr>
     </thead>
     <tbody>
-        <!-- averageScores のデータを表示 -->
         <c:forEach var="entry" items="${averageScores}">
             <tr>
-                <td>${entry.key}</td>
-                <td>${entry.value}</td>
+                <td>${entry.year}</td>
+                <td>${entry.month}</td>
+                <td>${entry.averageScore}</td>
             </tr>
         </c:forEach>
     </tbody>
 </table>
-
 
 </body>
 </html>
