@@ -166,8 +166,16 @@ public class HomeServlet extends HttpServlet {
 	        }
 	    }
 
-
-
+        int[] test1 = {10,20,30,40,50,60,70,80,90,100,80,10};
+		int[] test2 = {50,70,80,45,30,20,10,100,0,30,90};
+		int[] test3 = {40,50,90,54,21,10,43,18,29,80,20};
+		int[] test4 = {3,40,72,90,70,40,20,68,50,50,50};
+		int[] test5 = {10,100,90,80,70,60,50,40,30,20,10};
+		request.setAttribute("test1", test1);//グラフに反映する成績
+		request.setAttribute("test2", test2);//グラフに反映する成績
+		request.setAttribute("test3", test3);//グラフに反映する成績
+		request.setAttribute("test4", test4);//グラフに反映する成績
+		request.setAttribute("test5", test5);//グラフに反映する成績
 
         // ホームページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
