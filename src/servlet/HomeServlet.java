@@ -7,7 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.LoginUser;
-import model.SubjectAverageScore;
 
 
 
@@ -91,37 +92,6 @@ public class HomeServlet extends HttpServlet {
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
 				//このクエリですべての教科の平均スコアが取得される
-				String sql3 = "SELECT subject, YEAR(date_column) AS year, MONTH(date_column) AS month, AVG(score) AS avg_score " +
-			             "FROM Grade " +
-			             "WHERE login_id = ? " +
-			             "GROUP BY subject, YEAR(date_column), MONTH(date_column) " +
-			             "ORDER BY subject, year, month";
-
-			try {
-			    PreparedStatement statement = conn.prepareStatement(sql3);
-			    statement.setString(1, login_id);
-			    ResultSet resultSet = statement.executeQuery();
-
-			    List<SubjectAverageScore> subjectScores = new ArrayList<>();
-
-			    while (resultSet.next()) {
-			        String subject = resultSet.getString("subject");
-			        int year = resultSet.getInt("year");
-			        int month = resultSet.getInt("month");
-			        double avgScore = resultSet.getDouble("avg_score");
-
-			        // サブジェクトと月ごとの平均スコアをオブジェクトに格納
-			        SubjectAverageScore subjectScore = new SubjectAverageScore(subject, year, month, avgScore);
-			        subjectScores.add(subjectScore);
-			    }
-
-			    // requestに結果をセットする例（具体的な処理に応じて適宜変更してください）
-			    request.setAttribute("subjectScores", subjectScores);
-
-			} catch (SQLException e) {
-			    e.printStackTrace();
-			    // エラーハンドリングを行う（例外処理を適宜追加してください）
-			}
 
 
 				//このクエリで最高の平均スコアを持つ科目が取得される
@@ -147,11 +117,64 @@ public class HomeServlet extends HttpServlet {
 		        e.printStackTrace();
 		    }
 
+	        PreparedStatement stmt = null;
+	        ResultSet rs = null;
+
+	        try {
+	            // データベースへの接続
+	        	Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
+
+	            // 年と月ごとに全科目の平均スコアを取得するSQLクエリ
+	            String sql = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS averageScore " +
+	                         "FROM Grade " +
+	                         "GROUP BY YEAR(Date), MONTH(Date)";
+	            stmt = conn.prepareStatement(sql);
+
+	            // クエリの実行と結果の取得
+	            rs = stmt.executeQuery();
+
+	            // 年と月ごとの平均スコアを格納するマップ
+	            Map<String, Double> averageScores = new HashMap<>();
+
+	            while (rs.next()) {
+	                int year = rs.getInt("year");
+	                int month = rs.getInt("month");
+	                double averageScore = rs.getDouble("averageScore");
+
+	                // 年と月をキーとして平均スコアをマップに追加
+	                String key = year + "-" + String.format("%02d", month);
+	                averageScores.put(key, averageScore);
+	            }
+
+	            // JSPにデータを渡す
+	            request.setAttribute("averageScores", averageScores);
+	            request.getRequestDispatcher("average_scores.jsp").forward(request, response);
+
+	        } catch (ClassNotFoundException | SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            // リソースの解放
+	            try {
+	                if (rs != null) rs.close();
+	                if (stmt != null) stmt.close();
+	                if (conn != null) conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+
+
+
+
         // ホームページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
         dispatcher.forward(request, response);
 	}
-	}
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
