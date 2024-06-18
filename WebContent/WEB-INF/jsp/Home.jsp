@@ -117,7 +117,7 @@
     </div>
   </main>
 
-
+<--!ここから年月分けて取得-->
 <table border="1">
     <thead>
         <tr>
