@@ -5,8 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.LoginUser;
-import model.Result;
 
 /**
  * Servlet implementation class StudentQueHisServlet
@@ -33,10 +31,8 @@ public class StudentQueHisServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Connection conn = null;
-		List<Double> avgScores = new ArrayList<>();//リストで取得したい時に使う
         request.setCharacterEncoding("UTF-8");
 
-        //login_idをjspから何とか取得したい！方法は模索中…
         HttpSession session = request.getSession();
         LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
         String login_id = loginUser.getId();
@@ -84,9 +80,14 @@ public class StudentQueHisServlet extends HttpServlet {
 				}
 				request.setAttribute("answerCount", answerCount);//質問回答数
 
-
+			 } catch(SQLException e) {
+		            e.printStackTrace();
+		    }catch (ClassNotFoundException e) {
+		        e.printStackTrace();
+		    }
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueHis.jsp");
 		dispatcher.forward(request, response);
+
         }
 }
 
