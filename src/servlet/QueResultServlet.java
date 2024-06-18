@@ -63,6 +63,4 @@ public class QueResultServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-
-
 }
