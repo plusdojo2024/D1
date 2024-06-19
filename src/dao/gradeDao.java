@@ -24,7 +24,7 @@ public class gradeDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 				// SELECT文を準備する
-				String sql = "SELECT COUNT * FROM USER WHERE login_id LIKE ? AND date LIKE ? AND time LIKE ? AND subject LIKE ? AND score LIKE ?";
+				String sql = "SELECT COUNT * FROM USER WHERE login_id LIKE ? AND date LIKE ? AND subject LIKE ? AND score LIKE ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				 if (card.getLogin_id() != null ) {
@@ -39,23 +39,18 @@ public class gradeDao {
 		            else {
 		                pStmt.setString(2, "%");
 		            }
-		            if (card.getTime() != null ) {
-		            	pStmt.setString(3, "%" + card.getTime() + "%");
+
+		            if (card.getSubject() != null ) {
+		                pStmt.setString(3, "%" + card.getSubject() + "%");
 		            }
 		            else {
-		            	pStmt.setString(3, "%");
+		                pStmt.setString(3, "%");
 		            }
-		            if (card.getSubject() != null ) {
-		                pStmt.setString(4, "%" + card.getSubject() + "%");
+		            if (card.getScore() != 0 ) {
+		                pStmt.setString(4, "%" + card.getScore() + "%");
 		            }
 		            else {
 		                pStmt.setString(4, "%");
-		            }
-		            if (card.getScore() != 0 ) {
-		                pStmt.setString(5, "%" + card.getScore() + "%");
-		            }
-		            else {
-		                pStmt.setString(5, "%");
 		            }
 
 
@@ -65,8 +60,7 @@ public class gradeDao {
 				while (rs.next()) {
 	                grade record = new grade(
 	                rs.getString("login_id"),
-	                rs.getDate("date"),
-	                rs.getTime("time"),
+	                rs.getString("date"),
 	                rs.getString("subject"),
 	                rs.getInt("score")
 	                );
@@ -110,40 +104,34 @@ public class gradeDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-				String sql = "INSERT INTO USER VALUES (?, ?, ?, ?, ?)";
+				String sql = "INSERT INTO USER VALUES (?, ?, ?, ?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
-				if (card.getLogin_id() != null && !card.getLogin_id().equals("")) {
-					pStmt.setString(1, card.getLogin_id());
-				}
-				else {
-					pStmt.setString(1, "（未設定）");
-				}
-				if (card.getDate() != null && !card.getDate().equals("")) {
-					pStmt.setDate(2, new java.sql.Date(card.getDate().getTime()));
-				}
-				else {
-					pStmt.setString(2, "（未設定）");
-				}
-				if (card.getTime() != null && !card.getTime().equals("")) {
-					pStmt.setTime(3, card.getTime());
-				}
-				else {
-					pStmt.setString(3, "（未設定）");
-				}
-				if (card.getSubject() != null && !card.getSubject().equals("")) {
-					pStmt.setString(4, card.getSubject());
-				}
-				else {
-					pStmt.setString(4, "（未設定）");
-				}
-				if (card.getScore() != 0) { //int型はnullにならないから0で判定
-					pStmt.setInt(5, card.getScore());
-				}
-				else {
-					pStmt.setInt(5, 0);
-				}
+				   if (card.getLogin_id() != null && !card.getLogin_id().equals("")) {
+						pStmt.setString(1, card.getLogin_id());
+					}
+					else {
+						pStmt.setString(1, "（未設定）");
+					}
+					if (card.getDate() != null && !card.getDate().equals("")) {
+						pStmt.setString(2, card.getDate());
+					}
+					else {
+						pStmt.setString(2, "（未設定）");
+					}
+					if (card.getSubject() != null && !card.getSubject().equals("")) {
+						pStmt.setString(3, card.getSubject());
+					}
+					else {
+						pStmt.setString(3, "（未設定）");
+					}
+					if (card.getScore() != 0) { //int型はnullにならないから0で判定
+						pStmt.setInt(4, card.getScore());
+					}
+					else {
+						pStmt.setInt(4, 0);
+					}
 
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
@@ -180,7 +168,7 @@ public class gradeDao {
 	            // データベースに接続する
 	            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 	            // SQL文を準備する
-	            String sql = "UPDATE grade SET login_id=?, date=?, time=?, subject=?, score=?";
+	            String sql = "UPDATE grade SET login_id=?, date=?, subject=?, score=?";
 	            PreparedStatement pStmt = conn.prepareStatement(sql);
 	            // SQL文を完成させる
 	            if (card.getLogin_id() != null && !card.getLogin_id().equals("")) {
@@ -190,28 +178,22 @@ public class gradeDao {
 					pStmt.setString(1, "（未設定）");
 				}
 				if (card.getDate() != null && !card.getDate().equals("")) {
-					pStmt.setDate(2, new java.sql.Date(card.getDate().getTime()));
+					pStmt.setString(2, card.getDate());
 				}
 				else {
 					pStmt.setString(2, "（未設定）");
 				}
-				if (card.getTime() != null && !card.getTime().equals("")) {
-					pStmt.setTime(3, card.getTime());
+				if (card.getSubject() != null && !card.getSubject().equals("")) {
+					pStmt.setString(3, card.getSubject());
 				}
 				else {
 					pStmt.setString(3, "（未設定）");
 				}
-				if (card.getSubject() != null && !card.getSubject().equals("")) {
-					pStmt.setString(4, card.getSubject());
-				}
-				else {
-					pStmt.setString(4, "（未設定）");
-				}
 				if (card.getScore() != 0) { //int型はnullにならないから0で判定
-					pStmt.setInt(5, card.getScore());
+					pStmt.setInt(4, card.getScore());
 				}
 				else {
-					pStmt.setInt(5, 0);
+					pStmt.setInt(4, 0);
 				}
 
 	            // SQL文を実行する
