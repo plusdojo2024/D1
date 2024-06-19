@@ -12,11 +12,9 @@
 </head>
 
 <body>
-	<header>
-		<div class="logo">
-			<a href="/D1/HomeServlet"><img src="img/logo.png" alt=""></a>
-		</div>
-	</header>
+  <header>
+    <div class="logo">アプリロゴ</div>
+  </header>
 
   <h2>質問</h2>
 
