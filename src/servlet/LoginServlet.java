@@ -55,11 +55,9 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("login_id", new LoginUser(id));//修正しました
 
 			// ホームサーブレットにリダイレクトする
-<<<<<<< HEAD
+
 			response.sendRedirect("/D1/AnsResultServlet");
-=======
 			response.sendRedirect("/D1/HomeServlet");
->>>>>>> 51437f01a901379ce1e43185758039d9b4ace02a
 		}
 		else {									// ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
