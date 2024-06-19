@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,17 +29,6 @@ public class StudentQueSubServlet extends HttpServlet {
     }
 
 
-    private String getNowDate() {
-        LocalDateTime date = LocalDateTime.now();
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        return dateFormatter.format(date);
-    }
-
-    private String getNowTime() {
-        LocalDateTime date = LocalDateTime.now();
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        return timeFormatter.format(date);
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -61,26 +48,22 @@ public class StudentQueSubServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
+		String login_id=request.getParameter("login_id");
+		String date=request.getParameter("date");
+		String content=request.getParameter("content");
+		String answer=request.getParameter("answer");
+		String subject=request.getParameter("subject");
 
-		//ログインIDの取得方法？？？
-
-		String content = request.getParameter("content");
-		String subject = request.getParameter("subject");
-
-	    String date = getNowDate() + getNowTime();
+		QuestionDao qDao=new QuestionDao();
 
 
-		// 登録処理を行う
-		QuestionDao qDao = new QuestionDao();
-
-		//insertエラー
-		if (qDao.insert(new Question(content, subject, date))) {	// 登録成功
+		if(qDao.insert(new Question(login_id, date, content, answer, subject))) {
 			request.setAttribute("result",
-			new Result("登録成功！", "質問を登録しました。", "/D1/StudentQueHisServlet"));
+					new Result("登録完了","質問又は回答を受け付けました！","/D1/StudentQueSubResultServlet"));
 		}
-		else {												// 登録失敗
+		else {
 			request.setAttribute("result",
-			new Result("登録失敗！", "質問の登録に失敗しました。", "/D1/StudentQueSubServlet"));
+					new Result("登録失敗", "質問又は回答を受け付けられませんでした。","/D1/StudentQueSubServlet"));
 		}
 
 		// 結果ページにフォワードする
