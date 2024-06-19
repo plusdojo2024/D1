@@ -18,7 +18,7 @@ import model.grade;
 /**
  * Servlet implementation class ScoreConvertServlet
  */
-@WebServlet("/ScoreConvertServlet")
+@WebServlet("/ScoreConvertRegistServlet")
 public class ScoreConvertRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
