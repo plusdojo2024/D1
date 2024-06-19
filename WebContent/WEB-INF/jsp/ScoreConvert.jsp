@@ -21,7 +21,7 @@
   <h2>成績登録　各教科</h2>
 
     <div class="back">
-			<img src="img/sirusi.png" alt="">
+			<a href = "/D1/ScoreRegistServlet"><img src="img/sirusi.png" alt=""></a>
 		</div>
 
 
