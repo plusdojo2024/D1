@@ -30,7 +30,7 @@
 	</div>
 
 	<div class="seiseki_touroku">
-		<form>
+		<form method = "post" action = "/D1/ScoreConvertRegistServlet">
 			<p>正解数　</p>
 			<p>問題数　</p>
 			<br>
@@ -40,12 +40,13 @@
 
 			<p id="seiseki_date">日付</p><br>
 			<input type="date" name = "date">
+
+			<div class="seiseki_okuru">
+				<input id="openModal" type="submit" value="登録">
+			</div>
 		</form>
 	</div>
 
-	<div class="seiseki_okuru">
-		<input id="openModal" type="submit" value="登録">
-	</div>
 
 	<section id="modalArea" class="modalArea">
 		<div id="modalBg" class="modalBg"></div>
