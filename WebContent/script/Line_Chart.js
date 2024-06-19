@@ -7,7 +7,7 @@ var ctx = document.getElementById("myLineChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
    data: {
-	 labels: ['4月','5月','6月','7月','9月','10月','11月','12月','1月','2月','3月'],
+	 labels: array2,
 	 datasets: [
      {
 	   label: '成績推移',
