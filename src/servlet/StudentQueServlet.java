@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-
 /**
  * Servlet implementation class StudentQueServlet
  */
@@ -19,31 +16,31 @@ import javax.servlet.http.HttpServletResponse;
 public class StudentQueServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public StudentQueServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String buttonClicked = request.getParameter("button");
-        // ボタンごとに異なる処理を行う
-        if ("button1".equals(buttonClicked)) {
-            response.sendRedirect("/D1/StudentQueSubServlet");
-        } else if ("button2".equals(buttonClicked)) {
-            response.sendRedirect("/D1/StudentQueSubResultServlet");
-        } else if ("button3".equals(buttonClicked)) {
-            response.sendRedirect("/D1/StudentQueHisServlet");
-        } else if ("button4".equals(buttonClicked)) {
-            response.sendRedirect("/D1/QueResultServlet");
-        } else {
-            // 何も該当しない場合の処理いる？
-        }
-		doGet(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueServlet.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQue.jsp");
 		dispatcher.forward(request, response);
 	}
 
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
 
 }
