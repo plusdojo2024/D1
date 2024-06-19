@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("login_id", new LoginUser(id));//修正しました
 
 			// ホームサーブレットにリダイレクトする
-			response.sendRedirect("/D1/QueResultServlet");
+			response.sendRedirect("/D1/AnsResultServlet");
 		}
 		else {									// ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
