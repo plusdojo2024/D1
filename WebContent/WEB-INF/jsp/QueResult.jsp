@@ -21,13 +21,8 @@
 
 	<h2>あなたの質問履歴</h2>
 
-	<form method="post" action="/D1/QueResultServlet">
-			<input type="text" name="login_id">
-			<input type="submit" value="検索">
-	</form>
-
 	<ul class="Que-area">
-		<c:forEach var="e" items="${contentCount}">
+		<c:forEach var="e" items="${QueList}">
 
 			<li>${e.content}</li>
 
