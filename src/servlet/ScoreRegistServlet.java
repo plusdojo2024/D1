@@ -50,13 +50,14 @@ public class ScoreRegistServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		String subject = request.getParameter("subject");
+		String date = request.getParameter("date");
 		//int型は一旦string型でパラメーターを受け取ってそれをint型に直す必要がある
 		String scoreString = request.getParameter("score");
 		int score = Integer.parseInt(scoreString);
 
 		gradeDao gDao = new gradeDao();
 
-		if (gDao.insert(new grade(null,null,null,subject,score))) {	// 登録成功
+		if (gDao.insert(new grade(null,date,subject,score))) {	// 登録成功
 
 			request.setAttribute("result",
 			new Result("登録成功！", "成績を登録しました。", "/D1/HomeServlet"));
