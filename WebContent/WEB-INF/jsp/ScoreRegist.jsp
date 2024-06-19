@@ -22,18 +22,18 @@
 
 <div class="seiseki_touroku">
   <p>点数登録</p><br>
-  <input type="text">
+  <input type="text" id="score" name="score">
   <img src="img/score.png" width="70" height="70"><br>
   <br>
   <p>日付登録</p>
-  <form action="/StudentQueSubServlet" method="post">
   <input type="date" id="date" name="date"><br>
-  </form>
 </div>
 
 
 <div class="seiseki_okuru">
+<form action="/ScoreRegistServlet" method="post">
   <input id="openModal" type="submit" value="登録">
+  </form>
 </div>
 
 <div class="not_100">
