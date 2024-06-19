@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.gradeDao;
+import model.LoginUser;
 import model.Result;
 import model.grade;
 
@@ -36,6 +38,8 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 
+
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ScoreConvert.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -49,6 +53,11 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
+
+//      String login_id = (String) session.getAttribute("login_id");
+      HttpSession session = request.getSession();
+      LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
+      String login_id = loginUser.getId();
 
 
 		// JSP から送られた正答数と問題数を取得
@@ -64,7 +73,7 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		//登録処理を行う
 		gradeDao gDao = new gradeDao();
 
-		if (gDao.insert(new grade(null, null, null, subject, score))) {	// 登録成功
+		if (gDao.insert(new grade(login_id, null, subject, score))) {	// 登録成功
 
 			request.setAttribute("result",
 			new Result("登録成功！", "点数を登録しました。", "/D1/ScoreConvertRegistServlet"));

@@ -43,6 +43,10 @@
 			  <c:forEach var="entry" items="${averageScores}">
 			  	${entry.averageScore},
 			  </c:forEach>];
+		const array2 = [
+			<c:forEach var="entry" items="${averageScores}">
+		  	  '${entry.year}-${entry.month}',
+		    </c:forEach>];
 		</script>
 
 
