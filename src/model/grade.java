@@ -49,6 +49,5 @@ public class grade {
 		this.date = date;
 	}
 
-
 }
 

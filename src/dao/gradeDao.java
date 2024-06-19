@@ -39,7 +39,6 @@ public class gradeDao {
 		            else {
 		                pStmt.setString(2, "%");
 		            }
-
 		            if (card.getSubject() != null ) {
 		                pStmt.setString(3, "%" + card.getSubject() + "%");
 		            }
@@ -108,30 +107,30 @@ public class gradeDao {
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
-				   if (card.getLogin_id() != null && !card.getLogin_id().equals("")) {
-						pStmt.setString(1, card.getLogin_id());
-					}
-					else {
-						pStmt.setString(1, "（未設定）");
-					}
-					if (card.getDate() != null && !card.getDate().equals("")) {
-						pStmt.setString(2, card.getDate());
-					}
-					else {
-						pStmt.setString(2, "（未設定）");
-					}
-					if (card.getSubject() != null && !card.getSubject().equals("")) {
-						pStmt.setString(3, card.getSubject());
-					}
-					else {
-						pStmt.setString(3, "（未設定）");
-					}
-					if (card.getScore() != 0) { //int型はnullにならないから0で判定
-						pStmt.setInt(4, card.getScore());
-					}
-					else {
-						pStmt.setInt(4, 0);
-					}
+				if (card.getLogin_id() != null && !card.getLogin_id().equals("")) {
+					pStmt.setString(1, card.getLogin_id());
+				}
+				else {
+					pStmt.setString(1, "（未設定）");
+				}
+				if (card.getDate() != null && !card.getDate().equals("")) {
+					pStmt.setString(2, card.getDate());
+				}
+				else {
+					pStmt.setString(2, "（未設定）");
+				}
+				if (card.getSubject() != null && !card.getSubject().equals("")) {
+					pStmt.setString(3, card.getSubject());
+				}
+				else {
+					pStmt.setString(3, "（未設定）");
+				}
+				if (card.getScore() != 0) { //int型はnullにならないから0で判定
+					pStmt.setInt(4, card.getScore());
+				}
+				else {
+					pStmt.setInt(4, 0);
+				}
 
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
