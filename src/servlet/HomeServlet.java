@@ -39,7 +39,7 @@ public class HomeServlet extends HttpServlet {
 //        }
 
 		Connection conn = null;
-		List<Double> avgScores = new ArrayList<>();//リストで取得したい時に使う
+//		List<Double> avgScores = new ArrayList<>();//リストで取得したい時に使う
         request.setCharacterEncoding("UTF-8");
 
         //login_idをjspから何とか取得したい！方法は模索中…
@@ -194,9 +194,9 @@ public class HomeServlet extends HttpServlet {
 
 
 		request.setCharacterEncoding("UTF-8");
-		String login_id = request.getParameter("login_id");
-		String user_name = request.getParameter("user_name");
-		String password = request.getParameter("password");
+//		String login_id = request.getParameter("login_id");
+//		String user_name = request.getParameter("user_name");
+//		String password = request.getParameter("password");
 
 
 		// ホームページにフォワードする
