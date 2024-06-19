@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.QueContent;
 import model.Question;
+
 public class QuestionDao{
     // 引数paramで検索項目を指定し、検索結果のリストを返す
     public List<Question> select(Question card) {
@@ -229,4 +231,73 @@ public class QuestionDao{
         // 結果を返す
         return result;
     }
+
+
+
+
+
+
+
+
+
+
+
+public List<QueContent> select(QueContent card) {
+    Connection conn = null;
+    List<QueContent> Ques = new ArrayList<QueContent>();
+    try {
+        // JDBCドライバを読み込む
+        Class.forName("org.h2.Driver");
+        // データベースに接続する
+        conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
+        // SQL文を準備する
+        //String sql = "SELECT content FROM Question WHERE login_id = ?";
+        String sql = "SELECT * FROM Question WHERE login_id LIKE ? AND date LIKE ? AND content LIKE ? AND answer LIKE ? AND subject LIKE ?";
+
+        PreparedStatement pStmt = conn.prepareStatement(sql);
+        // SQL文を完成させる
+        if (card.getLogin_id() != null ) {
+            pStmt.setString(1, "%" + card.getLogin_id() + "%");
+        }
+        else {
+            pStmt.setString(1, "%");
+        }
+
+        // SQL文を実行し、結果表を取得する
+        ResultSet rs = pStmt.executeQuery();
+        // 結果表をコレクションにコピーする
+        while (rs.next()) {
+        	QueContent record = new QueContent(
+                    rs.getString("login_id"),
+                    rs.getString("date"),
+                    rs.getString("content"),
+                    rs.getString("answer"),
+                    rs.getString("subject")
+            );
+        	Ques.add(record);
+        }
+    }
+    catch (SQLException e) {
+        e.printStackTrace();
+        Ques = null;
+    }
+    catch (ClassNotFoundException e) {
+        e.printStackTrace();
+        Ques = null;
+    }
+    finally {
+        // データベースを切断
+        if (conn != null) {
+            try {
+                conn.close();
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                Ques = null;
+            }
+        }
+    }
+    // 結果を返す
+    return Ques;
+}
 }
