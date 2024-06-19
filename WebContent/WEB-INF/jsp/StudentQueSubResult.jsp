@@ -1,5 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>テスト</title>
+<link rel="stylesheet" type="text/css" href="css/ScoreRegist.css">
+<link rel="stylesheet" type="text/css" href="css/modal.css">
+</head>
+
+<body>
+	<header>
+		<div class="logo">
+			<a href="/D1/HomeServlet"><img src="img/logo.png" alt=""></a>
+		</div>
+	</header>
 
    <div class="questionssss">
 
@@ -59,3 +76,11 @@
     </div>
 
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+	<script src="js/modal.js"></script>
+
+</body>
+</html>
