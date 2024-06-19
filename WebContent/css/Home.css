@@ -153,45 +153,19 @@ main {
 }
 
 #myLineChart {
-    margin: 0 0 0 15%;
+    margin: 0 85px 0 45px;
 	width: 1035px;
 }
 
-.daily_task{
-	margin-left: 250px;
-	display:inline-block;
-	margin-top:20px;
-	border: 1px solid #c0c0c0;
-	padding:10px 10px;
-}
-.daily_task h1{
-	font-size:2em;
-	margin-top:10px;
-}
-.daily_task li{
-	margin-left: 30px;
-	font-size:1.4em;
-	margin-top:8px;
-}
-.task_bar img{
-	width:500px;
-}
-
-.bottom_content{
+.summary{
 	display:flex;
 
 }
 .bottom_right{
 	display:block;
-	margin-top:40px;
-	margin-left:40px;
+	margin-top:10px;
 	border: 1px solid #c0c0c0;
-}
-.bottom_right1{
-	display:flex;
-}
-.bottom_right2{
-	display:flex;
+	align-items: center;
 }
 
 .score{
@@ -202,7 +176,7 @@ main {
 	justify-content: center;
     align-items: center;
     font-size:1.3em;
-    margin:15px 15px;
+    margin:22px 15px;
 }
 .font_L{
 	font-size:1.5em;
