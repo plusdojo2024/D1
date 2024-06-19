@@ -1,12 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.QuestionDao;
 import model.LoginUser;
+import model.Question;
 
 /**
  * Servlet implementation class StudentQueSubServlet
@@ -38,56 +35,27 @@ public class QueResultServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-        // もしもログインしていなかったらログインサーブレットにリダイレクトする
-      HttpSession session = request.getSession();
-      if (session.getAttribute("login_id") == null) {
-          response.sendRedirect("/D1/LoginServlet");
-          return;
-      }
-
-				Connection conn = null;
-
-				request.setCharacterEncoding("UTF-8");
-
-				LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
-				String login_id = loginUser.getId();
-
-				ArrayList<String> contentCount = new ArrayList<>();
-
-		if (login_id != null) {
-
-			try {
-
-				Class.forName("org.h2.Driver");
-
-
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
-
-
-
-
-				String sql = "SELECT content FROM Question WHERE login_id = ?";
-				PreparedStatement st = conn.prepareStatement(sql);
-				st.setString(1, login_id);
-				ResultSet res = st.executeQuery();
-
-				// contentカラム（Questionテーブル）のデータを取得するループ
-				while (res.next()) {
-				contentCount.add(res.getString("content"));
-				}
-
-				request.setAttribute("contentCount", contentCount);//質問数
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if (conn != null)
-						conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/D1/LoginServlet");
+			return;
 		}
+
+		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
+
+		request.setCharacterEncoding("UTF-8");
+		String login_id = loginUser.getId();
+		String date = request.getParameter("date");
+		String content = request.getParameter("content");
+		String answer = request.getParameter("answer");
+		String subject = request.getParameter("subject");
+
+		QuestionDao QDao = new QuestionDao();
+		List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject));
+
+		request.setAttribute("QueList", QueList);
+
 		// ログインページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/QueResult.jsp");
 		dispatcher.forward(request, response);
@@ -99,21 +67,6 @@ public class QueResultServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		//		request.setCharacterEncoding("UTF-8");
-		//		String login_id = request.getParameter("login_id");
-		//		String date = request.getParameter("date");
-		//		String content = request.getParameter("content");
-		//		String answer = request.getParameter("answer");
-		//		String subject = request.getParameter("subject");
-		//
-		//
-		//		// 検索処理を行う
-		//		QuestionDao QDao = new QuestionDao();
-		//		List<Question> QueList = QDao.select(new Question(login_id, date, content,answer,subject));
-		//
-		//		// 検索結果をリクエストスコープに格納する
-		//		request.setAttribute("QueList", QueList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/QueResult.jsp");
 		dispatcher.forward(request, response);
