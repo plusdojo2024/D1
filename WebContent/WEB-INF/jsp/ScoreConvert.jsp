@@ -53,7 +53,7 @@
 		<div class="modalWrapper">
 			<div class="modalContents">
 				<div class="modal_title">
-					<h1>この内容で送信してよろしいですか？</h1>
+					<h1>この内容で登録してよろしいですか？</h1>
 				</div>
 				<div class="modal_choice">
 					<p id="modal_cancel">戻る</p>
