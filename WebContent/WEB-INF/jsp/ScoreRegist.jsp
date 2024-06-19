@@ -38,7 +38,7 @@
 
 <div class="not_100">
 <img src="img/Q.svg" width="15" height="15"><br>
-<p>100点満点ではない場合</p>
+<p><a href = "/D1/ScoreConvertRegistServlet">100点満点ではない場合</a></p>
 </div>
 
 <section id="modalArea" class="modalArea">
