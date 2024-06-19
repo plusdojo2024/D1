@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +32,7 @@
 	</header>
 
 	<main>
+
 		<div class="head_bar"></div>
 
 		<nav class="your_grade">
@@ -49,81 +50,59 @@
 		    </c:forEach>];
 		</script>
 
+		<div class="summary">
+			<!-- 変更開始 -->
+			<canvas id="myLineChart"></canvas>
+			<div class="graph_js">
+				<script
+					src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+				<script src="script/Line_Chart.js" alt=""></script>
+				<!-- ここまで -->
 
-		<!-- 変更開始 -->
-		<canvas id="myLineChart"></canvas>
-		<div class="graph_js">
-		    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-			<script src="script/Line_Chart.js" alt=""></script>
-		<!-- ここまで -->
+			</div>
 
+
+
+				<div class="bottom_right">
+
+					<div class="score">
+						<span>平均点</span><span class="font_L">${requestScope.avgScore}点</span>
+					</div>
+
+					<div class="score">
+						<span>得意科目</span><span class="font_L">${requestScope.subject}</span>
+					</div>
+
+					<div class="score">
+						<span>質問数</span><span class="font_L">${requestScope.contentCount}回</span>
+					</div>
+
+					<div class="score">
+						<span>回答数</span><span class="font_L">${requestScope.answerCount}回</span>
+					</div>
+				</div>
 		</div>
+	</main>
 
-		<div class="bottom_content">
-
-			<div class="daily_task">
-
-				<h1>デイリータスク</h1>
-
-				<ul>
-					<li>質問をする</li>
-					<li>質問を２回する</li>
-					<li>質問に回答する</li>
-					<li>全てのタスクをクリアする</li>
-				</ul>
-
-				<div class="task_bar">
-					<img src="img/task_bar.png" alt="">
-				</div>
-
-			</div>
-
-
-
-		<div class="bottom_right">
-			<div class="bottom_right1">
-
-				<div class="score">
-					<span>平均点</span><span class="font_L">${requestScope.avgScore}点</span>
-				</div>
-
-				<div class="score">
-					<span>得意科目</span><span class="font_L">${requestScope.subject}</span>
-				</div>
-			</div>
-
-			<div class="bottom_right2">
-				<div class="score">
-					<span>質問数</span><span class="font_L">${requestScope.contentCount}回</span>
-				</div>
-
-				<div class="score">
-					<span>回答数</span><span class="font_L">${requestScope.answerCount}回</span>
-				</div>
-			</div>
-		</div>
-    </div>
-  </main>
-
-<!--ここから年月分けて取得-->
-<table border="1">
-    <thead>
-        <tr>
-            <th>Year</th>
-            <th>Month</th>
-            <th>Average Score</th>
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach var="entry" items="${averageScores}">
-            <tr>
-                <td>${entry.year}</td>
-                <td>${entry.month}</td>
-                <td>${entry.averageScore}</td>
-            </tr>
-        </c:forEach>
-    </tbody>
-</table>
+	<!--ここから年月分けて取得-->
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Year</th>
+				<th>Month</th>
+				<th>Average Score</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="entry" items="${averageScores}">
+				<tr>
+					<td>${entry.year}</td>
+					<td>${entry.month}</td>
+					<td>${entry.averageScore}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 
 </body>
 </html>

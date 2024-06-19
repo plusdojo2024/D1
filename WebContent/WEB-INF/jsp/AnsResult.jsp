@@ -21,15 +21,10 @@
 
 	<h2>あなたの回答履歴</h2>
 
-	<form method="post" action="/D1/AnsResultServlet">
-			<input type="text" name="login_id">
-			<input type="submit" value="検索">
-	</form>
-
 	<ul class="Que-area">
 		<c:forEach var="e" items="${QueList}">
 
-			<li>${e.login_id}/${e.date}/${e.content}/${e.answer}/${e.subject}</li>
+			<li>${e.answer}</li>
 
 		</c:forEach>
 	</ul>
