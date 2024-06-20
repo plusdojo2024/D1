@@ -24,7 +24,7 @@
 <form method="post" action="/D1/QueResultServlet">
 <!-- <form id="search_form"> -->
 <select name="subject" id="subject_select">
-<option value="non">教科選択</option>
+<option value="">教科選択</option>
 <option value="国語">国語</option>
 <option value="数学">数学</option>
 <option value="英語">英語</option>
