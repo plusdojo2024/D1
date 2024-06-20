@@ -22,12 +22,7 @@
 	<h2>成績登録 各教科</h2>
 
 	<div class="seiseki_touroku">
-<<<<<<< HEAD
-		<form action="/D1/ScoreRegistServlet" method="post">
-
-=======
 		<form id = "Form" action="/D1/ScoreRegistServlet" method="post">
->>>>>>> 3480ba5f1e424eae6a713d7423b3715df6b62569
 			<p>教科登録</p>
 			<br>
 			<select name = "subject">
