@@ -84,10 +84,6 @@ public class QueResultServlet extends HttpServlet {
 		String answer = request.getParameter("answer");
 		String subject = request.getParameter("subject");
 
-		if(subject=="non") {
-			response.sendRedirect("/D1/HomeServlet");
-		}
-
 		QuestionDao QDao = new QuestionDao();
 		List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject));
 
