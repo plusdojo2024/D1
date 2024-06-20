@@ -51,7 +51,7 @@ function onclick_search() {
 	<ul class="Que-area">
 		<c:forEach var="e" items="${QueList}">
 
-			<li>${e.content}</li>
+			<li>${e.date} / ${e.content} / ${e.subject}</li>
 
 		</c:forEach>
 	</ul>
