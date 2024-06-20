@@ -71,7 +71,7 @@ header {
 h2{
   	display: inline-block;
 	font-size: 3em;
-	padding-right: 965px;
+	padding-right: 900px;
 	padding-left: 200px;
 	margin-left: 10px;
 	margin-top: 10px;
@@ -126,6 +126,7 @@ h2{
 }
 
 select {
+	font-size: 1.3em;
 	width: 368px;
 	height: 70px;
 	padding: 0 20px;
@@ -133,6 +134,6 @@ select {
 
 .seiseki_touroku img{
 	position: absolute;
-	top:308px;
-	left:881px;
+	top: 422px;
+	left: 874px;
 }
