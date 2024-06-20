@@ -22,6 +22,18 @@
 
 	<div class="seiseki_touroku">
 		<form action="/D1/ScoreRegistServlet" method="post">
+			<p>教科登録</p>
+			<br>
+			<select name = "subject">
+				<option value = "" selected disabled>科目を選択してください</option>
+				<option value = "国語">国語</option>
+				<option value = "数学">数学</option>
+				<option value = "英語">英語</option>
+				<option value = "理科">理科</option>
+				<option value = "社会">社会</option>
+			</select>
+			<br><br>
+
 			<p>点数登録</p>
 			<br>
 			<input type="text" id="score" name="score">
