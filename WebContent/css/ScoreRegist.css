@@ -125,6 +125,12 @@ h2{
 	transform: translateY(4px);
 }
 
+select {
+	width: 368px;
+	height: 70px;
+	padding: 0 20px;
+}
+
 .seiseki_touroku img{
 	position:fixed;
 	top:308px;
