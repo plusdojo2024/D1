@@ -38,8 +38,20 @@
 			<input type="text" name="correct">
 			<input type="text" name="total"> <br><br>
 
-			<p id="seiseki_date">日付</p><br>
-			<input type="date" name = "date">
+			<p>教科選択</p>
+			<p id="seiseki_date">日付</p>
+			<br>
+
+			<select name = "subject">
+				<option value = "" selected disabled>科目を選択してください</option>
+				<option value = "国語">国語</option>
+				<option value = "数学">数学</option>
+				<option value = "英語">英語</option>
+				<option value = "理科">理科</option>
+				<option value = "社会">社会</option>
+			</select>
+
+			<input type="date" name = "date"><br><br>
 
 			<div class="seiseki_okuru">
 				<input id="openModal" type="submit" value="登録">
