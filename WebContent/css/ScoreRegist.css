@@ -127,9 +127,21 @@ h2{
 
 select {
 	font-size: 1.3em;
+	-webkit-appearance: none;
+    -moz-appearance: none;
 	width: 368px;
 	height: 70px;
+	outline: none;
 	padding: 0 20px;
+}
+
+i {
+  position: absolute;
+  right: 590px;
+  top: 47%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: blue;
 }
 
 .seiseki_touroku img{
