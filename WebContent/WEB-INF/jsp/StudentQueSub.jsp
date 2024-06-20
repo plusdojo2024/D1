@@ -13,17 +13,23 @@
 
 <body>
   <header>
-    <div class="logo">アプリロゴ</div>
+    <div class="logo">
+    	<img src="img/logo.png" alt="">
+    </div>
   </header>
 
+<<<<<<< HEAD
+  <h2>質問を作成する</h2>
+=======
   <h2>質問</h2>
+>>>>>>> 4ac1e5edf4cb6eaed414ecada4d4d02be748adbc
 
 	<div id="que_result"></div>
-
+	<div class="que">
   <button id="openModal" class="qbutton">質問を作成する</button>
 
   <img class="qbutton_img" src="img/pen.png" alt="" width="25" height="25">
-
+	</div>
 
   <section id="modalArea" class="modalArea">
     <div id="modalBg" class="modalBg"></div>
