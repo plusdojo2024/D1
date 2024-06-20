@@ -1,12 +1,12 @@
 package model;
 
 public class grade {
-	private String login_id;	// ID
+	private String login_id; // ID
 	private String date;//日付
 	private String subject; //科目
 	private int score; //得点
 
-	public grade(String login_id,String date,String subject,int score) {
+	public grade(String login_id, String date, String subject, int score) {
 		super();
 		this.login_id = login_id;
 		this.date = date;
@@ -50,4 +50,3 @@ public class grade {
 	}
 
 }
-
