@@ -24,7 +24,7 @@
 		<form action="/D1/ScoreRegistServlet" method="post">
 			<p>教科登録</p>
 			<br>
-			<select id = "subject" name = "subject">
+			<select name = "subject">
 				<option value = "" selected disabled>科目を選択してください</option>
 				<option value = "国語">国語</option>
 				<option value = "数学">数学</option>
