@@ -21,20 +21,8 @@
 
 	<h2>あなたの質問履歴</h2>
 
-<form method="post" action="/D1/QueResultServlet">
-<!-- <form id="search_form"> -->
-<select name="subject" id="subject_select">
-<option value="">教科選択</option>
-<option value="国語">国語</option>
-<option value="数学">数学</option>
-<option value="英語">英語</option>
-<option value="理科">理科</option>
-<option value="社会">社会</option>
-</select>
-<input type="submit" value="絞り込み">
-</form>
 
-<!-- <script>
+	<!-- <script>
 function onclick_search() {
 	const data = new FormData(document.getElementById('search_form'));
 	var subject_form = document.getElementById('search_form').value;
@@ -48,13 +36,38 @@ function onclick_search() {
 }
 </script>
  -->
-	<ul class="Que-area">
+
+	<div class="que_title">
+		<p>質問履歴</p>
+
+		<form method="post" action="/D1/QueResultServlet">
+			<!-- <form id="search_form"> -->
+			<div class="subject_pul">
+			<select name="subject" id="subject_select">
+				<option value="">教科選択</option>
+				<option value="国語">国語</option>
+				<option value="数学">数学</option>
+				<option value="英語">英語</option>
+				<option value="理科">理科</option>
+				<option value="社会">社会</option>
+			</select>
+			<input type="submit" value="絞り込み">
+			</div>
+		</form>
+
+	</div>
+
+	<div class="Que-area">
 		<c:forEach var="e" items="${QueList}">
 
-			<li>${e.date} / ${e.content} / ${e.subject}</li>
-
+			<c:if test="${empty e.answer}">
+				<div class="que_content">
+					<p>${e.date}　　${e.subject}</p>
+					<h3>${e.content}</h3>
+				</div>
+			</c:if>
 		</c:forEach>
-	</ul>
+	</div>
 
 
 
