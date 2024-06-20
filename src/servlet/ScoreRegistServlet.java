@@ -52,32 +52,10 @@ public class ScoreRegistServlet extends HttpServlet {
 		String scoreString = request.getParameter("score");
 		int score = Integer.parseInt(scoreString);
 
-//		if (login_id != null) {
-//			try {
-//				// JDBCドライバを読み込む
-//				Class.forName("org.h2.Driver");
-//
-//				// データベースに接続する
-//				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
-//				//SQLのクエリ
-//				String sql = "SELECT date FROM Grade WHERE login_id = ?";
-//				PreparedStatement st = conn.prepareStatement(sql);
-//				st.setString(1, login_id);
-//
-//				String sql2 = "SELECT subject FROM Grade WHERE login_id = ?";
-//				PreparedStatement st2 = conn.prepareStatement(sql2);
-//				st2.setString(1, login_id);
-//
-//				String sql3 = "SELECT grade FROM Grade WHERE login_id = ?";
-//				PreparedStatement st3 = conn.prepareStatement(sql3);
-//				st3.setString(1, login_id);
-//
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			} catch (ClassNotFoundException e) {
-//				e.printStackTrace();
-//			}
-//		}
+		System.out.println("Received login_id: " + login_id);
+		System.out.println("Received date: " + date);
+		System.out.println("Received score: " + score);
+		System.out.println("Received subject: " + subject);
 
 		gradeDao gDao = new gradeDao();
 
