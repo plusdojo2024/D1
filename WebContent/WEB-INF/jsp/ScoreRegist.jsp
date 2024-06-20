@@ -9,6 +9,7 @@
 <title>成績登録画面</title>
 <link rel="stylesheet" type="text/css" href="css/ScoreRegist.css">
 <link rel="stylesheet" type="text/css" href="css/modal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -21,7 +22,7 @@
 	<h2>成績登録 各教科</h2>
 
 	<div class="seiseki_touroku">
-		<form action="/D1/ScoreRegistServlet" method="post">
+		<form id = "Form" action="/D1/ScoreRegistServlet" method="post">
 			<p>教科登録</p>
 			<br>
 			<select name = "subject">
@@ -32,6 +33,7 @@
 				<option value = "理科">理科</option>
 				<option value = "社会">社会</option>
 			</select>
+			<i class="fa-solid fa-caret-down"></i>
 			<br><br>
 
 			<p>点数登録</p>
@@ -43,7 +45,7 @@
 			<br>
 			<input type="date" id="date" name="date"><br><br>
 
-			<input id="openModal" type="submit" value="登録">
+			<input id="openModal" type="button" value="登録">
 		</form>
 	</div>
 
@@ -64,7 +66,7 @@
 				</div>
 				<div class="modal_choice">
 					<p id="modal_cancel">戻る</p>
-					<p>OK</p>
+					<p id = "modal_ok">OK</p>
 				</div>
 			</div>
 			<div id="closeModal" class="closeModal">×</div>
@@ -74,7 +76,7 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 		crossorigin="anonymous"></script>
-	<script src="js/modal.js"></script>
+	<script src="script/modal.js"></script>
 
 </body>
 </html>

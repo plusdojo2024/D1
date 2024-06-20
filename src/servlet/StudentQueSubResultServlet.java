@@ -1,12 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.QuestionDao;
+import model.LoginUser;
+import model.Question;
 /**
  * Servlet implementation class StudentQueSubServlet
  */
@@ -28,67 +27,26 @@ public class StudentQueSubResultServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Connection conn = null;
-        request.setCharacterEncoding("UTF-8");
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("org.h2.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
-			//SQLのクエリ（Homeサーブレットはすべてのテーブルからデータを取得するのですべて結合してから取得）
-			String sql = "SELECT user_name FROM User";
-			PreparedStatement st = conn.prepareStatement(sql);
-			ResultSet res = st.executeQuery();
-
-			List<String> names = new ArrayList<>();
-			List<String> contents = new ArrayList<>();
-			List<String> answers = new ArrayList<>();
-
-			while (res.next()) {
-			    String userName = res.getString("user_name");
-			    names.add(userName);
-			}
-			request.setAttribute("names", names);
-
-			String sql2 = "SELECT content FROM Question";
-			PreparedStatement st2 = conn.prepareStatement(sql2);
-			ResultSet res2 = st2.executeQuery();
-
-			while (res2.next()) {
-				String content = res2.getString("content");
-				contents.add(content);
-			}
-
-			request.setAttribute("contents", contents);
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/D1/LoginServlet");
+			return;
+		}
 
 
-			// answerカラム（Questionテーブル）のデータを取得するループ
-			//　answerとcontentが同じ行数とは限らないのでループを分けました。
-			String sql3 = "SELECT answer FROM Question";
-			PreparedStatement st3 = conn.prepareStatement(sql3);
-			ResultSet res3 = st3.executeQuery();
+		request.setCharacterEncoding("UTF-8");
+		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
 
-			while (res3.next()) {
-		        String answer = res3.getString("answer");
-		        answers.add(answer);
-			}
-			request.setAttribute("answers", answers);
-			  st.close();
-			    res.close();
-			    st2.close();
-			    res2.close();
-			    st3.close();
-			    res3.close();
-			    conn.close();
+		String login_id = loginUser.getId();
+		String date = request.getParameter("date");
+		String content = request.getParameter("content");
+		String answer = request.getParameter("answer");
+		String subject = request.getParameter("subject");
 
+		QuestionDao QDao = new QuestionDao();
+		List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject));
 
-		 } catch(SQLException e) {
-	            e.printStackTrace();
-	    }catch (ClassNotFoundException e) {
-	        e.printStackTrace();
-	    }
-
+		request.setAttribute("QueList", QueList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSubResult.jsp");
 		dispatcher.forward(request, response);
@@ -99,9 +57,6 @@ public class StudentQueSubResultServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		doGet(request, response);
-
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSubResult.jsp");
 		dispatcher.forward(request, response);

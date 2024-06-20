@@ -22,23 +22,21 @@ import model.grade;
 public class ScoreConvertRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ScoreConvertRegistServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ScoreConvertRegistServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		// TODO Auto-generated method stub
-
-
-
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ScoreConvert.jsp");
 		dispatcher.forward(request, response);
@@ -47,27 +45,27 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 
-//      String login_id = (String) session.getAttribute("login_id");
-      HttpSession session = request.getSession();
-      LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
-      String login_id = loginUser.getId();
-
+		//      String login_id = (String) session.getAttribute("login_id");
+		HttpSession session = request.getSession();
+		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
+		String login_id = loginUser.getId();
 
 		// JSP から送られた正答数と問題数を取得
-        int correct = Integer.parseInt(request.getParameter("correct"));
-        int total = Integer.parseInt(request.getParameter("total"));
+		int correct = Integer.parseInt(request.getParameter("correct"));
+		int total = Integer.parseInt(request.getParameter("total"));
 
-        // 100点満点に換算
-        double percentage = ((double) correct / total) * 100;
+		// 100点満点に換算
+		double percentage = ((double) correct / total) * 100;
 
-        String date = request.getParameter("date");
+		String date = request.getParameter("date");
 		String subject = request.getParameter("subject");
 		int score = (int) percentage;
 
@@ -79,14 +77,13 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		//登録処理を行う
 		gradeDao gDao = new gradeDao();
 
-		if (gDao.insert(new grade(login_id, date, subject, score))) {	// 登録成功
+		if (gDao.insert(new grade(login_id, date, subject, score))) { // 登録成功
 
 			request.setAttribute("result",
-			new Result("登録成功！", "点数を登録しました。", "/D1/HomeServlet"));
-		}
-		else {												// 登録失敗
+					new Result("登録成功！", "点数を登録しました。", "/D1/HomeServlet"));
+		} else { // 登録失敗
 			request.setAttribute("result",
-			new Result("登録失敗！", "点数を登録できませんでした。", "/D1/ScoreConvertRegistServlet"));
+					new Result("登録失敗！", "点数を登録できませんでした。", "/D1/ScoreConvertRegistServlet"));
 		}
 
 		// 結果ページにフォワードする
