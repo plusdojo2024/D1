@@ -34,7 +34,6 @@
 			     <p>${e.date}</p><br>
                 <p>${e.content}</p>
                 </div>
-                <img class="chat-ret" src="img/left.png" alt="" width="50" height="50"onclick="toggleTextArea()">
             </div>
         </div>
         </c:if>
@@ -67,7 +66,6 @@
           <p>俺は間違ったことはしてませんよ！</p>
           <p>あそこの人たちだってあれで助かったんだ！！</p>
         </div>
-        <img class="chat-ret" src="img/left.png" alt="" width="50" height="50">
       </div>
     </div>
 
