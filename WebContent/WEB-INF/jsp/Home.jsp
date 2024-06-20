@@ -1,4 +1,4 @@
-4<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -56,7 +56,7 @@
 			<div class="graph_js">
 				<script
 					src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-				<script src="script/Line_Chart.js" alt=""></script>
+				<script src="script/Line_Chart.js"></script>
 				<!-- ここまで -->
 
 			</div>
