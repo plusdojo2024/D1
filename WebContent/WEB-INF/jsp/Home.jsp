@@ -84,25 +84,5 @@
 		</div>
 	</main>
 
-	<!--ここから年月分けて取得-->
-	<table border="1">
-		<thead>
-			<tr>
-				<th>Year</th>
-				<th>Month</th>
-				<th>Average Score</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="entry" items="${averageScores}">
-				<tr>
-					<td>${entry.year}</td>
-					<td>${entry.month}</td>
-					<td>${entry.averageScore}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-
 </body>
 </html>
