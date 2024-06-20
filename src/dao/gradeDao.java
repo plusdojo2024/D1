@@ -24,7 +24,7 @@ public class gradeDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 				// SELECT文を準備する
-				String sql = "SELECT COUNT * FROM USER WHERE login_id LIKE ? AND date LIKE ? AND subject LIKE ? AND score LIKE ?";
+				String sql = "SELECT COUNT * FROM Grade WHERE login_id LIKE ? AND date LIKE ? AND subject LIKE ? AND score LIKE ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				 if (card.getLogin_id() != null ) {
@@ -103,7 +103,7 @@ public class gradeDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-				String sql = "INSERT INTO USER VALUES (?, ?, ?, ?)";
+				String sql = "INSERT INTO Grade VALUES (?, ?, ?, ?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -167,7 +167,7 @@ public class gradeDao {
 	            // データベースに接続する
 	            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 	            // SQL文を準備する
-	            String sql = "UPDATE grade SET login_id=?, date=?, subject=?, score=?";
+	            String sql = "UPDATE Grade SET login_id=?, date=?, subject=?, score=?";
 	            PreparedStatement pStmt = conn.prepareStatement(sql);
 	            // SQL文を完成させる
 	            if (card.getLogin_id() != null && !card.getLogin_id().equals("")) {
