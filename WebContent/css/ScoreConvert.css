@@ -94,6 +94,7 @@ h2{
   width: 323px;
   height: 70px;
   text-align: center;
+  font-size: 2em;
 }
 
 .seiseki_touroku p{
@@ -116,6 +117,7 @@ h2{
 .seiseki_okuru input{
   text-align: center;
   border-radius: 80px;
+  font-size: 1.2em;
 }
 
 .reigai_mes{
@@ -125,6 +127,14 @@ h2{
 .reigai_mes p{
   display: inline-block;
   border-bottom: 1px solid #bbbbbb;
+}
+
+select {
+	font-size: 1.3em;
+	width: 323px;
+	height: 70px;
+	padding: 0 20px;
+	margin-top: 0;
 }
 
 footer{
