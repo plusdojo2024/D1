@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>質問-各教科画面</title>
+  <title>質問画面</title>
   <link rel="stylesheet" type="text/css" href="css/StudentQueSub.css">
   <link rel="stylesheet" type="text/css" href="css/modal_input.css">
 </head>
@@ -16,7 +16,7 @@
     <div class="logo">アプリロゴ</div>
   </header>
 
-  <h2>質問　各教科</h2>
+  <h2>質問</h2>
 
 	<div id="que_result"></div>
 
