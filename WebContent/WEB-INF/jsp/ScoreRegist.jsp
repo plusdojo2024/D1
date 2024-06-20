@@ -21,7 +21,7 @@
 	<h2>成績登録 各教科</h2>
 
 	<div class="seiseki_touroku">
-		<form action="/D1/ScoreRegistServlet" method="post">
+		<form id = "Form" action="/D1/ScoreRegistServlet" method="post">
 			<p>教科登録</p>
 			<br>
 			<select name = "subject">
@@ -43,7 +43,7 @@
 			<br>
 			<input type="date" id="date" name="date"><br><br>
 
-			<input id="openModal" type="submit" value="登録">
+			<input id="openModal" type="button" value="登録">
 		</form>
 	</div>
 
@@ -64,7 +64,7 @@
 				</div>
 				<div class="modal_choice">
 					<p id="modal_cancel">戻る</p>
-					<p>OK</p>
+					<p id = "modal_ok">OK</p>
 				</div>
 			</div>
 			<div id="closeModal" class="closeModal">×</div>
@@ -74,7 +74,7 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 		crossorigin="anonymous"></script>
-	<script src="js/modal.js"></script>
+	<script src="script/modal.js"></script>
 
 </body>
 </html>

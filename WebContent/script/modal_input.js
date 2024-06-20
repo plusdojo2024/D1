@@ -5,6 +5,9 @@ $(function () {
     $('#closeModal , #modalBg,#modal_cancel').click(function(){
       $('#modalArea').fadeOut();
     });
+    $('#modal_ok').click(function() {
+        $('#Form').submit();
+    });
   });
 
   $(function () {
