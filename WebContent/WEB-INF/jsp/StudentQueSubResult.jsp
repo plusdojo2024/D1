@@ -22,7 +22,7 @@
    <div class="questionssss">
 
       <!-- 質問 -->
-    <c:forEach var="index" begin="0" end="${requestScope.names.size() - 1}">
+      	<c:forEach var="e" items="${QueList}">
         <div class="chat-box">
             <div class="chat-face">
                 <img src="img/asuran.jpg" alt="" width="50" height="50">
@@ -30,15 +30,17 @@
             <div class="chat-area">
                 <div class="chat-hukidashi">
                     <p>質問</p>
-                    <p>${requestScope.names[index]}</p>
-                    <p>${requestScope.contents[index]}</p>
+			     <p>${e.date}</p><br>
+                <p>${e.content}</p>
                 </div>
                 <img class="chat-ret" src="img/left.png" alt="" width="50" height="50">
             </div>
         </div>
+        </c:forEach>
 
 
     <!-- 回答 -->
+    <c:forEach var="e" items="${QueList}">
         <div class="chat-box">
         <div class="chat-face">
             <img src="img/megane.png" alt="" width="50" height="50">
@@ -46,8 +48,8 @@
         <div class="chat-area">
             <div class="chat-hukidashi_kaitou">
                 <p>回答</p>
-                <p>${requestScope.names[index]}</p>
-                <p>${requestScope.answers[index]}</p>
+                <p>${e.date}</p><br>
+                <p>${e.answer}</p>
             </div>
         </div>
     </div>
