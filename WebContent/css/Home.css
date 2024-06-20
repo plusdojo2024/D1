@@ -147,9 +147,11 @@ main {
 }
 
 .your_grade h1{
-	margin-left: 250px;
+	margin-left: 10px;
 	font-size:2em;
 	margin-top:10px;
+	border-bottom: 1px solid #020062;
+	padding-left: 200px;
 }
 
 #myLineChart {
