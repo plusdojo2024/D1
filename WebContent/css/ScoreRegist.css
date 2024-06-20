@@ -132,7 +132,7 @@ select {
 }
 
 .seiseki_touroku img{
-	position:fixed;
+	position: absolute;
 	top:308px;
 	left:881px;
 }
