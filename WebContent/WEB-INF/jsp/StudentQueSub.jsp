@@ -18,11 +18,7 @@
     </div>
   </header>
 
-<<<<<<< HEAD
   <h2>質問を作成する</h2>
-=======
-  <h2>質問</h2>
->>>>>>> 4ac1e5edf4cb6eaed414ecada4d4d02be748adbc
 
 	<div id="que_result"></div>
 	<div class="que">
@@ -35,6 +31,7 @@
     <div id="modalBg" class="modalBg"></div>
     <div class="modalWrapper">
       <div class="modalContents">
+       <form id="" action="" method="">
         <div class="modal_maintitle">
           <h1>質問内容を入力してください</h1>
         </div>
@@ -50,6 +47,7 @@
       <div id="closeModal" class="closeModal">
         ×
       </div>
+      </form>
     </div>
   </section>
 
@@ -66,7 +64,7 @@
         </div>
         <div class="modal_choice_B">
           <p id="modal_cancel_B">戻る</p>
-          <p>OK</p>
+          <p id = "modal_ok">OK</p>
         </div>
       </div>
       <div id="closeModal_B" class="closeModal_B">
@@ -78,5 +76,5 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+<script src="script/modal_input.js"></script>
 </html>
