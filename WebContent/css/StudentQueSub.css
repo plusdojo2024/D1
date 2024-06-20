@@ -52,16 +52,16 @@ html {
 
 header {
   height: 80px;
-  width: 100%; 
+  width: 100%;
   padding: 0 20px;
-  background: #ffc8aa;
+  background: #215F9A;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo {
-  font-size: 32px;
+.logo img{
+  width: 150px;
 }
 
 
@@ -69,13 +69,20 @@ header {
 
 h2{
   font-size: 3em;
-  margin-left: 149px;
+  margin-left: 210px;
+  margin-top: 10px;
+  border-bottom: 1px solid #020062;
+  padding-right:900px;
+  padding-left: 100px;
+  margin-left: 10px;
+  margin-bottom:50px;
 }
+
 h3{
   margin-left: 149px;
 }
 
-.tokumei_area{  
+.tokumei_area{
   display: inline-block;
   margin: auto;
 }
@@ -124,7 +131,7 @@ h3{
   position: relative;
   left: 60px;
   top: -25px;
-}  
+}
 .chat-hukidashi {
   position: relative;
   display: inline-block; /*コメントの文字数に合わせて可変*/
@@ -148,16 +155,24 @@ h3{
   background-color: #f0d2d2;
   left: 60px;
 }
-.qbutton{
+
+.que{
+  display: flex;
+  align-items: center; /* 上下の中央揃え */
+  justify-content: center; /* 左右の中央揃え */
   position: fixed;
-  top: 665px;
-  right: 12%;
+  top: 50%; /* 上から50% */
+  left: 50%; /*左から50% */
+  transform: translate(-50%, -50%); /* 変形 */
+}
+.qbutton{
   border-radius: 80px;
   padding: 20px 50px 20px 20px;
   font-size: 1.2em;
+  margin-right: 5px; /* ボタンと画像の間隔 */
+  text-align:center;
 }
 .qbutton_img{
-  position: fixed;
-  top: 87%;
-  right: 200px;
+  width: 25px;
+  height: 25px;
 }
