@@ -53,7 +53,7 @@ public class StudentQueSubServlet extends HttpServlet {
 		String content=request.getParameter("content");
 		String answer=request.getParameter("answer");
 		String subject=request.getParameter("subject");
-
+		System.out.println("Received content: " + content);
 		QuestionDao qDao=new QuestionDao();
 
 
