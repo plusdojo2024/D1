@@ -21,6 +21,33 @@
 
 	<h2>あなたの質問履歴</h2>
 
+<form method="post" action="/D1/QueResultServlet">
+<!-- <form id="search_form"> -->
+<select name="subject" id="subject_select">
+<option value="non">教科選択</option>
+<option value="国語">国語</option>
+<option value="数学">数学</option>
+<option value="英語">英語</option>
+<option value="理科">理科</option>
+<option value="社会">社会</option>
+</select>
+<input type="submit" value="絞り込み">
+</form>
+
+<!-- <script>
+function onclick_search() {
+	const data = new FormData(document.getElementById('search_form'));
+	var subject_form = document.getElementById('search_form').value;
+	const subjectSelect = document.getElementById('subject_select');
+	 subjectSelect.value = subject_form;
+
+
+	fetch('http://localhost:8080/D1/QueResultServlet', {
+		method: 'post', body: data
+	})
+}
+</script>
+ -->
 	<ul class="Que-area">
 		<c:forEach var="e" items="${QueList}">
 

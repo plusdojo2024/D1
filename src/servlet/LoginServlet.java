@@ -55,6 +55,11 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("login_id", new LoginUser(id));//修正しました
 
 			// ホームサーブレットにリダイレクトする
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 230225d6002cd42ba5f475caba57d94b0b730f5b
 			response.sendRedirect("/D1/HomeServlet");
 		}
 		else {									// ログイン失敗
