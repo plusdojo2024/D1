@@ -67,16 +67,22 @@ public class ScoreConvertRegistServlet extends HttpServlet {
         // 100点満点に換算
         double percentage = ((double) correct / total) * 100;
 
+        String date = request.getParameter("date");
 		String subject = request.getParameter("subject");
 		int score = (int) percentage;
+
+		System.out.println("Received login_id: " + login_id);
+		System.out.println("Received date: " + date);
+		System.out.println("Received score: " + score);
+		System.out.println("Received subject: " + subject);
 
 		//登録処理を行う
 		gradeDao gDao = new gradeDao();
 
-		if (gDao.insert(new grade(login_id, null, subject, score))) {	// 登録成功
+		if (gDao.insert(new grade(login_id, date, subject, score))) {	// 登録成功
 
 			request.setAttribute("result",
-			new Result("登録成功！", "点数を登録しました。", "/D1/ScoreConvertRegistServlet"));
+			new Result("登録成功！", "点数を登録しました。", "/D1/HomeServlet"));
 		}
 		else {												// 登録失敗
 			request.setAttribute("result",

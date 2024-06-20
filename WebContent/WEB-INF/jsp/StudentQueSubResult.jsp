@@ -22,7 +22,7 @@
    <div class="questionssss">
 
       <!-- 質問 -->
-    <c:forEach var="index" begin="0" end="${requestScope.contents.size() - 1}">
+    <c:forEach var="index" begin="0" end="${requestScope.names.size() - 1}">
         <div class="chat-box">
             <div class="chat-face">
                 <img src="img/asuran.jpg" alt="" width="50" height="50">
