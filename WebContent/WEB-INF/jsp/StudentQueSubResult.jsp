@@ -23,7 +23,7 @@
 
       <!-- 質問 -->
       	<c:forEach var="e" items="${QueList}">
-      	<c:if test="${!empty e.content　&& !e.subject==('(未設定)')}">
+      	<c:if test="${!empty e.content && !e.subject eq '（未設定）'}">
         <div class="chat-box">
             <div class="chat-face">
                 <img src="img/que_icon.svg" alt="" width="50" height="50">
@@ -39,7 +39,7 @@
 
 
     <!-- 回答 -->
-    <c:if test="${!empty e.answer && !e.subject==('(未設定)')}">
+    <c:if test="${!empty e.content && !e.subject eq '（未設定）'}">
         <div class="chat-box">
         <div class="chat-face">
             <img src="img/megane.png" alt="" width="50" height="50">
