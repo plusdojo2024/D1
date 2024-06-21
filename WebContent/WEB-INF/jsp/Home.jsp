@@ -63,26 +63,32 @@
 
 
 
-				<div class="bottom_right">
+			<div class="bottom_right">
 
-					<div class="score">
-						<span>平均点</span><span class="font_L">${requestScope.avgScore}点</span>
-					</div>
-
-					<div class="score">
-						<span>得意科目</span><span class="font_L">${requestScope.subject}</span>
-					</div>
-
-					<div class="score">
-						<span>質問数</span><span class="font_L">${requestScope.contentCount}回</span>
-					</div>
-
-					<div class="score">
-						<span>回答数</span><span class="font_L">${requestScope.answerCount}回</span>
-					</div>
+				<div class="score">
+					<span>平均点</span><span class="font_L">${requestScope.avgScore}点</span>
 				</div>
+
+				<div class="score">
+					<span>得意科目</span><span class="font_L">${requestScope.subject}</span>
+				</div>
+
+				<div class="score">
+					<span>質問数</span><span class="font_L">${requestScope.contentCount}回</span>
+				</div>
+
+				<div class="score">
+					<span>回答数</span><span class="font_L">${requestScope.answerCount}回</span>
+				</div>
+			</div>
 		</div>
 	</main>
 
 </body>
+<footer>
+<div class="fot_img">
+<img src="img/fot_logo.png" alt="">
+</div>
+</footer>
+
 </html>
