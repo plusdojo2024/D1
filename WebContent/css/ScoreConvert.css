@@ -131,10 +131,21 @@ h2{
 
 select {
 	font-size: 1.3em;
+	-webkit-appearance: none;
+    -moz-appearance: none;
 	width: 323px;
 	height: 70px;
 	padding: 0 20px;
 	margin-top: 0;
+}
+
+i {
+  position: absolute;
+  left: 740px;
+  top: 66%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: blue;
 }
 
 footer{
