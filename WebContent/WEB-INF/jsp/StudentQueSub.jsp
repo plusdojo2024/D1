@@ -29,10 +29,10 @@
 	</div>
 
 	<form id="Form" action="/D1/StudentQueSubServlet" method="post">
-	<section id="modalArea" class="modalArea">
-		<div id="modalBg" class="modalBg"></div>
-		<div class="modalWrapper">
-			<div class="modalContents">
+		<section id="modalArea" class="modalArea">
+			<div id="modalBg" class="modalBg"></div>
+			<div class="modalWrapper">
+				<div class="modalContents">
 					<div class="modal_maintitle">
 						<h1>質問内容を入力してください</h1>
 					</div>
@@ -43,11 +43,11 @@
 						<p id="modal_cancel">戻る</p>
 						<p id="modal_ok">OK</p>
 					</div>
+				</div>
+				<div id="closeModal" class="closeModal">×</div>
 			</div>
-			<div id="closeModal" class="closeModal">×</div>
-		</div>
-	</section>
-	<input type="hidden" id="submissionDateTime" name="date">
+		</section>
+		<input type="hidden" id="submissionDateTime" name="date">
 	</form>
 
 	<section id="modalArea_B" class="modalArea_B">

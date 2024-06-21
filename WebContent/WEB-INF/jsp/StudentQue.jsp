@@ -34,10 +34,10 @@
   <h2>質問</h2>
 
   <div class="grid_area">
-  <p><a href="/D1/StudentQueSubServlet">質問する</a></p>
-  <p><a href="/D1/StudentQueSubResultServlet">みんなの質問一覧を見る</a></p>
-  <p><a href="/D1/QueResultServlet">自分の質問履歴を見る</a></p>
-  <p><a href="/D1/AnsResultServlet">自分の回答履歴を見る</a></p>
+  	<input type="button" onclick="location.href='/D1/StudentQueSubServlet'" value="質問する">
+  	<input type="button" onclick="location.href='/D1/StudentQueSubResultServlet'" value="みんなの質問一覧を見る">
+  	<input type="button" onclick="location.href='/D1/QueResultServlet'" value="自分の履歴を見る">
+  	<input type="button" onclick="location.href='/D1/AnsResultServlet'" value="自分の回答履歴を見る">
   </div>
 
 </body>

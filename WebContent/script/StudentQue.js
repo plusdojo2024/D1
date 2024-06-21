@@ -1,4 +1,4 @@
-window.onload = function(){
+/*window.onload = function(){
   setInterval("showNowDate()", 1000);
 }
 
@@ -15,4 +15,4 @@ function showNowDate(){
 
 function onclick_que() {
 	fetch('http://localhost:8080/D1/QueResultServlet', {method: 'post'});
-}
+}*/
