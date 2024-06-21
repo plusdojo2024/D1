@@ -35,6 +35,7 @@ public class AnsResultServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("login_id") == null) {
 			response.sendRedirect("/D1/LoginServlet");
@@ -65,8 +66,30 @@ public class AnsResultServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/D1/LoginServlet");
+			return;
+		}
 
+
+
+		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
+
+		request.setCharacterEncoding("UTF-8");
+		String login_id = loginUser.getId();
+		String date = request.getParameter("date");
+		String content = request.getParameter("content");
+		String answer = request.getParameter("answer");
+		String subject = request.getParameter("subject");
+
+		QuestionDao QDao = new QuestionDao();
+		List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject));
+
+		request.setAttribute("QueList", QueList);
+
+		// ログインページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AnsResult.jsp");
 		dispatcher.forward(request, response);
 	}
