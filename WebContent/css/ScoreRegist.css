@@ -209,15 +209,6 @@ select {
 	padding: 0 20px;
 }
 
-i {
-  position: absolute;
-  right: 590px;
-  top: 47%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: blue;
-}
-
 .seiseki_touroku img{
 	position: absolute;
 	top: 422px;
@@ -227,4 +218,9 @@ i {
 #score{
 	background:#fff url("/D1/img/score.png") no-repeat 297px center;
 	background-size: 70px 70px;
+}
+
+#subject_select{
+	background:#fff url("/D1/img/select_icon.svg") no-repeat 335px center;
+	background-size: 20px 20px;
 }

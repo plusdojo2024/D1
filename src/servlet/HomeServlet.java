@@ -121,6 +121,16 @@ public class HomeServlet extends HttpServlet {
 				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
 
 
+				String sl = "SELECT user_name FROM User WHERE login_id = ?";
+				PreparedStatement s = conn.prepareStatement(sl);
+				s.setString(1, login_id);
+				ResultSet r = s.executeQuery();
+				while (r.next()) {
+					String user_name = r.getString("user_name");
+					request.setAttribute("user_name", user_name);
+				}
+
+
 
 			 } catch(SQLException e) {
 		            e.printStackTrace();
@@ -137,6 +147,18 @@ public class HomeServlet extends HttpServlet {
 	        PreparedStatement stmt2 = null;
 	        ResultSet rs2 = null;
 
+	        PreparedStatement stmt3 = null;
+	        ResultSet rs3 = null;
+
+	        PreparedStatement stmt4 = null;
+	        ResultSet rs4 = null;
+
+	        PreparedStatement stmt5 = null;
+	        ResultSet rs5 = null;
+
+	        PreparedStatement stmt6 = null;
+	        ResultSet rs6 = null;
+
 	        try {
 
 	        	Class.forName("org.h2.Driver");
@@ -144,11 +166,11 @@ public class HomeServlet extends HttpServlet {
 
 
 	            // 年と月ごとに全科目の平均スコアを取得するSQLクエリ
-	            String sql = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS averageScore "
+	            String sql5 = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS averageScore "
 	                         +"FROM Grade WHERE login_id = ?"
 	                         +"GROUP BY YEAR(Date), MONTH(Date)"
 	                         +"ORDER BY year ASC, month ASC";
-	            stmt1 = conn.prepareStatement(sql);
+	            stmt1 = conn.prepareStatement(sql5);
 	            stmt1.setString(1, login_id);
 	            rs1 = stmt1.executeQuery();
 
@@ -170,11 +192,11 @@ public class HomeServlet extends HttpServlet {
 	            request.setAttribute("averageScores",  averageScoresList);
 
 	         // 年と月ごとに国語の平均スコアを取得するSQLクエリ
-	            String sql2 = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS japaneseAvgScore "
+	            String sql6 = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS japaneseAvgScore "
 	                         +"FROM Grade WHERE login_id = ? AND subject = '国語'"
 	                         +"GROUP BY YEAR(Date), MONTH(Date)"
 	                         +"ORDER BY year ASC, month ASC";
-	            stmt2 = conn.prepareStatement(sql2);
+	            stmt2 = conn.prepareStatement(sql6);
 	            stmt2.setString(1, login_id);
 	            rs2 = stmt2.executeQuery();
 
@@ -195,6 +217,118 @@ public class HomeServlet extends HttpServlet {
 
 	            request.setAttribute("japaneseAvgScores",  japaneseAvgScoresList);
 
+
+	         // 年と月ごとに数学の平均スコアを取得するSQLクエリ
+	            String sql7 = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS mathAvgScore "
+	                         +"FROM Grade WHERE login_id = ? AND subject = '数学'"
+	                         +"GROUP BY YEAR(Date), MONTH(Date)"
+	                         +"ORDER BY year ASC, month ASC";
+	            stmt3 = conn.prepareStatement(sql7);
+	            stmt3.setString(1, login_id);
+	            rs3 = stmt3.executeQuery();
+
+	            // 年と月ごとの平均スコアを格納するリスト
+	            List<Map<String, Object>> mathAvgScoresList = new ArrayList<>();
+
+	            while (rs3.next()) {
+	                int year = rs3.getInt("year");
+	                int month = rs3.getInt("month");
+	                double mathAvgScore = rs3.getDouble("mathAvgScore");
+
+	                Map<String, Object> entry = new HashMap<>();
+	                entry.put("year", year);
+	                entry.put("month", month);
+	                entry.put("mathAvgScore", mathAvgScore);
+	                mathAvgScoresList.add(entry);
+	            }
+
+	            request.setAttribute("mathAvgScores",  mathAvgScoresList);
+
+
+	         // 年と月ごとに理科の平均スコアを取得するSQLクエリ
+	            String sql8 = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS scienceAvgScore "
+	                         +"FROM Grade WHERE login_id = ? AND subject = '理科'"
+	                         +"GROUP BY YEAR(Date), MONTH(Date)"
+	                         +"ORDER BY year ASC, month ASC";
+	            stmt4 = conn.prepareStatement(sql8);
+	            stmt4.setString(1, login_id);
+	            rs4 = stmt4.executeQuery();
+
+	            // 年と月ごとの平均スコアを格納するリスト
+	            List<Map<String, Object>> scienceAvgScoresList = new ArrayList<>();
+
+	            while (rs4.next()) {
+	                int year = rs4.getInt("year");
+	                int month = rs4.getInt("month");
+	                double scienceAvgScore = rs4.getDouble("scienceAvgScore");
+
+	                Map<String, Object> entry = new HashMap<>();
+	                entry.put("year", year);
+	                entry.put("month", month);
+	                entry.put("scienceAvgScore", scienceAvgScore);
+	                scienceAvgScoresList.add(entry);
+	            }
+
+	            request.setAttribute("scienceAvgScores",  scienceAvgScoresList);
+
+
+	         // 年と月ごとに社会の平均スコアを取得するSQLクエリ
+	            String sql9 = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS societyAvgScore "
+	                         +"FROM Grade WHERE login_id = ? AND subject = '社会'"
+	                         +"GROUP BY YEAR(Date), MONTH(Date)"
+	                         +"ORDER BY year ASC, month ASC";
+	            stmt5 = conn.prepareStatement(sql9);
+	            stmt5.setString(1, login_id);
+	            rs5 = stmt5.executeQuery();
+
+	            // 年と月ごとの平均スコアを格納するリスト
+	            List<Map<String, Object>> societyAvgScoresList = new ArrayList<>();
+
+	            while (rs5.next()) {
+	                int year = rs5.getInt("year");
+	                int month = rs5.getInt("month");
+	                double societyAvgScore = rs5.getDouble("societyAvgScore");
+
+	                Map<String, Object> entry = new HashMap<>();
+	                entry.put("year", year);
+	                entry.put("month", month);
+	                entry.put("societyAvgScore", societyAvgScore);
+	                societyAvgScoresList.add(entry);
+	            }
+
+	            request.setAttribute("societyAvgScores",  societyAvgScoresList);
+
+
+	         // 年と月ごとに英語の平均スコアを取得するSQLクエリ
+	            String sql10 = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS englishAvgScore "
+	                         +"FROM Grade WHERE login_id = ? AND subject = '英語'"
+	                         +"GROUP BY YEAR(Date), MONTH(Date)"
+	                         +"ORDER BY year ASC, month ASC";
+	            stmt6 = conn.prepareStatement(sql10);
+	            stmt6.setString(1, login_id);
+	            rs6 = stmt6.executeQuery();
+
+	            // 年と月ごとの平均スコアを格納するリスト
+	            List<Map<String, Object>> englishAvgScoresList = new ArrayList<>();
+
+	            while (rs6.next()) {
+	                int year = rs6.getInt("year");
+	                int month = rs6.getInt("month");
+	                double englishAvgScore = rs6.getDouble("englishAvgScore");
+
+	                Map<String, Object> entry = new HashMap<>();
+	                entry.put("year", year);
+	                entry.put("month", month);
+	                entry.put("englishAvgScore", englishAvgScore);
+	                englishAvgScoresList.add(entry);
+	            }
+
+	            request.setAttribute("englishAvgScores",  englishAvgScoresList);
+
+
+
+
+
 	        } catch (ClassNotFoundException | SQLException e) {
 	            e.printStackTrace();
 	        } finally {
@@ -203,6 +337,14 @@ public class HomeServlet extends HttpServlet {
 	                if (stmt1 != null) stmt1.close();
 	                if (rs2 != null) rs2.close();
 	                if (stmt2 != null) stmt2.close();
+	                if (rs3 != null) rs3.close();
+	                if (stmt3 != null) stmt3.close();
+	                if (rs4 != null) rs4.close();
+	                if (stmt4 != null) stmt4.close();
+	                if (rs5 != null) rs5.close();
+	                if (stmt5 != null) stmt5.close();
+	                if (rs6 != null) rs6.close();
+	                if (stmt6 != null) stmt6.close();
 	                if (conn != null) conn.close();
 	            } catch (SQLException e) {
 	                e.printStackTrace();
