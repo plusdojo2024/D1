@@ -63,11 +63,11 @@ public class StudentQueSubServlet extends HttpServlet {
 		String content=request.getParameter("content");
 		String answer=request.getParameter("answer");
 		String subject=request.getParameter("subject");
-		System.out.println("Received content: " + content);
-		System.out.println("Received content: " + login_id);
-		System.out.println("Received content: " + date);
-		System.out.println("Received content: " + subject);
-		System.out.println("Received content: " + answer);
+//		System.out.println("Received content: " + content);
+//		System.out.println("Received content: " + login_id);
+//		System.out.println("Received content: " + date);
+//		System.out.println("Received content: " + subject);
+//		System.out.println("Received content: " + answer);
 
 
 		QuestionDao qDao=new QuestionDao();
@@ -75,11 +75,11 @@ public class StudentQueSubServlet extends HttpServlet {
 
 		if(qDao.insert(new Question(login_id, date, content, answer, subject))) {
 			request.setAttribute("result",
-					new Result("登録完了","質問又は回答を受け付けました！","/D1/StudentQueSubResultServlet"));
+					new Result("登録完了","質問を受け付けました！","/D1/StudentQueSubResultServlet"));
 		}
 		else {
 			request.setAttribute("result",
-					new Result("登録失敗", "質問又は回答を受け付けられませんでした。","/D1/StudentQueSubServlet"));
+					new Result("登録失敗", "質問を受け付けられませんでした。","/D1/StudentQueSubServlet"));
 		}
 
 		// 結果ページにフォワードする

@@ -69,10 +69,10 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		String subject = request.getParameter("subject");
 		int score = (int) percentage;
 
-		System.out.println("Received login_id: " + login_id);
-		System.out.println("Received date: " + date);
-		System.out.println("Received score: " + score);
-		System.out.println("Received subject: " + subject);
+//		System.out.println("Received login_id: " + login_id);
+//		System.out.println("Received date: " + date);
+//		System.out.println("Received score: " + score);
+//		System.out.println("Received subject: " + subject);
 
 		//登録処理を行う
 		gradeDao gDao = new gradeDao();
