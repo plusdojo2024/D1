@@ -21,7 +21,8 @@ var myLineChart = new Chart(ctx, {
 	   data: array3,
 	   borderColor: "rgba(0,0,255,1)",
 	   backgroundColor: "rgba(0,0,0,0)"
-	 }
+	 },
+
 	   ],
     },
     options: {
