@@ -22,10 +22,10 @@
     </label>
     <nav class="nav-menu">
       <ul>
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">成績登録</a></li>
-        <li><a href="#">質問</a></li>
-        <li><a href="#">ログアウト</a></li>
+        <li><a href="/D1/HomeServlet">HOME</a></li>
+        <li><a href="/D1/ScoreRegistServlet">成績登録</a></li>
+        <li><a href="/D1/StudentQueServlet">質問</a></li>
+        <li><a href="/D1/LogoutServlet">ログアウト</a></li>
       </ul>
     </nav>
   </header>
