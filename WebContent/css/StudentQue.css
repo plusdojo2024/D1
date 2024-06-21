@@ -181,3 +181,16 @@ h2{
 	font-size:1.5em;
 	font-weight: bold;
 }
+
+input[type="button"]{
+	width: 300px;
+	height:130px;
+	background: #DCEAF7;
+	place-items: center;
+	text-align:center;
+	align-content: center;
+	margin-bottom:60px;
+	border: 1px solid #215F9A;
+	font-size:1.5em;
+	font-weight: bold;
+}
