@@ -103,16 +103,50 @@ i {
 	margin-right: 10px;
 }
 
-.chat-area{
+.chat-box .chat-face img{
+	border-radius: 50%;
+	width:50px;
+	height: 50px;
+}
 
+.chat-area{
+	max-width: 70%;
 }
 
 .chat-hukidashi{
+	background: #e1f3fb;
+	border-radius: 10px;
+	padding: 10px;
+	position: relative;
+	word-break: break-word;
+}
 
+.chat-hukidashi::before{
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: -10px;
+	border-width: 10px;
+	border-style: solid;
+	border-color: transparent #e1f3fb transparent transparent;
 }
 
 .chat-hukidashi_kaitou{
+	background: #d1e7dd;
+	border-radius: 10px;
+	padding: 10px;
+	position: relative;
+	word-break: break-word;
+}
 
+.chat-hukidashi_kaitou::before {
+	content: "";
+	position: absolute;
+	top: 10px;
+	right: -10px;
+	border-width: 10px;
+	border-style: solid;
+	border-color: transparent transparent transparent #d1e7dd;
 }
 
 .que{
@@ -120,8 +154,8 @@ i {
   align-items: center; /* 上下の中央揃え */
   justify-content: center; /* 左右の中央揃え */
   position: fixed;
-  top: 50%; /* 上から50% */
-  left: 50%; /*左から50% */
+  top: 90%; /* 上から50% */
+  left: 83%; /*左から50% */
   transform: translate(-50%, -50%); /* 変形 */
 }
 .qbutton{
