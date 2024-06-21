@@ -131,8 +131,11 @@ public class HomeServlet extends HttpServlet {
 
 
 
-	        PreparedStatement stmt = null;
-	        ResultSet rs = null;
+	        PreparedStatement stmt1 = null;
+	        ResultSet rs1 = null;
+
+	        PreparedStatement stmt2 = null;
+	        ResultSet rs2 = null;
 
 	        try {
 
@@ -145,17 +148,17 @@ public class HomeServlet extends HttpServlet {
 	                         +"FROM Grade WHERE login_id = ?"
 	                         +"GROUP BY YEAR(Date), MONTH(Date)"
 	                         +"ORDER BY year ASC, month ASC";
-	            stmt = conn.prepareStatement(sql);
-	            stmt.setString(1, login_id);
-	            rs = stmt.executeQuery();
+	            stmt1 = conn.prepareStatement(sql);
+	            stmt1.setString(1, login_id);
+	            rs1 = stmt1.executeQuery();
 
 	            // 年と月ごとの平均スコアを格納するリスト
 	            List<Map<String, Object>> averageScoresList = new ArrayList<>();
 
-	            while (rs.next()) {
-	                int year = rs.getInt("year");
-	                int month = rs.getInt("month");
-	                double averageScore = rs.getDouble("averageScore");
+	            while (rs1.next()) {
+	                int year = rs1.getInt("year");
+	                int month = rs1.getInt("month");
+	                double averageScore = rs1.getDouble("averageScore");
 
 	                Map<String, Object> entry = new HashMap<>();
 	                entry.put("year", year);
@@ -166,12 +169,40 @@ public class HomeServlet extends HttpServlet {
 
 	            request.setAttribute("averageScores",  averageScoresList);
 
+	         // 年と月ごとに国語の平均スコアを取得するSQLクエリ
+	            String sql2 = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS japaneseAvgScore "
+	                         +"FROM Grade WHERE login_id = ? AND subject = '国語'"
+	                         +"GROUP BY YEAR(Date), MONTH(Date)"
+	                         +"ORDER BY year ASC, month ASC";
+	            stmt2 = conn.prepareStatement(sql2);
+	            stmt2.setString(1, login_id);
+	            rs2 = stmt2.executeQuery();
+
+	            // 年と月ごとの平均スコアを格納するリスト
+	            List<Map<String, Object>> japaneseAvgScoresList = new ArrayList<>();
+
+	            while (rs2.next()) {
+	                int year = rs2.getInt("year");
+	                int month = rs2.getInt("month");
+	                double japaneseAvgScore = rs2.getDouble("japaneseAvgScore");
+
+	                Map<String, Object> entry = new HashMap<>();
+	                entry.put("year", year);
+	                entry.put("month", month);
+	                entry.put("japaneseAvgScore", japaneseAvgScore);
+	                japaneseAvgScoresList.add(entry);
+	            }
+
+	            request.setAttribute("japaneseAvgScores",  japaneseAvgScoresList);
+
 	        } catch (ClassNotFoundException | SQLException e) {
 	            e.printStackTrace();
 	        } finally {
 	            try {
-	                if (rs != null) rs.close();
-	                if (stmt != null) stmt.close();
+	                if (rs1 != null) rs1.close();
+	                if (stmt1 != null) stmt1.close();
+	                if (rs2 != null) rs2.close();
+	                if (stmt2 != null) stmt2.close();
 	                if (conn != null) conn.close();
 	            } catch (SQLException e) {
 	                e.printStackTrace();
