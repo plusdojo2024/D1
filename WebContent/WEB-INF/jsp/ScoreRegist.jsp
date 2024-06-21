@@ -15,7 +15,7 @@
 <body>
 	<header>
 		<div class="logo">
-			<a href="/D1/HomeServlet"><img src="img/logo.png" alt=""></a>
+			<a href="/D1/HomeServlet"><img src="img/logo.png" alt="ロゴ"></a>
 		</div>
 	</header>
 
