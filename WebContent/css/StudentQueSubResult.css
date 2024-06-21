@@ -89,6 +89,11 @@ i {
   color: blue;
 }
 
+textarea{
+	border: 2px solid black;
+	box-sizing: border-box;
+}
+
 .questionssss{
 	padding: 20px;
 }
@@ -169,3 +174,4 @@ i {
   width: 25px;
   height: 25px;
 }
+
