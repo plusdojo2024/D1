@@ -19,7 +19,10 @@
 
 <h2>${result.title}</h2>
 <hr>
-<p>${result.message}</p>
-<a class="btn" href="${result.backTo}">戻る</a>
+<p>「 ${result.message} 」</p>
+
+<div class="btn">
+<a href="${result.backTo}">戻る</a>
+</div>
 </body>
 </html>
