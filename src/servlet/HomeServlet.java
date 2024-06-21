@@ -48,6 +48,7 @@ public class HomeServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String login_id = loginUser.getId();
 
+
         if (login_id != null) {
 
 			try {
