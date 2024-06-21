@@ -64,25 +64,12 @@ body{
     background-color: #DCEAF7;
 }
 
-
-.people_icon{
-    position: absolute;
-    width: 41px;
-    height: 41px;
-    background-color: rgb(195, 195, 195);
-    border-radius: 10px;
-    top: 362px;
-    left: 566px;
-   border: 2px solid #000000;
+#email{
+	background:#fff url("/D1/img/people.png") no-repeat 0px center;
+	background-size: 40px 40px;
 }
 
-.lock_icon{
-    position: absolute;
-    width: 41px;
-    height: 41px;
-    background-color: rgb(195, 195, 195);
-    border-radius: 10px;
-    top: 418px;
-    left: 566px;
-   border: 2px solid #000000;
+#password{
+	background:#fff url("/D1/img/lock.png") no-repeat 0px center;
+	background-size: 40px 40px;
 }
