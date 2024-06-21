@@ -47,7 +47,7 @@
 			<div id="closeModal" class="closeModal">×</div>
 		</div>
 	</section>
-	<input type="hidden" id="submissionDateTime" name="submissionDateTime">
+	<input type="hidden" id="submissionDateTime" name="date">
 	</form>
 
 	<section id="modalArea_B" class="modalArea_B">
