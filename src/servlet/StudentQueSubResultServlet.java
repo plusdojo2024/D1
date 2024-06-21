@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import dao.QuestionDao;
 import model.LoginUser;
 import model.Question;
+import model.Result;
 /**
  * Servlet implementation class StudentQueSubServlet
  */
@@ -57,6 +58,23 @@ public class StudentQueSubResultServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+		request.setCharacterEncoding("UTF-8");
+		String login_id=request.getParameter("login_id");
+		String date=request.getParameter("date");
+		String answer=request.getParameter("answer");
+
+		QuestionDao qDao=new QuestionDao();
+
+
+		if(qDao.insert(new Question(login_id, date, null, answer, null))) {
+			request.setAttribute("result",
+					new Result("登録完了","回答を受け付けました！","/D1/StudentQueSubResultServlet"));
+		}
+		else {
+			request.setAttribute("result",
+					new Result("登録失敗", "回答を受け付けられませんでした。","/D1/StudentQueSubServlet"));
+		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSubResult.jsp");
 		dispatcher.forward(request, response);
