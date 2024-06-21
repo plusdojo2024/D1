@@ -15,6 +15,13 @@ var myLineChart = new Chart(ctx, {
 	   borderColor: "rgba(255,0,0,1)",
 	   backgroundColor: "rgba(0,0,0,0)"
 	 },
+
+	 {
+	   label: '国語',
+	   data: array3,
+	   borderColor: "rgba(0,0,255,1)",
+	   backgroundColor: "rgba(0,0,0,0)"
+	 }
 	   ],
     },
     options: {
