@@ -74,7 +74,7 @@
 						<h1>回答を入力してください</h1>
 					</div>
 					<div class="modal_title">
-						<textarea name="answer" rows="7" cols="85"></textarea>
+						<textarea name="answer" rows="7" cols="58"></textarea>
 					</div>
 					<div class="modal_choice">
 						<p id="modal_cancel">戻る</p>
