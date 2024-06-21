@@ -19,8 +19,12 @@
 		</div>
 	</header>
 
+
 	<h2>あなたの質問履歴</h2>
 
+<div class="back_icon">
+	<a href="/D1/StudentQueServlet"><img src="img/sirusi.png"></a>
+</div>
 
 	<!-- <script>
 function onclick_search() {
@@ -57,11 +61,15 @@ function onclick_search() {
 
 	</div>
 
-	<div class="Que-area">
+	<div class="que_area">
 		<c:forEach var="e" items="${QueList}">
+
+
+
 
 			<c:if test="${empty e.answer}">
 				<div class="que_content">
+
 					<p>${e.date}　　${e.subject}</p>
 					<h3>${e.content}</h3>
 				</div>
