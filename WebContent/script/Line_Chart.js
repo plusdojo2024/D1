@@ -12,7 +12,7 @@ var myLineChart = new Chart(ctx, {
      {
 	   label: '成績推移',
 	   data: array1,
-	   borderColor: "rgba(47,79,79,1)",
+	   borderColor: "rgba(0,0,0,1)",
 	   backgroundColor: "rgba(0,0,0,0)"
 	 },
 

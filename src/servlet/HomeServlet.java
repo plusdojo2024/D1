@@ -56,7 +56,7 @@ public class HomeServlet extends HttpServlet {
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 				//SQLのクエリ（Homeサーブレットはすべてのテーブルからデータを取得するのですべて結合してから取得）
-				String sql = "SELECT content FROM Question WHERE login_id = ?";
+				String sql = "SELECT content FROM Question WHERE login_id = ? AND answer != '（未設定）'";
 				PreparedStatement st = conn.prepareStatement(sql);
 				st.setString(1, login_id);
 				ResultSet res = st.executeQuery();
@@ -80,7 +80,7 @@ public class HomeServlet extends HttpServlet {
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
 				//　answerとcontentが同じ行数とは限らないのでループを分けました。
-				String sql2 = "SELECT answer FROM Question WHERE login_id = ?";
+				String sql2 = "SELECT answer FROM Question WHERE login_id = ? AND content != '（未設定）'";
 				PreparedStatement st2 = conn.prepareStatement(sql2);
 				st2.setString(1, login_id);
 				ResultSet res2 = st2.executeQuery();
