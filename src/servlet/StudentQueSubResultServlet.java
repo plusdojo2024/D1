@@ -77,14 +77,16 @@ public class StudentQueSubResultServlet extends HttpServlet {
 		if(qDao.insert(new Question(login_id, date, null, answer, null))) {
 			request.setAttribute("result",
 					new Result("登録完了","回答を受け付けました！","/D1/StudentQueSubResultServlet"));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");
+			dispatcher.forward(request, response);
 		}
 		else {
 			request.setAttribute("result",
 					new Result("登録失敗", "回答を受け付けられませんでした。","/D1/StudentQueSubResultServlet"));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");
+			dispatcher.forward(request, response);
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSubResult.jsp");
-		dispatcher.forward(request, response);
 	}
 
 }

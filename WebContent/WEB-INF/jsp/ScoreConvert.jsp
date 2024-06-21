@@ -32,18 +32,18 @@
 
 	<div class="seiseki_touroku">
 		<form id = "Form" method = "post" action = "/D1/ScoreConvertRegistServlet">
-			<p>正解数　</p>
-			<p>問題数　</p>
+			<p class="diff_plus">正解数　</p>
+			<p class="diff_minus">問題数　</p>
 			<br>
 
-			<input id="correct" type="text" name="correct">
-			<input id="total" type="text" name="total"> <br><br>
+			<input class="diff_plus" id="correct" type="text" name="correct">
+			<input class="diff_minus" id="total" type="text" name="total"> <br><br>
 
-			<p>教科選択</p>
-			<p id="seiseki_date">日付</p>
+			<p class="diff_plus">教科選択</p>
+			<p class="diff_minus" id="seiseki_date">日付</p>
 			<br>
 
-			<select name = "subject">
+			<select class="diff_plus" id="subject_select" name = "subject">
 				<option value = "" selected disabled>科目を選択してください</option>
 				<option value = "国語">国語</option>
 				<option value = "数学">数学</option>
@@ -51,9 +51,9 @@
 				<option value = "理科">理科</option>
 				<option value = "社会">社会</option>
 			</select>
-			<i class="fa-solid fa-caret-down"></i>
 
-			<input type="date" name = "date"><br><br>
+
+			<input class="diff_minus" type="date" name = "date"><br><br>
 
 			<div class="seiseki_okuru">
 				<input id="openModal" type="button" value="登録">

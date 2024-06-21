@@ -39,7 +39,7 @@
 		<form id = "Form" action="/D1/ScoreRegistServlet" method="post">
 			<p>教科登録</p>
 			<br>
-			<select name = "subject">
+			<select id="subject_select" name = "subject">
 				<option value = "" selected disabled>科目を選択してください</option>
 				<option value = "国語">国語</option>
 				<option value = "数学">数学</option>
@@ -47,7 +47,7 @@
 				<option value = "理科">理科</option>
 				<option value = "社会">社会</option>
 			</select>
-			<i class="fa-solid fa-caret-down"></i>
+
 			<br><br>
 
 			<p>点数登録</p>
