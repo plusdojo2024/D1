@@ -61,6 +61,80 @@ header {
   align-items: center;
 }
 
+.hamburger {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  width: 40px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  display: block;
+  position: absolute;
+  transition: all 0.3s;
+}
+
+.hamburger .bar-top {
+  transform: translate(0, -12px);
+}
+
+.hamburger .bar-bottom {
+  transform: translate(0, 12px);
+}
+
+.checkbox:checked ~ .hamburger .bar-middle {
+  opacity: 0;
+}
+
+.checkbox:checked ~ .hamburger .bar-top {
+  transform: translate(0, 0) rotate(45deg);
+}
+
+.checkbox:checked ~ .hamburger .bar-bottom {
+  transform: translate(0, 0) rotate(-45deg);
+}
+
+.checkbox {
+  display: none;
+}
+
+.nav-menu {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  background: #DCEAF7;
+  opacity: 0.8;
+  color: #215F9A;
+  top: 80px;
+  left: -100%;
+  transition: all 0.5s;
+}
+
+.nav-menu ul {
+  margin-top: 20px;
+}
+
+.nav-menu li {
+  margin-bottom: 30px;
+}
+
+.nav-menu a {
+  text-align: center;
+  font-size: 20px;
+}
+
+.checkbox:checked ~ .nav-menu {
+  left: 0;
+}
+
+
 .logo img{
 	width: 150px;
 }
@@ -148,4 +222,9 @@ i {
 	position: absolute;
 	top: 422px;
 	left: 874px;
+}
+
+#score{
+	background:#fff url("/D1/img/score.png") no-repeat 297px center;
+	background-size: 70px 70px;
 }

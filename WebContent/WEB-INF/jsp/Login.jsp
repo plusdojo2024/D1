@@ -17,9 +17,6 @@
         <img src="img/logo.png" alt="">
     </div>
 
-    <img class="people_icon" src="img/people.png" alt="">
-    <img class="lock_icon" src="img/lock.png" alt="">
-
     <!-- <form action="result.html"> -->
     <form id="login_form" method="post" action="?">
 
