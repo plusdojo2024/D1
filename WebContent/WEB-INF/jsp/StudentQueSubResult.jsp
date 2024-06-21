@@ -91,6 +91,13 @@
 		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 		crossorigin="anonymous"></script>
 	<script src="script/modal_input.js"></script>
+<footer>
+<div class="fot_img">
+<img src="img/fot_logo.png" alt="">
+</div>
+</footer>
 
 </body>
+
+
 </html>
