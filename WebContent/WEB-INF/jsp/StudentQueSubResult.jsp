@@ -62,8 +62,7 @@
 	<div class="que">
 		<button id="openModal" class="qbutton">回答を作成する</button>
 
-		<img class="qbutton_img" src="img/pen.png" alt="" width="25"
-			height="25">
+		<img class="qbutton_img" src="img/pen.png" alt="" width="25"height="25">
 	</div>
 
 	<form id="Form" action="/D1/StudentQueSubResultServlet" method="post">
