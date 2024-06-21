@@ -17,6 +17,20 @@
 		<div class="logo">
 			<a href="/D1/HomeServlet"><img src="img/logo.png" alt="ロゴ"></a>
 		</div>
+		<input type="checkbox" id="checkbox" class="checkbox">
+    <label for="checkbox" class="hamburger">
+      <span class="bar bar-top"></span>
+      <span class="bar bar-middle"></span>
+      <span class="bar bar-bottom"></span>
+    </label>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="/D1/HomeServlet">HOME</a></li>
+        <li><a href="/D1/ScoreRegistServlet">成績登録</a></li>
+        <li><a href="/D1/StudentQueServlet">質問</a></li>
+        <li><a href="/D1/LogoutServlet">ログアウト</a></li>
+      </ul>
+    </nav>
 	</header>
 
 	<h2>成績登録 各教科</h2>
