@@ -11,7 +11,7 @@
 <body>
   <header>
      <div class="logo">
-			<img src="img/logo.png" alt="">
+			<a href="/D1/HomeServlet"><img src="img/logo.png" alt=""></a>
 		</div>
 
     <input type="checkbox" id="checkbox" class="checkbox">
