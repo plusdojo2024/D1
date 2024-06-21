@@ -120,6 +120,20 @@ public class HomeServlet extends HttpServlet {
 
 				request.setAttribute("subject", subject);//最高の平均スコアを持つ科目
 
+				//このクエリで国語の平均スコアを持つ科目が取得される
+				String sql5 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ? AND subject = '国語'";
+				PreparedStatement st5 = conn.prepareStatement(sql5);
+				st5.setString(1, login_id);
+				ResultSet res5 = st5.executeQuery();
+				double japaneseAvgScore = 0;
+
+				if(res5.next()) {
+					japaneseAvgScore = res5.getDouble("avg_score");
+				}
+
+				request.setAttribute("japaneseAvgScore", japaneseAvgScore);
+
+
 
 
 			 } catch(SQLException e) {
