@@ -155,12 +155,13 @@ main {
 }
 
 #myLineChart {
-    margin: 0 65px 0 85px;
+    margin: 0 65px 0 105px;
 	width: 1035px;
 }
 
 .summary{
 	display:flex;
+	margin-top:55px;
 
 }
 .bottom_right{
@@ -172,7 +173,7 @@ main {
 
 .score{
 	display:flex;
-	background: #c0c0c0;
+	background: #DCEAF7;
 	width:200px;
 	height:100px;
 	justify-content: center;
