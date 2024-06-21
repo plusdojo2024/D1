@@ -199,8 +199,10 @@ public class HomeServlet extends HttpServlet {
 	            e.printStackTrace();
 	        } finally {
 	            try {
-	                if (rs != null) rs.close();
-	                if (stmt != null) stmt.close();
+	                if (rs1 != null) rs1.close();
+	                if (stmt1 != null) stmt1.close();
+	                if (rs2 != null) rs2.close();
+	                if (stmt2 != null) stmt2.close();
 	                if (conn != null) conn.close();
 	            } catch (SQLException e) {
 	                e.printStackTrace();
