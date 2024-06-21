@@ -65,9 +65,9 @@ public class StudentQueSubResultServlet extends HttpServlet {
 		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
 
 		String login_id = loginUser.getId();
-		LocalDateTime date1 = LocalDateTime.now();
 
-		DateTimeFormatter dtformat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime date1 = LocalDateTime.now();
+		DateTimeFormatter dtformat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		String date = date1.format(dtformat);
 
 		String answer=request.getParameter("answer");
