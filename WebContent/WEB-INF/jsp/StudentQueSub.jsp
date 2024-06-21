@@ -14,7 +14,7 @@
 <body>
 	<header>
 		<div class="logo">
-			<img src="img/logo.png" alt="">
+			<a href="/D1/HomeServlet"><img src="img/logo.png" alt=""></a>
 		</div>
 	</header>
 
@@ -47,6 +47,7 @@
 			<div id="closeModal" class="closeModal">×</div>
 		</div>
 	</section>
+	<input type="hidden" id="submissionDateTime" name="date">
 	</form>
 
 	<section id="modalArea_B" class="modalArea_B">
@@ -73,4 +74,10 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="script/modal_input.js"></script>
+<script>
+	document.getElementById('Form').addEventListener('submit', function(event) {
+		var currentDateTime = new Date().toISOString(); // 現在の日時をISO形式で取得
+		document.getElementById('submissionDateTime').value = currentDateTime; // 隠し入力フィールドに設定
+	});
+</script>
 </html>

@@ -71,71 +71,81 @@ header {
 h2{
   	display: inline-block;
 	font-size: 3em;
-	padding-right: 55%;
+	padding-right: 900px;
 	padding-left: 200px;
 	margin-left: 10px;
+	margin-top: 10px;
 	border-bottom: 1px solid #020062;
 	margin-bottom: 50px;
 }
 
-.que_title{
+.seiseki_touroku{
+  margin-top: 70px;
+  text-align: center;
+}
+.seiseki_touroku input{
+  width: 368px;
+  height: 70px;
+  text-align: center;
+  font-size:2em;
+}
+.seiseki_touroku p{
+  display: inline-block;
+  border: 1px solid #555;
+  padding: 0px 151px;
+  background: #dceaf7;
+}
+
+.seiseki_okuru{
+  text-align: center;
+  border-radius: 80px;
+  margin-top: 15px;
+}
+
+.seiseki_okuru input{
+  text-align: center;
+  border-radius: 80px;
+  width: 100px;
+  height:40px;
+  font-size:1.2em;
+}
+
+.not_100{
 	display:flex;
-	background: #DCEAF7;
-	width: 1200px;
-	height:45px;
-	align-items:center;
-	justify-content:center;
-	margin:auto;
-	border: 2px solid #000000;
+  text-align: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.not_100 p{
+  display: inline-block;
+  border-bottom: 1px solid #555;
 }
 
-.que_title p{
-	font-size:1.3em;
-	font-weight:bold;
+.not_100 img{
+	transform: translateY(4px);
 }
 
-.que_content{
-	background: #ffffff;
-	width: 1200px;
-	align-items:center;
-	justify-content:center;
-
-	border: 1px solid #000000;
-	padding:5px 5px;
+select {
+	font-size: 1.3em;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+	width: 368px;
+	height: 70px;
+	outline: none;
+	padding: 0 20px;
 }
 
-.que_content h3{
-	font-size:1.1em;
+i {
+  position: absolute;
+  right: 590px;
+  top: 47%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: blue;
 }
 
-.subject_pul{
-	position:fixed;
-	top:210px;
-	left:1163px;
-}
-
-.que_area{
-	overflow:auto;
-	height:65vh;
-	width:1200px;
-	box-shadow: inset 0px 3px 3px 0px rgb(201, 201, 201);
-	margin:0px auto 0 auto;
-}
-
-.subject_pul select{
-	text-align:center;
-	height:30px;
-	width:100px;
-}
-
-.subject_pul input{
-	height:30px;
-}
-
-.back_icon img{
-	position:fixed;
-	top:91px;
-	left:15px;
-	width:50px;
-	height:50px;
+.seiseki_touroku img{
+	position: absolute;
+	top: 422px;
+	left: 874px;
 }
