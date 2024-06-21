@@ -95,13 +95,14 @@ h2{
   height: 70px;
   text-align: center;
   font-size: 2em;
+  border: 2px solid #000000;
 }
 
 .seiseki_touroku p{
   display: inline-block;
   border: 1px solid #555;
   padding: 0px 129px;
-  background-color: #dceaf7;
+  background-color: #FEDAC2;
 }
 
 #seiseki_date{
@@ -118,6 +119,7 @@ h2{
   text-align: center;
   border-radius: 80px;
   font-size: 1.2em;
+
 }
 
 .reigai_mes{
@@ -137,16 +139,9 @@ select {
 	height: 70px;
 	padding: 0 20px;
 	margin-top: 0;
+	border: 2px solid #000000;
 }
 
-i {
-  position: absolute;
-  left: 740px;
-  top: 66%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: blue;
-}
 
 footer{
 	position:fixed;
@@ -164,4 +159,18 @@ footer{
 #total{
 	background:#fff url("/D1/img/score_sub.png") no-repeat 251px center;
 	background-size: 70px 70px;
+}
+
+#subject_select{
+	background:#fff url("/D1/img/select_icon.svg") no-repeat 290px center;
+	background-size: 20px 20px;
+	transform:translateX(3px) translateY(-2px);
+}
+
+.diff_plus{
+	transform:translateX(3px);
+}
+
+.diff_minus{
+	transform:translateX(-3px);
 }
