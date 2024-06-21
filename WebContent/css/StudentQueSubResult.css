@@ -79,61 +79,6 @@ h2{
 	margin-bottom: 50px;
 }
 
-.seiseki_touroku{
-  margin-top: 70px;
-  text-align: center;
-}
-.seiseki_touroku input{
-  width: 368px;
-  height: 70px;
-  text-align: center;
-  font-size:2em;
-}
-.seiseki_touroku p{
-  display: inline-block;
-  border: 1px solid #555;
-  padding: 0px 151px;
-  background: #dceaf7;
-}
-
-.seiseki_okuru{
-  text-align: center;
-  border-radius: 80px;
-  margin-top: 15px;
-}
-
-.seiseki_okuru input{
-  text-align: center;
-  border-radius: 80px;
-  width: 100px;
-  height:40px;
-  font-size:1.2em;
-}
-
-.not_100{
-	display:flex;
-  text-align: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-.not_100 p{
-  display: inline-block;
-  border-bottom: 1px solid #555;
-}
-
-.not_100 img{
-	transform: translateY(4px);
-}
-
-select {
-	font-size: 1.3em;
-	-webkit-appearance: none;
-    -moz-appearance: none;
-	width: 368px;
-	height: 70px;
-	outline: none;
-	padding: 0 20px;
-}
 
 i {
   position: absolute;
@@ -144,8 +89,49 @@ i {
   color: blue;
 }
 
-.seiseki_touroku img{
-	position: absolute;
-	top: 422px;
-	left: 874px;
+.questionssss{
+	padding: 20px;
+}
+
+.chat-box{
+	display: flex;
+	margin-bottom: 15px;
+}
+
+.chat-box .chat-face{
+	flex: 0 0 50px;
+	margin-right: 10px;
+}
+
+.chat-area{
+
+}
+
+.chat-hukidashi{
+
+}
+
+.chat-hukidashi_kaitou{
+
+}
+
+.que{
+  display: flex;
+  align-items: center; /* 上下の中央揃え */
+  justify-content: center; /* 左右の中央揃え */
+  position: fixed;
+  top: 50%; /* 上から50% */
+  left: 50%; /*左から50% */
+  transform: translate(-50%, -50%); /* 変形 */
+}
+.qbutton{
+  border-radius: 80px;
+  padding: 20px 50px 20px 20px;
+  font-size: 1.2em;
+  margin-right: 5px; /* ボタンと画像の間隔 */
+  text-align:center;
+}
+.qbutton_img{
+  width: 25px;
+  height: 25px;
 }
