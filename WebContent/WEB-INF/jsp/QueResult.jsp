@@ -97,6 +97,12 @@ function onclick_search() {
 		</div>
 	</section>
 
+<footer>
+<div class="fot_img">
+<img src="img/fot_logo.png" alt="">
+</div>
+</footer>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="js/modal.js"></script>
