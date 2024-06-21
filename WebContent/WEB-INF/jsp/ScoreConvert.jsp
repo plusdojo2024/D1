@@ -9,6 +9,7 @@
 <title>成績登録例外画面</title>
 <link rel="stylesheet" type="text/css" href="css/ScoreConvert.css">
 <link rel="stylesheet" type="text/css" href="css/modal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -35,8 +36,8 @@
 			<p>問題数　</p>
 			<br>
 
-			<input type="text" name="correct">
-			<input type="text" name="total"> <br><br>
+			<input id="correct" type="text" name="correct">
+			<input id="total" type="text" name="total"> <br><br>
 
 			<p>教科選択</p>
 			<p id="seiseki_date">日付</p>
@@ -50,6 +51,7 @@
 				<option value = "理科">理科</option>
 				<option value = "社会">社会</option>
 			</select>
+			<i class="fa-solid fa-caret-down"></i>
 
 			<input type="date" name = "date"><br><br>
 

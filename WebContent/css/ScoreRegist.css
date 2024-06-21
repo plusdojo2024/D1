@@ -223,3 +223,8 @@ i {
 	top: 422px;
 	left: 874px;
 }
+
+#score{
+	background:#fff url("/D1/img/score.png") no-repeat 297px center;
+	background-size: 70px 70px;
+}
