@@ -7,7 +7,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ログイン画面</title>
 	<!-- <link rel="stylesheet" type="text/css" href="css/login.css"> -->
-	<link rel="shortcut icon" href="images/icon2.ico" type="image/vnd.microsoft.icon">
 	<link rel="stylesheet" type="text/css" href="css/Login.css">
 </head>
 

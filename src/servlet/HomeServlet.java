@@ -32,21 +32,22 @@ public class HomeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // もしもログインしていなかったらログインサーブレットにリダイレクトする
-//        HttpSession session = request.getSession();
-//        if (session.getAttribute("login_id") == null) {
-//            response.sendRedirect("/D1/LoginServlet");
-//            return;
-//        }
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/D1/LoginServlet");
+			return;
+		}
 
 		Connection conn = null;
 //		List<Double> avgScores = new ArrayList<>();//リストで取得したい時に使う
-        request.setCharacterEncoding("UTF-8");
+
 
         //login_idをjspから何とか取得したい！方法は模索中…
 //        String login_id = (String) session.getAttribute("login_id");
-        HttpSession session = request.getSession();
         LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
+        request.setCharacterEncoding("UTF-8");
         String login_id = loginUser.getId();
+
         if (login_id != null) {
 
 			try {
@@ -56,7 +57,7 @@ public class HomeServlet extends HttpServlet {
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
 				//SQLのクエリ（Homeサーブレットはすべてのテーブルからデータを取得するのですべて結合してから取得）
-				String sql = "SELECT content FROM Question WHERE login_id = ? AND answer != '（未設定）'";
+				String sql = "SELECT content FROM Question WHERE login_id = ? AND content != '（未設定）'";
 				PreparedStatement st = conn.prepareStatement(sql);
 				st.setString(1, login_id);
 				ResultSet res = st.executeQuery();
@@ -80,7 +81,7 @@ public class HomeServlet extends HttpServlet {
 
 				// answerカラム（Questionテーブル）のデータを取得するループ
 				//　answerとcontentが同じ行数とは限らないのでループを分けました。
-				String sql2 = "SELECT answer FROM Question WHERE login_id = ? AND content != '（未設定）'";
+				String sql2 = "SELECT answer FROM Question WHERE login_id = ? AND answer != '（未設定）'";
 				PreparedStatement st2 = conn.prepareStatement(sql2);
 				st2.setString(1, login_id);
 				ResultSet res2 = st2.executeQuery();
@@ -364,7 +365,12 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        // もしもログインしていなかったらログインサーブレットにリダイレクトする
+        HttpSession session = request.getSession();
+        if (session.getAttribute("login_id") == null) {
+            response.sendRedirect("/D1/LoginServlet");
+            return;
+        }
 
 		request.setCharacterEncoding("UTF-8");
 //		String login_id = request.getParameter("login_id");
