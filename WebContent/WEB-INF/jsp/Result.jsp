@@ -14,6 +14,9 @@
 			<img src="img/logo.png" alt="">
 	</div>
   </header>
+
+  <div class="head_bar"></div>
+
 <h2>${result.title}</h2>
 <hr>
 <p>${result.message}</p>
