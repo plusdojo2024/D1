@@ -36,7 +36,7 @@
 		<div class="head_bar"></div>
 
 		<nav class="your_grade">
-			<h1>あなたの現在の成績</h1>
+			<h1>${requestScope.user_name}さんの現在の成績</h1>
 		</nav>
 
 		<script>
@@ -51,6 +51,22 @@
 		const array3 = [
 			<c:forEach var="entry" items="${japaneseAvgScores}">
 			${entry.japaneseAvgScore},
+		    </c:forEach>];
+		const array4 = [
+			<c:forEach var="entry" items="${mathAvgScores}">
+			${entry.mathAvgScore},
+		    </c:forEach>];
+		const array5 = [
+			<c:forEach var="entry" items="${scienceAvgScores}">
+			${entry.scienceAvgScore},
+		    </c:forEach>];
+		const array6 = [
+			<c:forEach var="entry" items="${societyAvgScores}">
+			${entry.societyAvgScore},
+		    </c:forEach>];
+		const array7 = [
+			<c:forEach var="entry" items="${englishAvgScores}">
+			${entry.englishAvgScore},
 		    </c:forEach>];
 		</script>
 
