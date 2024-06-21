@@ -35,21 +35,22 @@
 	        </div>
 
 	        <div class="submit">
-	            <input id="openModal" type="submit" value="登録"><br>
+	            <input id="openModal" type="button" value="登録"><br>
 	        </div>
 	        <span id="error_message"></span>
 	    </div>
 	</form>
 
-    <section id="modalArea" class="modalArea">
+    <section id="modalArea" class="modalArea" style = "display: none;">
         <div id="modalBg" class="modalBg"></div>
         <div class="modalWrapper">
             <div class="modalContents">
                 <div class="modal_title">
-                    <h1>新規登録が完了しました</h1>
+                    <h1>この内容で登録してよろしいですか？</h1>
                 </div>
                 <div class="modal_choice">
-                    <p>ログイン画面に戻る</p>
+                	<p id="modal_cancel">戻る</p>
+                    <p id = "modal_ok">OK</p>
                 </div>
             </div>
             <div id="closeModal" class="closeModal">
@@ -60,6 +61,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="js/NewLogin.js"></script>
+<script src="script/NewLogin.js"></script>
 
 </html>
