@@ -173,7 +173,7 @@ main {
 
 .score{
 	display:flex;
-	background: #DCEAF7;
+	background: #FEDAC2;
 	width:200px;
 	height:100px;
 	justify-content: center;
@@ -184,4 +184,16 @@ main {
 .font_L{
 	font-size:1.5em;
 	font-weight:bold;
+}
+
+footer{
+	position:fixed;
+	bottom:0;
+	width:100%;
+	height:20px;
+	background: #215F9A;
+    text-align:center;
+}
+.fot_img img{
+	width:150px;
 }
