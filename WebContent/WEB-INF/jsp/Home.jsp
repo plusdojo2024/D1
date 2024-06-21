@@ -48,6 +48,10 @@
 			<c:forEach var="entry" items="${averageScores}">
 		  	  '${entry.year}-${entry.month}',
 		    </c:forEach>];
+		const array3 = [
+			<c:forEach var="entry" items="${japaneseAvgScores}">
+			${entry.japaneseAvgScore},
+		    </c:forEach>];
 		</script>
 
 		<div class="summary">
