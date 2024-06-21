@@ -155,3 +155,13 @@ footer{
 	height:20px;
 	background: #215F9A;
 }
+
+#correct{
+	background:#fff url("/D1/img/score_sub.png") no-repeat 251px center;
+	background-size: 70px 70px;
+}
+
+#total{
+	background:#fff url("/D1/img/score_sub.png") no-repeat 251px center;
+	background-size: 70px 70px;
+}

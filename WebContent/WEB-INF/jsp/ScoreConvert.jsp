@@ -36,8 +36,8 @@
 			<p>問題数　</p>
 			<br>
 
-			<input type="text" name="correct">
-			<input type="text" name="total"> <br><br>
+			<input id="correct" type="text" name="correct">
+			<input id="total" type="text" name="total"> <br><br>
 
 			<p>教科選択</p>
 			<p id="seiseki_date">日付</p>
