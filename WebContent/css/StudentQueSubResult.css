@@ -74,20 +74,18 @@ h2{
 	padding-right: 900px;
 	padding-left: 200px;
 	margin-left: 10px;
-	margin-top: 10px;
 	border-bottom: 1px solid #020062;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
 }
 
-
-i {
-  position: absolute;
-  right: 590px;
-  top: 47%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: blue;
+.back img{
+  position: fixed;
+  width:50px;
+  height:50px;
+  top: 91px;
+  left: 15px;
 }
+
 
 textarea{
 	border: 2px solid black;
@@ -95,12 +93,16 @@ textarea{
 }
 
 .questionssss{
-	padding: 20px;
+    overflow: auto;
+    height: 75vh;
+    width:80%;
+    box-shadow: inset 0px 3px 3px 0px rgb(201, 201, 201);
+    margin:auto;
 }
 
 .chat-box{
 	display: flex;
-	margin-bottom: 15px;
+	margin-top: 15px;
 }
 
 .chat-box .chat-face{
@@ -169,10 +171,8 @@ textarea{
   font-size: 1.2em;
   margin-right: 5px; /* ボタンと画像の間隔 */
   text-align:center;
-}
-.qbutton_img{
-  width: 25px;
-  height: 25px;
+  background:#fff url("/D1/img/pen.png") no-repeat 160px center;
+  background-size: 25px 25px;
 }
 
 footer{
