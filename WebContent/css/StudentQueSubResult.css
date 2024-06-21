@@ -89,6 +89,11 @@ i {
   color: blue;
 }
 
+textarea{
+	border: 2px solid black;
+	box-sizing: border-box;
+}
+
 .questionssss{
 	padding: 20px;
 }

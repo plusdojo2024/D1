@@ -38,10 +38,9 @@ public class StudentQueSubResultServlet extends HttpServlet {
 
 
 		request.setCharacterEncoding("UTF-8");
-		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
 
-		String login_id = loginUser.getId();
 		String date = request.getParameter("date");
+		String login_id = request.getParameter("login_id");
 		String content = request.getParameter("content");
 		String answer = request.getParameter("answer");
 		String subject = request.getParameter("subject");
