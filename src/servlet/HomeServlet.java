@@ -170,7 +170,7 @@ public class HomeServlet extends HttpServlet {
 	            request.setAttribute("averageScores",  averageScoresList);
 
 	         // 年と月ごとに国語の平均スコアを取得するSQLクエリ
-	            String sql2 = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS averageScore "
+	            String sql2 = "SELECT YEAR(Date) AS year, MONTH(Date) AS month, AVG(score) AS japaneseAvgScore "
 	                         +"FROM Grade WHERE login_id = ? AND subject = '国語'"
 	                         +"GROUP BY YEAR(Date), MONTH(Date)"
 	                         +"ORDER BY year ASC, month ASC";
