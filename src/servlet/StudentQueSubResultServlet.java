@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -58,10 +60,16 @@ public class StudentQueSubResultServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
-		String login_id=request.getParameter("login_id");
-		String date=request.getParameter("date");
+		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
+
+		String login_id = loginUser.getId();
+
+		LocalDateTime date1 = LocalDateTime.now();
+		DateTimeFormatter dtformat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String date = date1.format(dtformat);
+
 		String answer=request.getParameter("answer");
 
 		QuestionDao qDao=new QuestionDao();
@@ -73,7 +81,7 @@ public class StudentQueSubResultServlet extends HttpServlet {
 		}
 		else {
 			request.setAttribute("result",
-					new Result("登録失敗", "回答を受け付けられませんでした。","/D1/StudentQueSubServlet"));
+					new Result("登録失敗", "回答を受け付けられませんでした。","/D1/StudentQueSubResultServlet"));
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSubResult.jsp");

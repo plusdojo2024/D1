@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.QuestionDao;
+import model.LoginUser;
 import model.Question;
 import model.Result;
 
@@ -48,12 +52,24 @@ public class StudentQueSubServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String login_id=request.getParameter("login_id");
-		String date=request.getParameter("date");
+        HttpSession session = request.getSession();
+        LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
+        String login_id = loginUser.getId();
+
+        LocalDateTime date1 = LocalDateTime.now();
+		DateTimeFormatter dtformat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String date = date1.format(dtformat);
+
 		String content=request.getParameter("content");
 		String answer=request.getParameter("answer");
 		String subject=request.getParameter("subject");
 		System.out.println("Received content: " + content);
+		System.out.println("Received content: " + login_id);
+		System.out.println("Received content: " + date);
+		System.out.println("Received content: " + subject);
+		System.out.println("Received content: " + answer);
+
+
 		QuestionDao qDao=new QuestionDao();
 
 
