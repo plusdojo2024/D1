@@ -67,7 +67,7 @@ function onclick_search() {
 
 
 
-			<c:if test="${empty e.content}">
+			<c:if test="${e.content == '（未設定）'}">
 				<div class="que_content">
 
 					<p>${e.date}　　${e.subject}</p>
