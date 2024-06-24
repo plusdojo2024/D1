@@ -43,10 +43,15 @@ margin-top: 40px;
 }
 
 .submit input{
+	background-color: #FEDAC2;
     border-radius: 80px;
     width: 140px;
     height: 30px;
     margin-bottom: 20px;
+}
+
+.submit input:hover{
+	background-color: #fdba7e;
 }
 
 .login_text input::placeholder {
