@@ -10,7 +10,7 @@
 <title>テスト</title>
 <link rel="stylesheet" type="text/css"
 	href="css/StudentQueSubResult.css">
-<link rel="stylesheet" type="text/css" href="css/modal.css">
+<link rel="stylesheet" type="text/css" href="css/modal_input.css">
 </head>
 
 <body>
@@ -20,10 +20,10 @@
 		</div>
 	</header>
 
-	<h2>成績登録 各教科</h2>
+	<h2>質問回答一覧</h2>
 
 	<div class="back">
-		<a href="/D1/ScoreRegistServlet"><img src="img/sirusi.png" alt=""></a>
+		<a href="/D1/StudentQueServlet"><img src="img/sirusi.png" alt=""></a>
 	</div>
 
 	<div class="questionssss">
@@ -79,7 +79,7 @@
 						<h1>回答を入力してください</h1>
 					</div>
 					<div class="modal_title">
-						<textarea name="answer" rows="7" cols="58"></textarea>
+						<textarea name="answer" rows="7" cols="58" required></textarea>
 					</div>
 					<div class="modal_choice">
 						<p id="modal_cancel">戻る</p>
