@@ -63,6 +63,53 @@ public class UserDao {
 		return loginResult;
 	}
 
+	// login_idが既に存在するかチェックするメソッド
+    public boolean exists(String login_id) {
+        Connection conn = null;
+        boolean exists = false;
+
+        try {
+            // JDBCドライバを読み込む
+            Class.forName("org.h2.Driver");
+
+            // データベースに接続する
+            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
+
+            // SELECT文を準備する
+            String sql = "SELECT COUNT(*) FROM USER WHERE login_id = ?";
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+            pStmt.setString(1, login_id);
+
+            // SELECT文を実行し、結果表を取得する
+            ResultSet rs = pStmt.executeQuery();
+
+            // login_idが存在するかどうかをチェックする
+            rs.next();
+            if (rs.getInt(1) > 0) {
+                exists = true;
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        finally {
+            // データベースを切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return exists;
+    }
+
 	//ユーザーをIDで検索するメソッド
 	public List<User> select(User card){
 		Connection conn = null;
@@ -197,4 +244,5 @@ public class UserDao {
 		// 結果を返す
 		return result;
 	}
+
 }
