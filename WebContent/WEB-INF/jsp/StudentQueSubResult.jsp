@@ -30,6 +30,7 @@
 
 		<!-- 質問 -->
 		<c:forEach var="e" items="${QueList}">
+			<c:if test="${!empty e.content and e.content != '（未設定）'}">
 				<div class="chat-box">
 					<div class="chat-face">
 						<img src="img/que_icon.svg" alt="" width="50" height="50">
@@ -42,9 +43,11 @@
 						</div>
 					</div>
 				</div>
+			</c:if>
 
 
 			<!-- 回答 -->
+			<c:if test="${!empty e.answer and e.answer != '（未設定）'}">
 				<div class="chat-box">
 					<div class="chat-face">
 						<img src="img/megane.png" alt="" width="50" height="50">
@@ -57,6 +60,7 @@
 						</div>
 					</div>
 				</div>
+			</c:if>
 		</c:forEach>
 
 	</div>
