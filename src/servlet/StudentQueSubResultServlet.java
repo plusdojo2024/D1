@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.AllQuestionDao;
 import dao.QuestionDao;
 import model.LoginUser;
 import model.Question;
@@ -38,19 +36,19 @@ public class StudentQueSubResultServlet extends HttpServlet {
 		}
 
 
-		request.setCharacterEncoding("UTF-8");
+		/*		request.setCharacterEncoding("UTF-8");
 
-		String date = request.getParameter("date");
-		String login_id = request.getParameter("login_id");
-		String content = request.getParameter("content");
-		String answer = request.getParameter("answer");
-		String subject = request.getParameter("subject");
+				String date = request.getParameter("date");
+				String login_id = request.getParameter("login_id");
+				String content = request.getParameter("content");
+				String answer = request.getParameter("answer");
+				String subject = request.getParameter("subject");
 
-		AllQuestionDao QDao = new AllQuestionDao();
-		List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject));
+				AllQuestionDao QDao = new AllQuestionDao();
+				List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject));
 
-		request.setAttribute("QueList", QueList);
-
+				request.setAttribute("QueList", QueList);
+		*/
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSubResult.jsp");
 		dispatcher.forward(request, response);
 	}
