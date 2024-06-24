@@ -60,6 +60,7 @@ header {
   align-items: center;
 }
 
+
 .logo img{
   width: 150px;
 }
@@ -76,6 +77,14 @@ h2{
   padding-left: 100px;
   margin-left: 10px;
   margin-bottom:50px;
+}
+
+.back img{
+  position: fixed;
+  width:50px;
+  height:50px;
+  top: 91px;
+  left: 15px;
 }
 
 h3{
