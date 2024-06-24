@@ -96,11 +96,6 @@ public class HomeServlet extends HttpServlet {
 
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
-				//SQLのクエリ（Homeサーブレットはすべてのテーブルからデータを取得するのですべて結合してから取得）
-				String sql = "SELECT content FROM Question WHERE login_id = ? AND content != '（未設定）'";
-				PreparedStatement st = conn.prepareStatement(sql);
-				st.setString(1, login_id);
-				ResultSet res = st.executeQuery();
 
 				//このクエリですべての教科の平均スコアが取得される
 				String sql3 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ?";
