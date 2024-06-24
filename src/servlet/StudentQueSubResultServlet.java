@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.AllQuestionDao;
 import dao.QuestionDao;
 import model.LoginUser;
 import model.Question;
@@ -45,7 +46,7 @@ public class StudentQueSubResultServlet extends HttpServlet {
 		String answer = request.getParameter("answer");
 		String subject = request.getParameter("subject");
 
-		QuestionDao QDao = new QuestionDao();
+		AllQuestionDao QDao = new AllQuestionDao();
 		List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject));
 
 		request.setAttribute("QueList", QueList);
