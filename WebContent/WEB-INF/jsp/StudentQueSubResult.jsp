@@ -25,45 +25,11 @@
 	<div class="back">
 		<a href="/D1/StudentQueServlet"><img src="img/sirusi.png" alt=""></a>
 	</div>
-
-	<div class="questionssss">
-
-		<!-- 質問 -->
-		<c:forEach var="e" items="${QueList}">
-			<c:if test="${!empty e.content and e.content != '（未設定）'}">
-				<div class="chat-box">
-					<div class="chat-face">
-						<img src="img/que_icon.svg" alt="" width="50" height="50">
-					</div>
-					<div class="chat-area">
-						<div class="chat-hukidashi">
-							<p>【質問】${e.date} 名前：${e.login_id}</p>
-							<br>
-							<p>${e.content}</p>
-						</div>
-					</div>
-				</div>
-			</c:if>
-
-
-			<!-- 回答 -->
-			<c:if test="${!empty e.answer and e.answer != '（未設定）'}">
-				<div class="chat-box">
-					<div class="chat-face">
-						<img src="img/megane.png" alt="" width="50" height="50">
-					</div>
-					<div class="chat-area">
-						<div class="chat-hukidashi_kaitou">
-							<p>【回答】${e.date} 名前：${e.login_id}</p>
-							<br>
-							<p>${e.answer}</p>
-						</div>
-					</div>
-				</div>
-			</c:if>
-		</c:forEach>
-
+	<div class="reload">
+		<img src="img/reload.svg" alt="">
 	</div>
+
+	<div class="inside" id="inside"></div>
 
 
 	<div class="que">
@@ -77,17 +43,17 @@
 				<div class="modalContents">
 					<div class="modal_maintitle">
 						<h1>回答を入力してください</h1>
+						<select id="subject_select" name="subject">
+							<option value="" selected disabled>科目を選択</option>
+							<option value="国語">国語</option>
+							<option value="数学">数学</option>
+							<option value="英語">英語</option>
+							<option value="理科">理科</option>
+							<option value="社会">社会</option>
+						</select>
 					</div>
 					<div class="modal_title">
 						<textarea name="answer" rows="7" cols="58" required></textarea>
-							<select id="subject_select" name = "subject">
-								<option value = "" selected disabled>科目を選択してください</option>
-								<option value = "国語">国語</option>
-								<option value = "数学">数学</option>
-								<option value = "英語">英語</option>
-								<option value = "理科">理科</option>
-								<option value = "社会">社会</option>
-							</select>
 					</div>
 					<div class="modal_choice">
 						<p id="modal_cancel">戻る</p>
@@ -100,10 +66,9 @@
 	</form>
 
 
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="script/modal_input.js"></script>
+	<script src="script/StudentQue.js"></script>
 	<footer>
 		<div class="fot_img">
 			<img src="img/fot_logo.png" alt="">
