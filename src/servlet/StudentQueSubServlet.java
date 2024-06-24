@@ -51,10 +51,11 @@ public class StudentQueSubServlet extends HttpServlet {
 		doGet(request, response);
 
 		// リクエストパラメータを取得する
+		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession();
-        LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
-        String login_id = loginUser.getId();
+		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
+
+		String login_id = loginUser.getId();
 
         LocalDateTime date1 = LocalDateTime.now();
 		DateTimeFormatter dtformat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -69,13 +70,21 @@ public class StudentQueSubServlet extends HttpServlet {
 //		System.out.println("Received content: " + subject);
 //		System.out.println("Received content: " + answer);
 
+		if(login_id.isEmpty() || content.isEmpty()|| subject.isEmpty()) {
+			request.setAttribute("result",
+			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/StudentQueSubServlet"));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Result.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+
 
 		QuestionDao qDao=new QuestionDao();
 
 
 		if(qDao.insert(new Question(login_id, date, content, answer, subject))) {
 			request.setAttribute("result",
-					new Result("登録完了","質問を受け付けました！","/D1/StudentQueSubResultServlet"));
+					new Result("登録完了","質問を受け付けました！","/D1/StudentQueSubServlet"));
 		}
 		else {
 			request.setAttribute("result",
