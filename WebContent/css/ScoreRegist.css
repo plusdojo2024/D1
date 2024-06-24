@@ -179,8 +179,8 @@ h2{
 .seiseki_okuru input{
   text-align: center;
   border-radius: 80px;
-  width: 100px;
-  height:40px;
+  /*width: 100px;
+  height:40px;*/
   font-size:1.2em;
 }
 
