@@ -42,13 +42,12 @@ public class HomeServlet extends HttpServlet {
 		Connection conn = null;
 
 		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
-
-		////////質問回数割り出し////////////////////////////////////////////////////////////////////////////////////////
-
+		
 		request.setCharacterEncoding("UTF-8");
 		String login_id = loginUser.getId();
 
 		if (login_id != null) {
+		////////質問回数割り出し////////////////////////////////////////////////////////////////////////////////////////
 
 		String date = request.getParameter("date");
 		String content = request.getParameter("content");
