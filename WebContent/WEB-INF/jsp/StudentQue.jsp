@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>質問-教科選択画面</title>
   <link rel="stylesheet" type="text/css" href="css/StudentQue.css">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -34,11 +35,28 @@
   <h2>質問</h2>
 
   <div class="grid_area">
-  	<input type="button" onclick="location.href='/D1/StudentQueSubServlet'" value="質問する">
-  	<input type="button" onclick="location.href='/D1/StudentQueSubResultServlet'" value="みんなの質問一覧を見る">
-  	<input type="button" onclick="location.href='/D1/QueResultServlet'" value="自分の履歴を見る">
-  	<input type="button" onclick="location.href='/D1/AnsResultServlet'" value="自分の回答履歴を見る">
+
+
+  	<div class="grid_area">
+    <button onclick="location.href='/D1/StudentQueSubServlet'">
+        <i class="fas fa-question-circle"></i>
+        <span>質問する</span>
+    </button>
+    <button onclick="location.href='/D1/StudentQueSubResultServlet'">
+        <i class="fas fa-list"></i>
+        <span>みんなの質問一覧を見る</span>
+    </button>
+    <button onclick="location.href='/D1/QueResultServlet'">
+        <i class="fas fa-history"></i>
+        <span>自分の履歴を見る</span>
+    </button>
+    <button onclick="location.href='/D1/AnsResultServlet'">
+        <i class="fas fa-reply-all"></i>
+        <span>自分の回答履歴を見る</span>
+    </button>
+</div>
   </div>
+
 
 </body>
 </html>
