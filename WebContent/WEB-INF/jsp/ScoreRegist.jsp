@@ -52,12 +52,12 @@
 
 			<p>点数登録</p>
 			<br>
-			<input type="text" id="score" name="score">
+			<input type="text" id="score" name="score" required>
 			<!-- <img src="img/score.png" width="70" height="70"> --><br><br>
 
 			<p>日付登録</p>
 			<br>
-			<input type="date" id="date" name="date"><br><br>
+			<input type="date" id="date" name="date" required><br><br>
 
 			<input id="openModal" type="button" value="登録">
 		</form>
