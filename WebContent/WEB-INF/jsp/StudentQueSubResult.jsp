@@ -80,7 +80,6 @@
 					</div>
 					<div class="modal_title">
 						<textarea name="answer" rows="7" cols="58" required></textarea>
-
 							<select id="subject_select" name = "subject">
 								<option value = "" selected disabled>科目を選択してください</option>
 								<option value = "国語">国語</option>
