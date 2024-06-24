@@ -28,7 +28,7 @@
 			height="25">
 	</div>
 
-	<form id="Form" action="/D1/StudentQueSubServlet" method="post">
+	<form id="Form" action="/D1/StudentQueSubServlet" method="post" >
 		<section id="modalArea" class="modalArea">
 			<div id="modalBg" class="modalBg"></div>
 			<div class="modalWrapper">
@@ -37,7 +37,7 @@
 						<h1>質問内容を入力してください</h1>
 					</div>
 					<div class="modal_title">
-						<textarea name="content" rows="7" cols="85"></textarea>
+						<textarea name="content" rows="7" cols="85" required></textarea>
 					</div>
 					<div class="modal_choice">
 						<p id="modal_cancel">戻る</p>
