@@ -40,12 +40,16 @@ public class HomeServlet extends HttpServlet {
 		}
 
 		Connection conn = null;
-		//		List<Double> avgScores = new ArrayList<>();//リストで取得したい時に使う
 
 		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
 
+		////////質問回数割り出し////////////////////////////////////////////////////////////////////////////////////////
+
 		request.setCharacterEncoding("UTF-8");
 		String login_id = loginUser.getId();
+
+		if (login_id != null) {
+
 		String date = request.getParameter("date");
 		String content = request.getParameter("content");
 		String answer = "未設定";
@@ -64,7 +68,27 @@ public class HomeServlet extends HttpServlet {
 
 		request.setAttribute("contentCount", contentCount);
 
-		if (login_id == null) {
+		////////質問回数割り出し終わり//////////////////////////////////////////////////////////////////////////////////
+
+		////////回答回数割り出し////////////////////////////////////////////////////////////////////////////////////////
+
+		content = "未設定";
+		answer = "";
+
+		List<Question> AnsList = new ArrayList<Question>();
+		AnsList = QDao.select(new Question(login_id, date, content, answer, subject));
+
+		int answerCount = 0;
+
+		for (int i = 0; i < AnsList.size(); i++) {
+			if (answer != "(未設定)") {
+				answerCount++;
+			}
+		}
+
+		request.setAttribute("answerCount", answerCount);
+
+		////////回答回数割り出し終わり//////////////////////////////////////////////////////////////////////////////////
 
 			try {
 				// JDBCドライバを読み込む
@@ -77,35 +101,6 @@ public class HomeServlet extends HttpServlet {
 				PreparedStatement st = conn.prepareStatement(sql);
 				st.setString(1, login_id);
 				ResultSet res = st.executeQuery();
-
-				// login_id,user_name,passwordカラム（Userテーブル）のデータを取得するループ
-				//以下のwhile処理はResultSetが次の行に移動し、その行が存在する限り実行するので行が統一されているカラム同士を分けてる
-				//user_nameとpasswordは使わないのでコメントアウト
-				//				while (res.next()) {
-				//				    String userName = res.getString("user_name");
-				//				    String password = res.getString("password");
-				//				}
-
-				//				int contentCount=0;
-				// contentカラム（Questionテーブル）のデータを取得するループ
-				while (res.next()) {
-					contentCount++;
-				}
-
-				request.setAttribute("contentCount", contentCount);//質問数
-
-				// answerカラム（Questionテーブル）のデータを取得するループ
-				//　answerとcontentが同じ行数とは限らないのでループを分けました。
-				String sql2 = "SELECT answer FROM Question WHERE login_id = ? AND answer != '（未設定）'";
-				PreparedStatement st2 = conn.prepareStatement(sql2);
-				st2.setString(1, login_id);
-				ResultSet res2 = st2.executeQuery();
-
-				int answerCount = 0;
-				while (res2.next()) {
-					answerCount++;
-				}
-				request.setAttribute("answerCount", answerCount);//質問回答数
 
 				//このクエリですべての教科の平均スコアが取得される
 				String sql3 = "SELECT AVG(score) AS avg_score FROM Grade WHERE login_id = ?";
