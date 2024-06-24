@@ -17,9 +17,6 @@
 	        <img src="img/logo_blue.png" alt="">
 	    </div>
 
-	    <img class="people_icon" src="img/people.png" alt="">
-	    <img class="lock_icon" src="img/lock.png" alt="">
-
 	    <div class="login_input">
 	        <div class="login_text">
 	            <label>新規アカウント登録</label><br>
