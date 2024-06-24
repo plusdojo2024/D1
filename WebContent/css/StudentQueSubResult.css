@@ -85,6 +85,13 @@ h2{
   top: 91px;
   left: 15px;
 }
+.reload img{
+  position: fixed;
+  width:70px;
+  height:70px;
+  top: 180px;
+  left: 1285px;
+}
 
 
 textarea{
@@ -161,8 +168,8 @@ textarea{
   align-items: center; /* 上下の中央揃え */
   justify-content: center; /* 左右の中央揃え */
   position: fixed;
-  top: 90%; /* 上から50% */
-  left: 83%; /*左から50% */
+  top: 690px; /* 上から50% */
+  left: 1250px; /*左から50% */
   transform: translate(-50%, -50%); /* 変形 */
 }
 .qbutton{
@@ -185,4 +192,18 @@ footer{
 }
 .fot_img img{
 	width:150px;
+}
+
+.modal_maintitle{
+	display:flex;
+	justify-content: center;
+}
+.modal_maintitle h1{
+	margin-left:150px;
+	margin-right:70px;
+}
+#subject_select{
+	background: #FEDAC2;
+	font-weight:bold;
+	color: #555;
 }
