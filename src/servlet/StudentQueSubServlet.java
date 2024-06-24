@@ -48,7 +48,6 @@ public class StudentQueSubServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 
 		// リクエストパラメータを取得する
 		HttpSession session = request.getSession();
