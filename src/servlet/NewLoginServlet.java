@@ -53,16 +53,33 @@ public class NewLoginServlet extends HttpServlet {
 		String user_name = request.getParameter("user_name");
 		String password = request.getParameter("password");
 
+		if(login_id.isEmpty() || user_name.isEmpty() || password.isEmpty()) {
+			request.setAttribute("result",
+			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/NewLoginServlet"));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Result.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+
 		// 登録処理を行う
 		UserDao uDao = new UserDao();
 
-		if (uDao.insert(new User(login_id, user_name, password))) {	// 登録成功
+		if(uDao.exists(login_id)) {
 			request.setAttribute("result",
-			new Result("登録成功！", "ユーザー登録に成功しました。", "/D1/HomeServlet"));
-		}
-		else {												// 登録失敗
-			request.setAttribute("result",
-			new Result("登録失敗！", "ユーザー登録に失敗しました。", "/D1/NewLoginServlet"));
+			new Result("登録失敗！", "このIDはすでに使用済みです。", "/D1/NewLoginServlet"));
+			RequestDispatcher dispacher = request.getRequestDispatcher("WEB-INF/jsp/Result.jsp");
+			dispacher.forward(request, response);
+		}else {
+
+			if (uDao.insert(new User(login_id, user_name, password))) {	// 登録成功
+				request.setAttribute("result",
+				new Result("登録成功！", "ユーザー登録に成功しました。", "/D1/HomeServlet"));
+			}
+			else {												// 登録失敗
+				request.setAttribute("result",
+				new Result("登録失敗！", "ユーザー登録に失敗しました。", "/D1/NewLoginServlet"));
+			}
+
 		}
 
 		// 結果ページにフォワードする

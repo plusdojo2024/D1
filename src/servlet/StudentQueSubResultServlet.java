@@ -70,11 +70,21 @@ public class StudentQueSubResultServlet extends HttpServlet {
 		String date = date1.format(dtformat);
 
 		String answer=request.getParameter("answer");
+		String subject=request.getParameter("subject");
+
+		if(login_id.isEmpty() || answer.isEmpty() || subject.isEmpty()) {
+			request.setAttribute("result",
+			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/StudentQueSubResultServlet"));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Result.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 
 		QuestionDao qDao=new QuestionDao();
 
 
-		if(qDao.insert(new Question(login_id, date, null, answer, null))) {
+
+		if(qDao.insert(new Question(login_id, date, null, answer, subject))) {
 			request.setAttribute("result",
 					new Result("登録完了","回答を受け付けました！","/D1/StudentQueSubResultServlet"));
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");

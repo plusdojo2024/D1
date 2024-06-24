@@ -23,15 +23,15 @@
 	    <div class="login_input">
 	        <div class="login_text">
 	            <label>新規アカウント登録</label><br>
-	            <input id="email" type="text" name="login_id" placeholder="ID">
+	            <input id="email" type="text" name="login_id" placeholder="ID" required pattern="[A-Za-z0-9]*" title="英数字のみ入力してください" maxlength="100">
 	        </div>
 	        <div class="login_text">
-	            <input id="password" type="password" name="password" placeholder="password">
+	            <input id="password" type="password" name="password" placeholder="password" required pattern="[A-Za-z0-9]*" title="英数字のみ入力してください" maxlength="32">
 	        </div>
 
 	        <div class="user_name">
 	            <label>あなたの氏名を入力して下さい</label><br>
-	            <input type="text" name = "user_name" placeholder="氏名">
+	            <input type="text" name = "user_name" placeholder="氏名" required>
 	        </div>
 
 	        <div class="submit">
@@ -62,5 +62,14 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="script/NewLogin.js"></script>
+<script>
+	//英数字のみ許可
+	document.getElementById('email').addEventListener('input', function(e)){
+		e.target.value = e.target.replace(/[^A-Za-z0-9]/g, '');
+	});
 
+	document.getElemntById('password').addEventListener('input', function(e)){
+		e.target.value = e.target.replace(/[^A-Za-z0-9]/g, '');
+	});
+</script>
 </html>
