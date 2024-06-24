@@ -58,8 +58,9 @@
 			<p>日付登録</p>
 			<br>
 			<input type="date" id="date" name="date" required><br><br>
-
-			<input id="openModal" type="button" value="登録">
+			<div class = "seiseki_okuru">
+				<input id="openModal" type="button" value="登録">
+			</div>
 		</form>
 	</div>
 

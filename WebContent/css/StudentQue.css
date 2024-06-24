@@ -24,6 +24,7 @@ time, mark, audio, video {
 body {
   overflow-x: hidden;
   background-color:#F8FBFE;
+
 }
 
 *,
@@ -151,6 +152,7 @@ main {
   background: #215F9A;
 }
 
+
 /* /////////////////////////////////// */
 h2{
   font-size: 3em;
@@ -162,39 +164,48 @@ h2{
   margin-left: 10px;
   margin-bottom:50px;
 }
-.grid_area{
-	display:grid;
-	grid-template-columns: 1fr 1fr;
-	width: 50%;
-	margin:100px auto 0 auto;
-	place-items: center;
-}
-.grid_area p{
-	width: 300px;
-	height:130px;
-	background: #DCEAF7;
-	place-items: center;
-	text-align:center;
-	align-content: center;
-	margin-bottom:60px;
-	border: 1px solid #215F9A;
-	font-size:1.5em;
-	font-weight: bold;
+.grid_area {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        width: 63%;
+        margin: 60px auto 0 19.5%;
+        place-items: center;
+        justify-items: center;
 }
 
-input[type="button"]{
-	width: 300px;
-	height:130px;
-	background: #FEDAC2;
-	place-items: center;
-	text-align:center;
-	align-content: center;
-	margin-bottom:60px;
-	border: 1px solid #215F9A;
-	font-size:1.5em;
-	font-weight: bold;
+.grid_area button {
+        width: 300px;
+        height: 130px;
+        background: #FEDAC2;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 1px solid #215F9A;
+        font-size: 1.5em;
+        font-weight: bold;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        transition: background-color 0.3s, transform 0.2s;
 }
 
+.grid_area button:hover {
+        background-color: #fdba7e;
+        transform: translateY(-5px);
+}
+
+.grid_area button span {
+        display: block;
+}
+
+.grid_area button i {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
 footer{
 	position:fixed;
 	bottom:0;

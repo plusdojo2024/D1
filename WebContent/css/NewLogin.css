@@ -43,10 +43,15 @@ margin-top: 40px;
 }
 
 .submit input{
+	background-color: #FEDAC2;
     border-radius: 80px;
     width: 140px;
     height: 30px;
     margin-bottom: 20px;
+}
+
+.submit input:hover{
+	background-color: #fdba7e;
 }
 
 .login_text input::placeholder {
@@ -59,7 +64,7 @@ html{
 body{
     display: block;
     margin: auto;
-    margin-top: 80px;
+    margin-top: 45px;
     width: 500px;
     height: 650px;
     border-radius: 80px;
@@ -75,7 +80,7 @@ body{
     border-radius: 10px;
     top: 347px;
     left: 589px;
-   border: 2px solid #000000;
+    border: 2px solid #000000;
 }
 
 .lock_icon{
@@ -157,4 +162,14 @@ label{
 
 .modal_choice p {
     border-bottom: 1px solid #a8a8a8;
+}
+
+#email{
+	background:#fff url("/D1/img/people.png") no-repeat 0px center;
+	background-size: 40px 40px;
+}
+
+#password{
+	background:#fff url("/D1/img/lock.png") no-repeat 0px center;
+	background-size: 40px 40px;
 }

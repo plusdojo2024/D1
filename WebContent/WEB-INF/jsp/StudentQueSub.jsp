@@ -20,6 +20,10 @@
 
 	<h2>質問を作成する</h2>
 
+		<div class="back">
+		<a href="/D1/StudentQueServlet"><img src="img/sirusi.png" alt=""></a>
+	</div>
+
 	<div id="que_result"></div>
 	<div class="que">
 		<button id="openModal" class="qbutton">質問を作成する</button>
@@ -58,25 +62,6 @@
 		<input type="hidden" id="submissionDateTime" name="date">
 	</form>
 
-	<section id="modalArea_B" class="modalArea_B">
-		<div id="modalBg_B" class="modalBg_B"></div>
-		<div class="modalWrapper_B">
-			<div class="modalContents_B">
-				<div class="modal_maintitle_B">
-					<h1>回答内容を入力してください</h1>
-				</div>
-				<div class="modal_title_B">
-
-					<textarea name="input" rows="7" cols="85"></textarea>
-				</div>
-				<div class="modal_choice_B">
-					<p id="modal_cancel_B">戻る</p>
-					<p id="modal_ok">OK</p>
-				</div>
-			</div>
-			<div id="closeModal_B" class="closeModal_B">×</div>
-		</div>
-	</section>
 
 </body>
 
