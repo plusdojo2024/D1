@@ -21,18 +21,16 @@
 
         <div class="login_input">
             <div class="login_text">
-                <input id="email" type="text" name="login_id" placeholder="ID">
+                <input id="email" type="text" name="login_id" placeholder="ID" required pattern = "[A-Za-z0-9]*" title = "英数字のみ入力してください" maxlength = "100">
             </div>
             <div class="login_text">
-                <input id="password" type="password" name="password" placeholder="password">
+                <input id="password" type="password" name="password" placeholder="password" required pattern = "[A-Za-z0-9]*" title = "英数字のみ入力してください" maxlength = "32">
             </div>
 
             <div class="submit">
                 <input type="submit" value="ログイン" formaction="/D1/LoginServlet"><br>
                 <label>初めての方はこちら</label><br>
                 <input type = "button" value = "新規登録" onclick = "goToNewRegistration()">
-
-                <!--<input type="submit" value="新規登録" formaction="/D1/NewLoginServlet">-->
             </div>
             <span id="error_message"></span>
         </div>
@@ -45,7 +43,16 @@
 <script>
 	function goToNewRegistration() {
 		window.location.href = '/D1/NewLoginServlet';
-}
+	}
+
+	//英数字のみ許可する
+	document.getElementById('email').addEventListener('input', function (e) {
+    	e.target.value = e.target.value.replace(/[^A-Za-z0-9]/g, '');
+    });
+
+	document.getElementById('password').addEventListener('input', function (e) {
+        e.target.value = e.target.value.replace(/[^A-Za-z0-9]/g, '');
+    });
 </script>
 
 </html>
