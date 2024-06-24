@@ -53,6 +53,14 @@ public class NewLoginServlet extends HttpServlet {
 		String user_name = request.getParameter("user_name");
 		String password = request.getParameter("password");
 
+		if(login_id.isEmpty() || user_name.isEmpty() || password.isEmpty()) {
+			request.setAttribute("result",
+			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/NewLoginServlet"));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Result.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+
 		// 登録処理を行う
 		UserDao uDao = new UserDao();
 

@@ -64,7 +64,7 @@
 <script src="script/NewLogin.js"></script>
 <script>
 	//英数字のみ許可
-	document.getElemntById('email').addEventListener('input', function(e)){
+	document.getElementById('email').addEventListener('input', function(e)){
 		e.target.value = e.target.replace(/[^A-Za-z0-9]/g, '');
 	});
 
