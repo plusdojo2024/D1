@@ -80,6 +80,15 @@
 					</div>
 					<div class="modal_title">
 						<textarea name="answer" rows="7" cols="58" required></textarea>
+
+							<select id="subject_select" name = "subject">
+								<option value = "" selected disabled>科目を選択してください</option>
+								<option value = "国語">国語</option>
+								<option value = "数学">数学</option>
+								<option value = "英語">英語</option>
+								<option value = "理科">理科</option>
+								<option value = "社会">社会</option>
+							</select>
 					</div>
 					<div class="modal_choice">
 						<p id="modal_cancel">戻る</p>
