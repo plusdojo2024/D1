@@ -70,6 +70,7 @@ public class StudentQueSubResultServlet extends HttpServlet {
 
 		String answer=request.getParameter("answer");
 		String subject=request.getParameter("subject");
+		String reaction = request.getParameter("reaction");
 
 		if(login_id.isEmpty() || answer.isEmpty() || subject.isEmpty()) {
 			request.setAttribute("result",
@@ -83,7 +84,7 @@ public class StudentQueSubResultServlet extends HttpServlet {
 
 
 
-		if(qDao.insert(new Question(login_id, date, null, answer, subject))) {
+		if(qDao.insert(new Question(login_id, date, null, answer, subject,reaction))) {
 			request.setAttribute("result",
 					new Result("登録完了","回答を受け付けました！","/D1/StudentQueSubResultServlet"));
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");
