@@ -63,6 +63,7 @@ public class StudentQueSubServlet extends HttpServlet {
 		String content=request.getParameter("content");
 		String answer=request.getParameter("answer");
 		String subject=request.getParameter("subject");
+		String reaction = request.getParameter("reaction");
 //		System.out.println("Received content: " + content);
 //		System.out.println("Received content: " + login_id);
 //		System.out.println("Received content: " + date);
@@ -81,7 +82,7 @@ public class StudentQueSubServlet extends HttpServlet {
 		QuestionDao qDao=new QuestionDao();
 
 
-		if(qDao.insert(new Question(login_id, date, content, answer, subject))) {
+		if(qDao.insert(new Question(login_id, date, content, answer, subject,reaction))) {
 			request.setAttribute("result",
 					new Result("登録完了","質問を受け付けました！","/D1/StudentQueSubServlet"));
 		}
