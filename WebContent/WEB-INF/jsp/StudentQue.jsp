@@ -48,7 +48,7 @@
     </button>
     <button onclick="location.href='/D1/QueResultServlet'">
         <i class="fas fa-history"></i>
-        <span>自分の履歴を見る</span>
+        <span>自分の質問履歴を見る</span>
     </button>
     <button onclick="location.href='/D1/AnsResultServlet'">
         <i class="fas fa-reply-all"></i>

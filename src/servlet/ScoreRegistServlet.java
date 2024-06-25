@@ -59,7 +59,7 @@ public class ScoreRegistServlet extends HttpServlet {
 
 		if(login_id.isEmpty() || date.isEmpty() || score==0 || subject.isEmpty()) {
 			request.setAttribute("result",
-			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/StudentQueSubResultServlet"));
+			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/ScoreRegistServlet"));
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Result.jsp");
 			dispatcher.forward(request, response);
 			return;

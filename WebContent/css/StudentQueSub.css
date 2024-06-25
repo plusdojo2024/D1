@@ -150,6 +150,7 @@ h3{
   border: 1px solid gray;
   border-radius: 10px;
   font-size: 1.2em;
+  background-color:#e1f3fb;
   left: 60px;
 }
 .chat-hukidashi_kaitou {
@@ -161,8 +162,20 @@ h3{
   border: 1px solid gray;
   border-radius: 10px;
   font-size: 1.2em;
-  background-color: #f0d2d2;
-  left: 60px;
+  background-color:#FEDAC2;
+  left: 680px;
+}
+
+.chat-face_ans {
+  position:fixed;
+  right:170px;
+  top:370px;
+}
+
+.chat-facer_ans {
+  position:fixed;
+  right:170px;
+  top: 86%;
 }
 
 .que{
@@ -170,8 +183,8 @@ h3{
   align-items: center; /* 上下の中央揃え */
   justify-content: center; /* 左右の中央揃え */
   position: fixed;
-  top: 50%; /* 上から50% */
-  left: 50%; /*左から50% */
+  top: 90%; /* 上から50% */
+  left:78%; /*左から50% */
   transform: translate(-50%, -50%); /* 変形 */
 }
 .qbutton{
@@ -180,11 +193,10 @@ h3{
   font-size: 1.2em;
   margin-right: 5px; /* ボタンと画像の間隔 */
   text-align:center;
+  background:#fff url("/D1/img/pen.png") no-repeat 160px center;
+  background-size: 25px 25px;
 }
-.qbutton_img{
-  width: 25px;
-  height: 25px;
-}
+
 
 footer{
 	position:fixed;

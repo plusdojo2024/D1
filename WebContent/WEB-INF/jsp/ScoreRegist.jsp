@@ -52,7 +52,7 @@
 
 			<p>点数登録</p>
 			<br>
-			<input type="text" id="score" name="score" required>
+			<input type="text" id="score" name="score" maxlength="3"value="0"required>
 			<!-- <img src="img/score.png" width="70" height="70"> --><br><br>
 
 			<p>日付登録</p>
