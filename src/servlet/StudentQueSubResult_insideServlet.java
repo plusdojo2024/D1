@@ -48,9 +48,10 @@ public class StudentQueSubResult_insideServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String answer = request.getParameter("answer");
 		String subject = request.getParameter("subject");
+		String reaction = request.getParameter("reaction");
 
 		AllQuestionDao QDao = new AllQuestionDao();
-		List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject));
+		List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject,reaction));
 
 		request.setAttribute("QueList", QueList);
 
