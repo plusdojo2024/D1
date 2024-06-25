@@ -20,10 +20,10 @@
 	    <div class="login_input">
 	        <div class="login_text">
 	            <label>新規アカウント登録</label><br>
-	            <input id="email" type="text" name="login_id" placeholder="ID" required pattern="[A-Za-z0-9]*" title="英数字のみ入力してください" maxlength="16">
+	            <input id="email" type="text" name="login_id" placeholder="ID" required pattern="[A-Za-z0-9]*" title="英数字のみ入力してください(16文字以内)" maxlength="16">
 	        </div>
 	        <div class="login_text">
-	            <input id="password" type="password" name="password" placeholder="password" required pattern="[A-Za-z0-9]*" title="英数字のみ入力してください" maxlength="16">
+	            <input id="password" type="password" name="password" placeholder="password" required pattern="[A-Za-z0-9]*" title="英数字のみ入力してください(16文字以内)" maxlength="16">
 	        </div>
 
 	        <div class="user_name">
