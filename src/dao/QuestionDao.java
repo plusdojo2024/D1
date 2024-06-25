@@ -21,7 +21,7 @@ public class QuestionDao{
             // データベースに接続する
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
             // SQL文を準備する
-            String sql = "SELECT * FROM Question WHERE login_id = ? AND date LIKE ? AND content LIKE ? AND answer LIKE ? AND subject LIKE ?";
+            String sql = "SELECT * FROM Question WHERE login_id = ? AND date LIKE ? AND content LIKE ? AND answer LIKE ? AND subject LIKE ? AND reaction LIKE ?";
             //String sql = "SELECT * FROM Question WHERE login_id LIKE ? AND date LIKE ? AND content LIKE ? AND answer IS NULL AND subject LIKE ?";
             PreparedStatement pStmt = conn.prepareStatement(sql);
             // SQL文を完成させる
@@ -55,6 +55,12 @@ public class QuestionDao{
             else {
                 pStmt.setString(5, "%");
             }
+            if (card.getReaction() != null ) {
+                pStmt.setString(6, "%" + card.getReaction() + "%");
+            }
+            else {
+                pStmt.setString(6, "%");
+            }
 
             // SQL文を実行し、結果表を取得する
             ResultSet rs = pStmt.executeQuery();
@@ -65,7 +71,8 @@ public class QuestionDao{
                 rs.getString("date"),
                 rs.getString("content"),
                 rs.getString("answer"),
-                rs.getString("subject")
+                rs.getString("subject"),
+                rs.getString("reaction")
                 );
                 cardList.add(record);
             }
@@ -172,11 +179,11 @@ public class QuestionDao{
             // データベースに接続する
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
             // SQL文を準備する
-            String sql = "UPDATE Question SET login_id=?, date=?, content=?, answer=?, subject=?";
+            String sql = "UPDATE Question SET reaction=? WHERE date=?";
             PreparedStatement pStmt = conn.prepareStatement(sql);
             // SQL文を完成させる
-            if (card.getLogin_id() != null && !card.getLogin_id().equals("")) {
-                pStmt.setString(1, card.getLogin_id());
+            if (card.getReaction() != null && !card.getReaction().equals("")) {
+                pStmt.setString(1, card.getReaction());
             }
             else {
                 pStmt.setString(1, null);
@@ -186,24 +193,6 @@ public class QuestionDao{
             }
             else {
                 pStmt.setString(2, null);
-            }
-            if (card.getContent() != null && !card.getContent().equals("")) {
-                pStmt.setString(3, card.getContent());
-            }
-            else {
-                pStmt.setString(3, null);
-            }
-            if (card.getAnswer() != null && !card.getAnswer().equals("")) {
-                pStmt.setString(4, card.getAnswer());
-            }
-            else {
-                pStmt.setString(4, null);
-            }
-            if (card.getSubject() != null && !card.getSubject().equals("")) {
-                pStmt.setString(5, card.getSubject());
-            }
-            else {
-                pStmt.setString(5, null);
             }
 
             // SQL文を実行する
