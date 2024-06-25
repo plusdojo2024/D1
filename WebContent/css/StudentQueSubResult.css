@@ -169,7 +169,7 @@ textarea{
   align-items: center; /* 上下の中央揃え */
   justify-content: center; /* 左右の中央揃え */
   position: fixed;
-  top: 690px; /* 上から50% */
+  top: 640px; /* 上から50% */
   left: 1250px; /*左から50% */
   transform: translate(-50%, -50%); /* 変形 */
 }
