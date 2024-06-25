@@ -8,6 +8,7 @@ public class Question implements Serializable {
 	private String content;  //質問内容
 	private String answer;  //質問回答
 	private String subject;  //科目
+	private String reaction;
 
 	//引数がないコンストラクタ
 	public Question() {
@@ -15,13 +16,14 @@ public class Question implements Serializable {
 	}
 
 	//引数があるコンストラクタ
-	public Question(String login_id, String date, String content, String answer, String subject) {
+	public Question(String login_id, String date, String content, String answer, String subject, String reaction) {
 		super();
 		this.login_id = login_id;
 		this.date = date;
 		this.content = content;
 		this.answer = answer;
 		this.subject = subject;
+		this.reaction = reaction;
 	}
 
 	public Question(String content, String subject, String date) {
@@ -99,6 +101,20 @@ public class Question implements Serializable {
 	 */
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+
+	/**
+	 * @return subject
+	 */
+	public String getReaction() {
+		return reaction;
+	}
+
+	/**
+	 * @param subject セットする subject
+	 */
+	public void setReaction(String reaction) {
+		this.reaction = reaction;
 	}
 
 
