@@ -20,81 +20,81 @@
 
 	<h2>質問を作成する</h2>
 
-		<div class="back">
+	<div class="back">
 		<a href="/D1/StudentQueServlet"><img src="img/sirusi.png" alt=""></a>
 	</div>
 
-<div class="questionssss">
+	<div class="questionssss">
 
-    <div class="chat-box">
-      <div class="chat-face">
-        <img src="img/IMG_8183.png" alt="" width="50" height="50">
-      </div>
-      <div class="chat-area">
-        <div class="chat-hukidashi">
-          <p>　　　　　　　　　</p>
-          <p>　何か困っていることはあるか？　　</p>
-          <p>　　　　　　　　　</p>
-        </div>
-      </div>
+		<div class="chat-box">
+			<div class="chat-face">
+				<img src="img/IMG_8183.png" alt="" width="50" height="50">
+			</div>
+			<div class="chat-area">
+				<div class="chat-hukidashi">
+					<br>
+					<p>何か困っていることはあるか？</p>
+					<br>
+				</div>
+			</div>
 
-    </div>
+		</div>
 
-    <div class="chat-box">
+		<div class="chat-box">
 
-      <div class="chat-area">
-        <div class="chat-hukidashi_kaitou">
-          <p>　　　　　　　　</p>
-          <p>気になることがあれば質問してみよう！</p>
-          <p>　　　　　　　　</p>
-        </div>
-      </div>
-      <div class="chat-face_ans">
-        <img src="img/IMG_8184.png" alt="" width="50" height="50">
-      </div>
-    </div>
+			<div class="chat-area">
+				<div class="chat-hukidashi_kaitou">
+					<br>
+					<p>気になることがあれば質問してみよう！</p>
+					<br>
+				</div>
+			</div>
+			<div class="chat-face_ans">
+				<img src="img/IMG_8184.png" alt="" width="50" height="50">
+			</div>
+		</div>
 
-    <div class="chat-box">
-      <div class="chat-face">
-        <img src="img/IMG_8183.png" alt="" width="50" height="50">
-      </div>
-      <div class="chat-area">
-        <div class="chat-hukidashi">
-          <p>　　　　　　　　</p>
-          <p>簡単に解決するかもしれんからな！ﾊﾊｯ</p>
-          <p>　　　　　　　　</p>
-        </div>
-      </div>
-    </div>
-      <div class="chat-facer_ans">
-        <img src="img/IMG_8184.png" alt="" width="50" height="50">
-      </div>
-  </div>
+		<div class="chat-box">
+			<div class="chat-face">
+				<img src="img/IMG_8183.png" alt="" width="50" height="50">
+			</div>
+			<div class="chat-area">
+				<div class="chat-hukidashi">
+					<br>
+					<p>簡単に解決するかもしれんからな！ﾊﾊｯ</p>
+					<br>
+				</div>
+			</div>
+		</div>
+		<div class="chat-facer_ans">
+			<img src="img/IMG_8184.png" alt="" width="50" height="50">
+		</div>
+	</div>
 
-<div id="que_result"></div>
+	<div id="que_result"></div>
 	<div class="que">
 		<button id="openModal" class="qbutton">質問を作成する</button>
 
 	</div>
 
-	<form id="Form" action="/D1/StudentQueSubServlet" method="post" >
+	<form id="Form" action="/D1/StudentQueSubServlet" method="post">
 		<section id="modalArea" class="modalArea">
 			<div id="modalBg" class="modalBg"></div>
 			<div class="modalWrapper">
 				<div class="modalContents">
 					<div class="modal_maintitle">
-						<h1>質問内容を入力してください</h1>
+						<h1>質問を入力してください</h1>
+						<select id="subject_select" name="subject">
+							<option value="" selected disabled>科目を選択</option>
+							<option value="国語">国語</option>
+							<option value="数学">数学</option>
+							<option value="英語">英語</option>
+							<option value="理科">理科</option>
+							<option value="社会">社会</option>
+						</select>
 					</div>
 					<div class="modal_title">
-						<textarea name="content" rows="7" cols="85" required></textarea>
-					        <select id="subject_select" name = "subject">
-								<option value = "" selected disabled>科目を選択してください</option>
-								<option value = "国語">国語</option>
-								<option value = "数学">数学</option>
-								<option value = "英語">英語</option>
-								<option value = "理科">理科</option>
-								<option value = "社会">社会</option>
-							</select>
+						<textarea name="content" rows="7" cols="58" required></textarea>
 					</div>
 					<div class="modal_choice">
 						<p id="modal_cancel">戻る</p>
