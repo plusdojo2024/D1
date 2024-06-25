@@ -106,6 +106,7 @@ textarea{
     width:80%;
     box-shadow: inset 0px 3px 3px 0px rgb(201, 201, 201);
     margin:auto;
+    background: #fff;
 }
 
 .chat-box{
@@ -207,4 +208,26 @@ footer{
 	background: #FEDAC2;
 	font-weight:bold;
 	color: #555;
+}
+
+.reaction_plus input{
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+
+	background:#fff url("/D1/img/reaction_plus.png") no-repeat 0px center;
+	background-size:40px 40px;
+	width:40px;
+	height:40px;
+}
+
+.margin{
+	 transform: translateX(5px) translateY(45px);
 }
