@@ -48,7 +48,6 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -62,6 +61,15 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		int correct = Integer.parseInt(request.getParameter("correct"));
 		int total = Integer.parseInt(request.getParameter("total"));
 
+		if(login_id.isEmpty() || correct==0 || total==0) {
+			request.setAttribute("result",
+			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/StudentQueSubResultServlet"));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Result.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+
+
 		// 100点満点に換算
 		double percentage = ((double) correct / total) * 100;
 
@@ -74,16 +82,25 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 //		System.out.println("Received score: " + score);
 //		System.out.println("Received subject: " + subject);
 
+		if(login_id.isEmpty() || score==0 || date.isEmpty()|| subject.isEmpty()) {
+			request.setAttribute("result",
+			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/StudentQueSubResultServlet"));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Result.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+
+
 		//登録処理を行う
 		gradeDao gDao = new gradeDao();
 
 		if (gDao.insert(new grade(login_id, date, subject, score))) { // 登録成功
 
 			request.setAttribute("result",
-					new Result("登録成功！", "点数を登録しました。", "/D1/HomeServlet"));
+					new Result("登録成功！", "点数を登録しました。", "/WEB-INF/jsp/Result.jsp"));
 		} else { // 登録失敗
 			request.setAttribute("result",
-					new Result("登録失敗！", "点数を登録できませんでした。", "/D1/ScoreConvertRegistServlet"));
+					new Result("登録失敗！", "点数を登録できませんでした。", "/WEB-INF/jsp/Result.jsp"));
 		}
 
 		// 結果ページにフォワードする
