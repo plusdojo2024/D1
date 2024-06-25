@@ -42,7 +42,7 @@ public class HomeServlet extends HttpServlet {
 		Connection conn = null;
 
 		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
-		
+
 		request.setCharacterEncoding("UTF-8");
 		String login_id = loginUser.getId();
 
@@ -53,9 +53,10 @@ public class HomeServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String answer = "未設定";
 		String subject = request.getParameter("subject");
+		String reaction = request.getParameter("reaction");
 
 		QuestionDao QDao = new QuestionDao();
-		List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject));
+		List<Question> QueList = QDao.select(new Question(login_id, date, content, answer, subject,reaction));
 
 		int contentCount = 0;
 
@@ -75,7 +76,7 @@ public class HomeServlet extends HttpServlet {
 		answer = "";
 
 		List<Question> AnsList = new ArrayList<Question>();
-		AnsList = QDao.select(new Question(login_id, date, content, answer, subject));
+		AnsList = QDao.select(new Question(login_id, date, content, answer, subject,reaction));
 
 		int answerCount = 0;
 
