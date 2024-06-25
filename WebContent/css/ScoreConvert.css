@@ -1,141 +1,151 @@
 /* リセットCSS */
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  vertical-align: bottom;
-  background: transparent;
-  list-style: none;
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd,
+	q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr,
+	th, td, article, aside, canvas, details, figcaption, figure, footer,
+	header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: bottom;
+	background: transparent;
+	list-style: none;
 }
 
 body {
-  overflow-x: hidden;
+	overflow-x: hidden;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+*, *::before, *::after {
+	box-sizing: border-box;
 }
 
 a {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-  font: inherit;
+	display: block;
+	color: inherit;
+	text-decoration: none;
+	font: inherit;
 }
 
 /* ここまでリセットCSS */
-
 body {
-  font-family: "Arial", sans-serif;
-  color: #555;
-  font-feature-settings: "palt";
-  background-color:#F8FBFE;
+	font-family: "Arial", sans-serif;
+	color: #555;
+	font-feature-settings: "palt";
+	background-color: #F8FBFE;
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 header {
-  height: 80px;
-  width: 100%;
-  padding: 0 20px;
-  background: #215F9A;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	height: 80px;
+	width: 100%;
+	padding: 0 20px;
+	background: #215F9A;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-.logo img{
+.logo img {
 	width: 150px;
 }
 
-
-
 /* /////////////////////////////////// */
-
-h2{
-  font-size: 3em;
-  margin-left: 10px;
-  border-bottom: 1px solid #020062;
-  padding-right:100px;
-  padding-left: 200px;
-  margin-top: 10px;
-  margin-bottom:50px;
+h2 {
+	font-size: 3em;
+	margin-left: 10px;
+	border-bottom: 1px solid #020062;
+	padding-right: 100px;
+	padding-left: 200px;
+	margin-top: 10px;
+	margin-bottom: 50px;
 }
 
-.back img{
-  position: fixed;
-  width:50px;
-  height:50px;
-  top: 91px;
-  left: 15px;
+.back img {
+	position: fixed;
+	width: 50px;
+	height: 50px;
+	top: 91px;
+	left: 15px;
 }
 
-.seiseki_touroku{
-  margin-top: 15px;
-  text-align: center;
-}
-.seiseki_touroku input{
-  width: 323px;
-  height: 70px;
-  text-align: center;
-  font-size: 2em;
-  border: 2px solid #000000;
+.seiseki_touroku {
+	margin-top: 15px;
+	text-align: center;
 }
 
-.seiseki_touroku p{
-  display: inline-block;
-  border: 1px solid #555;
-  padding: 0px 129px;
-  background-color: #FEDAC2;
+.seiseki_touroku input {
+	width: 323px;
+	height: 70px;
+	text-align: center;
+	font-size: 2em;
+	border: 2px solid #000000;
 }
 
-#seiseki_date{
+.seiseki_touroku p {
+	display: inline-block;
+	border: 1px solid #555;
+	padding: 0px 129px;
+	background-color: #FEDAC2;
+}
+
+#seiseki_date {
 	padding: 0px 145px;
 }
 
-.seiseki_okuru{
-  text-align: center;
-  border-radius: 80px;
-  margin-top: 15px;
+.seiseki_okuru {
+	text-align: center;
+	border-radius: 80px;
+	margin-top: 15px;
 }
 
-.seiseki_okuru input{
-  text-align: center;
-  border-radius: 80px;
-  font-size: 1.2em;
+/*.seiseki_okuru input {
+	text-align: center;
+	border-radius: 80px;
+	font-size: 1.2em;
+}*/
 
+.seiseki_okuru input {
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 368px;
+	padding: 10px 25px;
+	color: #313131;
+	transition: 0.3s ease-in-out;
+	font-weight: 400;
+	background: #eee;
+	filter: drop-shadow(0px 2px 4px #ccc);
+	border-radius: 80px;
 }
 
-.reigai_mes{
-  text-align: center;
-  margin-top: 110px;
+.seiseki_okuru input:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 15px 30px -5px rgb(0 0 0/ 15%), 0 0 5px rgb(0 0 0/ 10%);
 }
-.reigai_mes p{
-  display: inline-block;
-  border-bottom: 1px solid #bbbbbb;
+
+.reigai_mes {
+	text-align: center;
+	margin-top: 110px;
+}
+
+.reigai_mes p {
+	display: inline-block;
+	border-bottom: 1px solid #bbbbbb;
 }
 
 select {
 	font-size: 1.3em;
 	-webkit-appearance: none;
-    -moz-appearance: none;
+	-moz-appearance: none;
 	width: 323px;
 	height: 70px;
 	padding: 0 20px;
@@ -143,35 +153,34 @@ select {
 	border: 2px solid #000000;
 }
 
-
-footer{
-	position:fixed;
-	bottom:0;
+footer {
+	position: fixed;
+	bottom: 0;
 	width: 100%;
-	height:20px;
+	height: 20px;
 	background: #215F9A;
 }
 
-#correct{
-	background:#fff url("/D1/img/score_sub.png") no-repeat 251px center;
+#correct {
+	background: #fff url("/D1/img/score_sub.png") no-repeat 251px center;
 	background-size: 70px 70px;
 }
 
-#total{
-	background:#fff url("/D1/img/score_sub.png") no-repeat 251px center;
+#total {
+	background: #fff url("/D1/img/score_sub.png") no-repeat 251px center;
 	background-size: 70px 70px;
 }
 
-#subject_select{
-	background:#fff url("/D1/img/select_icon.svg") no-repeat 290px center;
+#subject_select {
+	background: #fff url("/D1/img/select_icon.svg") no-repeat 290px center;
 	background-size: 20px 20px;
-	transform:translateX(3px) translateY(-2px);
+	transform: translateX(3px) translateY(-2px);
 }
 
-.diff_plus{
-	transform:translateX(3px);
+.diff_plus {
+	transform: translateX(3px);
 }
 
-.diff_minus{
-	transform:translateX(-3px);
+.diff_minus {
+	transform: translateX(-3px);
 }
