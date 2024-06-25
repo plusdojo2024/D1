@@ -101,6 +101,11 @@ h3{
   margin: auto;
 }
 
+textarea{
+	border: 2px solid black;
+	box-sizing: border-box;
+}
+
 .questionssss {
   display: block;
   width: 80%;
@@ -208,4 +213,18 @@ footer{
 }
 .fot_img img{
 	width:150px;
+}
+
+.modal_maintitle{
+	display:flex;
+	justify-content: center;
+}
+.modal_maintitle h1{
+	margin-left:150px;
+	margin-right:70px;
+}
+#subject_select{
+	background: #FEDAC2;
+	font-weight:bold;
+	color: #555;
 }
