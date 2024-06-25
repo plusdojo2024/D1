@@ -20,7 +20,7 @@ public class AllQuestionDao{
             // データベースに接続する
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D1", "sa", "");
             // SQL文を準備する
-            String sql = "SELECT * FROM Question WHERE login_id LIKE ? AND date LIKE ? AND content LIKE ? AND answer LIKE ? AND subject LIKE ?";
+            String sql = "SELECT * FROM Question WHERE login_id LIKE ? AND date LIKE ? AND content LIKE ? AND answer LIKE ? AND subject LIKE ? AND reaction LIKE ?";
             //String sql = "SELECT * FROM Question WHERE login_id LIKE ? AND date LIKE ? AND content LIKE ? AND answer IS NULL AND subject LIKE ?";
             PreparedStatement pStmt = conn.prepareStatement(sql);
             // SQL文を完成させる
@@ -54,6 +54,12 @@ public class AllQuestionDao{
             else {
                 pStmt.setString(5, "%");
             }
+            if (card.getReaction() != null ) {
+                pStmt.setString(6, "%" + card.getReaction() + "%");
+            }
+            else {
+                pStmt.setString(6, "%");
+            }
 
             // SQL文を実行し、結果表を取得する
             ResultSet rs = pStmt.executeQuery();
@@ -64,7 +70,8 @@ public class AllQuestionDao{
                 rs.getString("date"),
                 rs.getString("content"),
                 rs.getString("answer"),
-                rs.getString("subject")
+                rs.getString("subject"),
+                rs.getString("reaction")
                 );
                 cardList.add(record);
             }

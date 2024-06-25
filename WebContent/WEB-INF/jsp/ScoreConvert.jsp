@@ -36,8 +36,8 @@
 			<p class="diff_minus">問題数　</p>
 			<br>
 
-			<input class="diff_plus" id="correct" type="text" name="correct" required>
-			<input class="diff_minus" id="total" type="text" name="total" required> <br><br>
+			<input class="diff_plus" id="correct" type="text" name="correct" maxlength="4" value="0"required>
+			<input class="diff_minus" id="total" type="text" name="total" maxlength="4" value="0"required> <br><br>
 
 			<p class="diff_plus">教科選択</p>
 			<p class="diff_minus" id="seiseki_date">日付</p>

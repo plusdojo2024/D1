@@ -169,7 +169,7 @@ h2{
         grid-template-columns: 1fr 1fr;
         gap: 60px;
         width: 63%;
-        margin: 60px auto 0 auto;
+        margin: 60px auto 0 19.5%;
         place-items: center;
         justify-items: center;
 }

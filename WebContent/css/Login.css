@@ -21,8 +21,8 @@
 
 .login_input{
     display: block;
-text-align: center;
-margin-top: 80px;
+	text-align: center;
+	margin-top: 80px;
 }
 
 .login_text input{
@@ -41,10 +41,15 @@ margin-top: 80px;
 }
 
 .submit input{
+	background-color: #FEDAC2;
     border-radius: 80px;
     width: 140px;
     height: 30px;
     margin-bottom: 20px;
+}
+
+.submit input:hover{
+	background-color: #fdba7e;
 }
 
 .login_text input::placeholder {
