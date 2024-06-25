@@ -39,16 +39,15 @@
 					</div>
 					<c:if test="${e.reaction == '0'}">
 					<div class="reaction_plus">
-						<!-- <img src="img/reaction_plus.png" alt="" width="50" height="50"> -->
 						<form action="/D1/StudentQueSubResult_ReactionServlet" method="post">
 						<input type="hidden" name="date" value="${e.date}">
-						<input class="btn_update" type="submit" value="リアクション" <%-- onclick="onclick_reaction(${e.date}) --%>">
+						<input class="btn_update margin" type="submit" value="">
 						</form>
 					</div>
 					</c:if>
 					<c:if test="${e.reaction == '1'}">
 					<div class="reaction">
-						<img src="img/reaction.png" alt="" width="50" height="50">
+						<img class="margin" src="img/reaction.png" alt="" width="40" height="40">
 					</div>
 					</c:if>
 				</div>
