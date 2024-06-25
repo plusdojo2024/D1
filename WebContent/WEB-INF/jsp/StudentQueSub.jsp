@@ -24,12 +24,57 @@
 		<a href="/D1/StudentQueServlet"><img src="img/sirusi.png" alt=""></a>
 	</div>
 
-	<div id="que_result"></div>
+<div class="questionssss">
+
+    <div class="chat-box">
+      <div class="chat-face">
+        <img src="img/IMG_8183.png" alt="" width="50" height="50">
+      </div>
+      <div class="chat-area">
+        <div class="chat-hukidashi">
+          <p>　　　　　　　　　</p>
+          <p>　何か困っていることはあるか？　　</p>
+          <p>　　　　　　　　　</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="chat-box">
+
+      <div class="chat-area">
+        <div class="chat-hukidashi_kaitou">
+          <p>　　　　　　　　</p>
+          <p>気になることがあれば質問してみよう！</p>
+          <p>　　　　　　　　</p>
+        </div>
+      </div>
+      <div class="chat-face_ans">
+        <img src="img/IMG_8184.png" alt="" width="50" height="50">
+      </div>
+    </div>
+
+    <div class="chat-box">
+      <div class="chat-face">
+        <img src="img/IMG_8183.png" alt="" width="50" height="50">
+      </div>
+      <div class="chat-area">
+        <div class="chat-hukidashi">
+          <p>　　　　　　　　</p>
+          <p>簡単に解決するかもしれんからな！ﾊﾊｯ</p>
+          <p>　　　　　　　　</p>
+        </div>
+      </div>
+    </div>
+      <div class="chat-facer_ans">
+        <img src="img/IMG_8184.png" alt="" width="50" height="50">
+      </div>
+  </div>
+
+<div id="que_result"></div>
 	<div class="que">
 		<button id="openModal" class="qbutton">質問を作成する</button>
 
-		<img class="qbutton_img" src="img/pen.png" alt="" width="25"
-			height="25">
 	</div>
 
 	<form id="Form" action="/D1/StudentQueSubServlet" method="post" >
