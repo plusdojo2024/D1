@@ -47,7 +47,7 @@ public class StudentQueSubResult_ReactionServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String answer = request.getParameter("answer");
 		String subject = request.getParameter("subject");
-		String reaction = "1";
+		String reaction = request.getParameter("reaction");;
 
 		QuestionDao QDao = new QuestionDao();
 		QDao.update(new Question(login_id, date, content, answer, subject,reaction));
