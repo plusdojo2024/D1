@@ -184,8 +184,12 @@ textarea{
   font-size: 1.2em;
   margin-right: 5px; /* ボタンと画像の間隔 */
   text-align:center;
-  background:#fff url("/D1/img/pen.png") no-repeat 160px center;
+  background:#FEDAC2 url("/D1/img/pen.png") no-repeat 160px center;
   background-size: 25px 25px;
+}
+
+.qbutton:hover{
+	background-color: #fdba7e;
 }
 
 footer{
