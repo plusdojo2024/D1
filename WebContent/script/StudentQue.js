@@ -23,7 +23,34 @@ $('.reload').on('click', function() {
 });
 
 
+function onclick_subject() {
 
+	const data = new FormData(document.getElementById('que_sub_select'));
+
+	fetch('http://localhost:8080/D1/StudentQueSubResult_insideServlet', {
+		method: 'post', body: data
+	})
+		.then(res => res.text())
+		.then(text => {
+			$('#inside').html(text);
+
+		});
+}
+
+
+/*let select = document.querySelector('[name="subject_se"]')
+select.onchange = event => {
+	const data = select.value;
+
+	fetch('http://localhost:8080/D1/StudentQueSubResult_insideServlet', {
+		method: 'post', body: data
+	})
+		.then(res => res.text())
+		.then(text => {
+			$('#inside').html(text);
+
+		});
+}*/
 
 
 

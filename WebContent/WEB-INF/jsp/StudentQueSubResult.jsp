@@ -22,6 +22,20 @@
 
 	<h2>質問回答一覧</h2>
 
+	<form id="que_sub_select">
+		<div class="subject_pul">
+			<select id="selecter" name="subject_se">
+				<option value="">教科選択</option>
+				<option value="国語">国語</option>
+				<option value="数学">数学</option>
+				<option value="英語">英語</option>
+				<option value="理科">理科</option>
+				<option value="社会">社会</option>
+			</select>
+			<input type="button" value="絞り込み" onclick="onclick_subject()">
+		</div>
+	</form>
+
 	<div class="back">
 		<a href="/D1/StudentQueServlet"><img src="img/sirusi.png" alt=""></a>
 	</div>
@@ -76,5 +90,5 @@
 	</footer>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+
 </html>
