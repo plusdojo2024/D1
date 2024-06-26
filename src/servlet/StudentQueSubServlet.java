@@ -39,6 +39,14 @@ public class StudentQueSubServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+        // もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/D1/LoginServlet");
+			return;
+		}
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/StudentQueSub.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -49,8 +57,14 @@ public class StudentQueSubServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		// リクエストパラメータを取得する
+        // もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/D1/LoginServlet");
+			return;
+		}
+
+		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
 

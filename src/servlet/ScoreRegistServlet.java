@@ -30,6 +30,12 @@ public class ScoreRegistServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/D1/LoginServlet");
+			return;
+		}
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ScoreRegist.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -41,23 +47,22 @@ public class ScoreRegistServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/D1/LoginServlet");
+			return;
+		}
+
 		request.setCharacterEncoding("UTF-8");
 
-		HttpSession session = request.getSession();
 		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
 		String login_id = loginUser.getId();
 		String subject = request.getParameter("subject");
 		String date = request.getParameter("date");
 		//int型は一旦string型でパラメーターを受け取ってそれをint型に直す必要がある
 		String scoreString = request.getParameter("score");
-		int score = Integer.parseInt(scoreString);
 
-		System.out.println("Received login_id: " + login_id);
-		System.out.println("Received date: " + date);
-		System.out.println("Received score: " + score);
-		System.out.println("Received subject: " + subject);
-
-		if(login_id.isEmpty() || date.isEmpty() || score==0 || subject.isEmpty()) {
+		if(login_id.isEmpty() || date.isEmpty() || scoreString.isEmpty() || subject.isEmpty()) {
 			request.setAttribute("result",
 			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/ScoreRegistServlet"));
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Result.jsp");
@@ -65,12 +70,15 @@ public class ScoreRegistServlet extends HttpServlet {
 			return;
 		}
 
+		//int型に直す
+		int score = Integer.parseInt(scoreString);
+
 		gradeDao gDao = new gradeDao();
 
 		if (gDao.insert(new grade(login_id, date, subject, score))) { // 登録成功
 
 			request.setAttribute("result",
-					new Result("登録成功！", "成績を登録しました。", "/WEB-INF/jsp/Result.jsp"));
+					new Result("登録成功！", "成績を登録しました。", "/D1/ScoreRegistServlet"));
 		} else { // 登録失敗
 			request.setAttribute("result",
 					new Result("登録失敗！", "成績を登録できませんでした。", "/WEB-INF/jsp/Result.jsp"));

@@ -36,6 +36,12 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/D1/LoginServlet");
+			return;
+		}
+
 		// TODO Auto-generated method stub
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ScoreConvert.jsp");
@@ -49,25 +55,32 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/D1/LoginServlet");
+			return;
+		}
+
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 
-		//      String login_id = (String) session.getAttribute("login_id");
-		HttpSession session = request.getSession();
 		LoginUser loginUser = (LoginUser) session.getAttribute("login_id");
 		String login_id = loginUser.getId();
 
 		// JSP から送られた正答数と問題数を取得
-		int correct = Integer.parseInt(request.getParameter("correct"));
-		int total = Integer.parseInt(request.getParameter("total"));
+		String correctString = request.getParameter("correct");
+		String totalString = request.getParameter("total");
 
-		if(login_id.isEmpty() || correct==0 || total==0) {
+		if(login_id.isEmpty() || correctString.isEmpty() || totalString.isEmpty()) {
 			request.setAttribute("result",
 			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/ScoreRegistServlet"));
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Result.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
+
+		int correct = Integer.parseInt(correctString);
+		int total = Integer.parseInt(totalString);
 
 
 		// 100点満点に換算
@@ -84,7 +97,7 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 
 		if(login_id.isEmpty() || score==0 || date.isEmpty()|| subject.isEmpty()) {
 			request.setAttribute("result",
-			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/ScoreRegistServlet"));
+			new Result("登録失敗！", "全ての項目を入力してください。", "/D1/ScoreConvertRegistServlet"));
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/Result.jsp");
 			dispatcher.forward(request, response);
 			return;
@@ -97,10 +110,10 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		if (gDao.insert(new grade(login_id, date, subject, score))) { // 登録成功
 
 			request.setAttribute("result",
-					new Result("登録成功！", "点数を登録しました。", "/WEB-INF/jsp/Result.jsp"));
+					new Result("登録成功！", score +"点で登録しました。", "/D1/ScoreConvertRegistServlet"));
 		} else { // 登録失敗
 			request.setAttribute("result",
-					new Result("登録失敗！", "点数を登録できませんでした。", "/WEB-INF/jsp/Result.jsp"));
+					new Result("登録失敗！", "点数を登録できませんでした。", "/D1/ScoreConvertRegistServlet"));
 		}
 
 		// 結果ページにフォワードする

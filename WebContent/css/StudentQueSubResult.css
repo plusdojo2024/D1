@@ -75,7 +75,6 @@ h2{
 	padding-left: 200px;
 	margin-left: 10px;
 	border-bottom: 1px solid #020062;
-	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
@@ -472,37 +471,3 @@ nav ul li.has-child.active > a::before{
 }
 
 /*========= レイアウトのためのCSS ===============*/
-
-h1{
-  font-size:2rem;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 20px;
-}
-
-h2{
-  font-size:1.2rem;
-  text-align: center;
-  margin: 0 0 30px 0;
-}
-
-p{
-  margin-top:20px;
-}
-
-small{
-  background:#333;
-  color:#fff;
-  display: block;
-  text-align: center;
-  padding:20px;
-}
-
-
-section{
-  padding:30px;
-}
-
-section:nth-child(2n){
-  background:#f3f3f3;
-}

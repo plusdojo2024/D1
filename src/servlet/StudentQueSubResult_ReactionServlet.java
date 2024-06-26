@@ -25,7 +25,11 @@ public class StudentQueSubResult_ReactionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/D1/LoginServlet");
+			return;
+		}
 	}
 
 	/**
