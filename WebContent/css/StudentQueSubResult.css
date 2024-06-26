@@ -71,7 +71,7 @@ header {
 h2{
   	display: inline-block;
 	font-size: 3em;
-	padding-right: 900px;
+	padding-right: 1020px;
 	padding-left: 200px;
 	margin-left: 10px;
 	border-bottom: 1px solid #020062;
@@ -90,7 +90,7 @@ h2{
   width:70px;
   height:70px;
   top: 180px;
-  left: 1285px;
+  left: 1280px;
 }
 
 
@@ -101,7 +101,7 @@ textarea{
 
 .questionssss{
     overflow: auto;
-    height: 75vh;
+    height: 72vh;
     width:80%;
     box-shadow: inset 0px 3px 3px 0px rgb(201, 201, 201);
     margin:auto;
@@ -170,19 +170,15 @@ textarea{
 }
 
 .que{
-  display: flex;
-  align-items: center; /* 上下の中央揃え */
-  justify-content: center; /* 左右の中央揃え */
   position: fixed;
-  top: 640px; /* 上から50% */
-  left: 1250px; /*左から50% */
+  top: 650px;
+  left: 1230px;
   transform: translate(-50%, -50%); /* 変形 */
 }
 .qbutton{
   border-radius: 80px;
   padding: 20px 50px 20px 20px;
   font-size: 1.2em;
-  margin-right: 5px; /* ボタンと画像の間隔 */
   text-align:center;
   background:#FEDAC2 url("/D1/img/pen.png") no-repeat 160px center;
   background-size: 25px 25px;
@@ -230,10 +226,10 @@ footer{
 	appearance: none;
 
 
-	background:url("/D1/img/reaction.png") no-repeat 0px center;
-	background-size:40px 40px;
-	width:40px;
-	height:40px;
+	background:url("/D1/img/reaction1.png") no-repeat 0px center;
+	background-size:80px 80px;
+	width:80px;
+	height:80px;
 }
 .btn_update2{
 	margin: 0;
@@ -247,10 +243,10 @@ footer{
 	appearance: none;
 
 
-	background:url("/D1/img/reaction_good.png") no-repeat 0px center;
-	background-size:40px 40px;
-	width:40px;
-	height:40px;
+	background:url("/D1/img/reaction2.png") no-repeat 0px center;
+	background-size:80px 80px;
+	width:0px;
+	height:80px;
 }
 .btn_update3{
 	margin: 0;
@@ -264,10 +260,10 @@ footer{
 	appearance: none;
 
 
-	background:url("/D1/img/reaction_plus.png") no-repeat 0px center;
-	background-size:40px 40px;
-	width:40px;
-	height:40px;
+	background:url("/D1/img/reaction3.png") no-repeat 0px center;
+	background-size:80px 80px;
+	width:80px;
+	height:80px;
 }
 .btn_update4{
 	margin: 0;
@@ -281,10 +277,10 @@ footer{
 	appearance: none;
 
 
-	background:url("/D1/img/reaction_plus.png") no-repeat 0px center;
-	background-size:40px 40px;
-	width:40px;
-	height:40px;
+	background:url("/D1/img/reaction4.png") no-repeat 0px center;
+	background-size:80px 80px;
+	width:80px;
+	height:80px;
 }
 .btn_update5{
 	margin: 0;
@@ -298,17 +294,37 @@ footer{
 	appearance: none;
 
 
-	background:url("/D1/img/reaction_plus.png") no-repeat 0px center;
-	background-size:40px 40px;
-	width:40px;
-	height:40px;
+	background:url("/D1/img/reaction5.png") no-repeat 0px center;
+	background-size:80px 80px;
+	width:80px;
+	height:80px;
 }
 
 .has-child{
 	 transform: translateX(5px) translateY(45px);
 }
 
+.margin{
+	 transform: translateX(-5px) translateY(23px);
+}
 
+.subject_pul{
+	position:absolute;
+	top:120px;
+	left:1214px;
+}
+
+.subject_pul select{
+	width:80px;
+	height:25px;
+	font-weight:bold;
+	color: #555;
+}
+
+.subject_pul input{
+	font-weight:bold;
+	color: #555;
+}
 
 /* ここからテスト---------------------------------------------------------------------------------------------------- */
 
@@ -358,8 +374,8 @@ nav ul li a:hover{
 /*==2階層目以降の画像設定*/
 
 nav ul li.has-child input{
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   transition: all .5s;
   vertical-align: bottom;
 }
@@ -374,14 +390,14 @@ nav ul li.has-child input:hover{
 nav li.has-child ul{
   /*絶対配置で位置を指定*/
     position: absolute;
-  left:-90px;
-  top:40px;
+  left:-114px;
+  top:20px;
   z-index: 14;
   /*子要素を横並びに*/
   justify-content: space-between;
   flex-wrap: wrap;
     /*形状を指定*/
-  width:220px;
+  width:240px;
     /*はじめは非表示*/
   display: none;
   visibility: hidden;
