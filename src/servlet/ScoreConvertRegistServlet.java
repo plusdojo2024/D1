@@ -110,7 +110,7 @@ public class ScoreConvertRegistServlet extends HttpServlet {
 		if (gDao.insert(new grade(login_id, date, subject, score))) { // 登録成功
 
 			request.setAttribute("result",
-					new Result("登録成功！", "点数を登録しました。", "/D1/ScoreConvertRegistServlet"));
+					new Result("登録成功！", score +"点で登録しました。", "/D1/ScoreConvertRegistServlet"));
 		} else { // 登録失敗
 			request.setAttribute("result",
 					new Result("登録失敗！", "点数を登録できませんでした。", "/D1/ScoreConvertRegistServlet"));
