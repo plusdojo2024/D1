@@ -44,13 +44,13 @@
 							<nav>
 
 								<ul>
-									<li class="has-child"><a href="#"><img class="margin" src="img/reaction_plus.png" alt="" width="40"height="40"></a>
+									<li class="has-child"><a href="#"><img src="img/reaction_plus.png" alt="" width="40"height="40"></a>
 										<ul>
-											<li><form action="/D1/StudentQueSubResult_ReactionServlet" method="post"><a href="#"><input type="hidden" name="date" value="${e.date}"><input type="hidden" name="reaction" value="1"><input class="btn_update1 margin" type="submit" value=""></a></form></li>
-											<li><form action="/D1/StudentQueSubResult_ReactionServlet" method="post"><a href="#"><input type="hidden" name="date" value="${e.date}"><input type="hidden" name="reaction" value="2"><input class="btn_update2 margin" type="submit" value=""></a></form></li>
-											<li><form action="/D1/StudentQueSubResult_ReactionServlet" method="post"><a href="#"><input type="hidden" name="date" value="${e.date}"><input type="hidden" name="reaction" value="3"><input class="btn_update3 margin" type="submit" value=""></a></form></li>
-											<li><form action="/D1/StudentQueSubResult_ReactionServlet" method="post"><a href="#"><input type="hidden" name="date" value="${e.date}"><input type="hidden" name="reaction" value="4"><input class="btn_update4 margin" type="submit" value=""></a></form></li>
-											<li><form action="/D1/StudentQueSubResult_ReactionServlet" method="post"><a href="#"><input type="hidden" name="date" value="${e.date}"><input type="hidden" name="reaction" value="5"><input class="btn_update5 margin" type="submit" value=""></a></form></li>
+											<li><form action="/D1/StudentQueSubResult_ReactionServlet" method="post"><a href="#"><input type="hidden" name="date" value="${e.date}"><input type="hidden" name="reaction" value="1"><input class="btn_update1" type="submit" value=""></a></form></li>
+											<li><form action="/D1/StudentQueSubResult_ReactionServlet" method="post"><a href="#"><input type="hidden" name="date" value="${e.date}"><input type="hidden" name="reaction" value="2"><input class="btn_update2" type="submit" value=""></a></form></li>
+											<li><form action="/D1/StudentQueSubResult_ReactionServlet" method="post"><a href="#"><input type="hidden" name="date" value="${e.date}"><input type="hidden" name="reaction" value="3"><input class="btn_update3" type="submit" value=""></a></form></li>
+											<li><form action="/D1/StudentQueSubResult_ReactionServlet" method="post"><a href="#"><input type="hidden" name="date" value="${e.date}"><input type="hidden" name="reaction" value="4"><input class="btn_update4" type="submit" value=""></a></form></li>
+											<li><form action="/D1/StudentQueSubResult_ReactionServlet" method="post"><a href="#"><input type="hidden" name="date" value="${e.date}"><input type="hidden" name="reaction" value="5"><input class="btn_update5" type="submit" value=""></a></form></li>
 										</ul>
 									</li>
 								</ul>
@@ -61,16 +61,33 @@
 
 				<c:if test="${e.reaction == '1'}">
 					<div class="reaction">
-						<img class="margin" src="img/reaction.png" alt="" width="40"height="40">
+						<img class="margin" src="img/reaction1.png" alt="" width="70"height="70">
 					</div>
 				</c:if>
 
 				<c:if test="${e.reaction == '2'}">
 					<div class="reaction">
-						<img class="margin" src="img/reaction_good.png" alt="" width="40"height="40">
+						<img class="margin" src="img/reaction2.png" alt="" width="70"height="70">
 					</div>
 				</c:if>
 
+				<c:if test="${e.reaction == '3'}">
+					<div class="reaction">
+						<img class="margin" src="img/reaction3.png" alt="" width="70"height="70">
+					</div>
+				</c:if>
+
+				<c:if test="${e.reaction == '4'}">
+					<div class="reaction">
+						<img class="margin" src="img/reaction4.png" alt="" width="70"height="70">
+					</div>
+				</c:if>
+
+				<c:if test="${e.reaction == '5'}">
+					<div class="reaction">
+						<img class="margin" src="img/reaction5.png" alt="" width="70"height="70">
+					</div>
+				</c:if>
 			</div>
 		</c:if>
 	</c:forEach>
