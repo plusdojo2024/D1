@@ -15,7 +15,7 @@
 				</div>
 				<div class="chat-area">
 					<div class="chat-hukidashi">
-						<p>【質問】${e.date} 名前：${e.login_id}</p>
+						<p>【質問】名前:${e.login_id}　　科目:${e.subject}　　${e.date}</p>
 						<br>
 						<p>${e.content}</p>
 					</div>
@@ -32,7 +32,7 @@
 				</div>
 				<div class="chat-area">
 					<div class="chat-hukidashi_kaitou">
-						<p>【回答】${e.date} 名前：${e.login_id}</p>
+						<p>【回答】名前:${e.login_id}　　科目:${e.subject}　　${e.date}</p>
 						<br>
 						<p>${e.answer}</p>
 					</div>
