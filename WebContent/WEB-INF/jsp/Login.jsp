@@ -38,7 +38,7 @@
     </form>
 </body>
 
-<script src="js/login_js.js"></script>
+<!--  <script src="js/login_js.js"></script> -->
 
 <script>
 	function goToNewRegistration() {
